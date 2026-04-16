@@ -1,0 +1,5503 @@
+{
+  "timestamp": "2026-04-15T12:46:27.060673",
+  "total_fixtures": 26,
+  "fixtures": [
+    {
+      "name": "all_adultos",
+      "file": "all_adultos.xlsx",
+      "total_competitors": 5,
+      "total_brackets": 2,
+      "avg_bracket_size": 2.5,
+      "pairing_rate": 80.0,
+      "brackets_2": 2,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 1,
+      "low_quality": 1,
+      "quality_rate": 0.0,
+      "sin_rival": 1,
+      "avg_score": 0.41,
+      "min_score": 0.3,
+      "max_score": 0.52,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "d2497534-c9e8-42d2-89bc-b0ff9e0c2bd4",
+              "numero": "AD 1",
+              "nombre": "LUCIA",
+              "apellido": "MORALES",
+              "edad": 15,
+              "peso": 86.43,
+              "estatura": 161.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "7b49e4e3-5e4a-4dca-87a8-5f26bfa82a41",
+              "numero": "AD 2",
+              "nombre": "CAMILA",
+              "apellido": "CHAVEZ",
+              "edad": 17,
+              "peso": 76.01,
+              "estatura": 136.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.52,
+          "competidores": [
+            {
+              "id": "b3f39cb6-34a0-4ea6-8b16-7c6d73031f66",
+              "numero": "AD 1",
+              "nombre": "VALENTINA",
+              "apellido": "GARCIA",
+              "edad": 18,
+              "peso": 85.43,
+              "estatura": 154.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "a4edfedd-58e7-4f4d-818e-e8efc2cf4b71",
+              "numero": "AD 2",
+              "nombre": "DANIELA",
+              "apellido": "RAMOS",
+              "edad": 21,
+              "peso": 87.28,
+              "estatura": 168.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "PAULA",
+          "apellido": "MARTINEZ",
+          "bloque": "Adultos Grupo 2",
+          "edad": 23,
+          "peso": 69.69,
+          "doyang": "KORYO",
+          "razon": "No rival in same sex & cinta block"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.485,
+      "errors": []
+    },
+    {
+      "name": "all_females",
+      "file": "all_females.xlsx",
+      "total_competitors": 50,
+      "total_brackets": 20,
+      "avg_bracket_size": 2.5,
+      "pairing_rate": 96.0,
+      "brackets_2": 16,
+      "brackets_3": 0,
+      "brackets_4": 4,
+      "excellent": 9,
+      "good": 3,
+      "low_quality": 8,
+      "quality_rate": 45.0,
+      "sin_rival": 2,
+      "avg_score": 0.609,
+      "min_score": 0.2,
+      "max_score": 0.99,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.81,
+          "competidores": [
+            {
+              "id": "0c8e9a1e-50e7-4147-b993-fd348c64a4c8",
+              "numero": "AD 1",
+              "nombre": "PAULA",
+              "apellido": "TORRES",
+              "edad": 18,
+              "peso": 87.59,
+              "estatura": 138.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "3ecd3a72-5baa-417c-b94f-2721291bb8f4",
+              "numero": "AD 2",
+              "nombre": "VALENTINA",
+              "apellido": "ORTIZ",
+              "edad": 23,
+              "peso": 87.06,
+              "estatura": 140.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.49,
+          "competidores": [
+            {
+              "id": "820f4451-1b0c-4cc6-9860-eeb3b6b3a957",
+              "numero": "AD 1",
+              "nombre": "DANIELA",
+              "apellido": "GOMEZ",
+              "edad": 19,
+              "peso": 82.46,
+              "estatura": 167.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "625774e2-9910-423b-9f1a-ea7fe44b93ca",
+              "numero": "AD 2",
+              "nombre": "CAMILA",
+              "apellido": "DIAZ",
+              "edad": 25,
+              "peso": 84.59,
+              "estatura": 154.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.46,
+          "competidores": [
+            {
+              "id": "3530834a-2902-4b41-879c-c44a1c59678f",
+              "numero": "AD 1",
+              "nombre": "KARLA",
+              "apellido": "HERNANDEZ",
+              "edad": 28,
+              "peso": 63.4,
+              "estatura": 168.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "a5205b19-ab4c-479a-b110-4fc5e5a37834",
+              "numero": "AD 2",
+              "nombre": "LAURA",
+              "apellido": "RAMOS",
+              "edad": 30,
+              "peso": 68.41,
+              "estatura": 170.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.41,
+          "competidores": [
+            {
+              "id": "92a1f3d4-0a78-4265-9bb8-0cd80655e68f",
+              "numero": "AD 1",
+              "nombre": "MONSERRAT",
+              "apellido": "RIVERA",
+              "edad": 17,
+              "peso": 74.73,
+              "estatura": 149.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "d4ce009c-2031-4ad1-9cac-c99ed6f25872",
+              "numero": "AD 2",
+              "nombre": "LIZBETH",
+              "apellido": "RAMOS",
+              "edad": 21,
+              "peso": 71.25,
+              "estatura": 142.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "numero": 5,
+          "area": 5,
+          "tipo": "normal",
+          "score": 0.2,
+          "competidores": [
+            {
+              "id": "99647311-f025-45a8-b90f-f944fb0892b1",
+              "numero": "AD 1",
+              "nombre": "PAULA",
+              "apellido": "RAMIREZ",
+              "edad": 18,
+              "peso": 57.45,
+              "estatura": 150.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "7dc1f343-4227-450f-b451-1602da76cd5a",
+              "numero": "AD 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "HERNANDEZ",
+              "edad": 27,
+              "peso": 48.89,
+              "estatura": 137.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.68,
+          "competidores": [
+            {
+              "id": "b2df5744-30eb-495a-93e0-7c19c264d02f",
+              "numero": "AD 1",
+              "nombre": "LAURA",
+              "apellido": "RAMIREZ",
+              "edad": 16,
+              "peso": 65.4,
+              "estatura": 150.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "ec962da7-c300-466e-b8db-f03505e86112",
+              "numero": "AD 2",
+              "nombre": "ELIZABETH",
+              "apellido": "RAMOS",
+              "edad": 22,
+              "peso": 66.05,
+              "estatura": 158.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.56,
+          "competidores": [
+            {
+              "id": "306313a2-4f22-4e1f-9a88-a369a012f5af",
+              "numero": "AD 1",
+              "nombre": "MARIA",
+              "apellido": "HERNANDEZ",
+              "edad": 29,
+              "peso": 52.11,
+              "estatura": 157.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "73329cf5-d975-440e-8342-0a416bee15a1",
+              "numero": "AD 2",
+              "nombre": "ELIZABETH",
+              "apellido": "PEREZ",
+              "edad": 38,
+              "peso": 53.46,
+              "estatura": 139.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.38,
+          "competidores": [
+            {
+              "id": "bbf30126-b3b5-416e-8d0d-b5c085131ea0",
+              "numero": "AD 1",
+              "nombre": "ELIZABETH",
+              "apellido": "GOMEZ",
+              "edad": 15,
+              "peso": 99.53,
+              "estatura": 135.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "8344f4ac-87de-4e01-9245-672b39d061ff",
+              "numero": "AD 2",
+              "nombre": "SOFIA",
+              "apellido": "CHAVEZ",
+              "edad": 21,
+              "peso": 75.39,
+              "estatura": 136.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.38,
+          "competidores": [
+            {
+              "id": "85c94fd4-fd61-4e76-a145-953f8e2477ad",
+              "numero": "AD 1",
+              "nombre": "ADRIANA",
+              "apellido": "RAMOS",
+              "edad": 19,
+              "peso": 62.81,
+              "estatura": 166.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "220c9c54-a11c-490c-8bba-fb96816386b6",
+              "numero": "AD 2",
+              "nombre": "ANGELICA",
+              "apellido": "MARTINEZ",
+              "edad": 33,
+              "peso": 56.74,
+              "estatura": 165.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.99,
+          "competidores": [
+            {
+              "id": "c26cba2a-1495-4ea9-b4e1-11f5c5f80b0f",
+              "numero": "AZ 1",
+              "nombre": "SOFIA",
+              "apellido": "RIVERA",
+              "edad": 11,
+              "peso": 33.74,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "7c708621-c5c8-4faa-aebf-1fd9c4ae80d5",
+              "numero": "AZ 2",
+              "nombre": "LUCIA",
+              "apellido": "CRUZ",
+              "edad": 12,
+              "peso": 33.48,
+              "estatura": 114.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.79,
+          "competidores": [
+            {
+              "id": "0cef3c67-3c67-4838-9d39-c16ebae2e065",
+              "numero": "AZ 1",
+              "nombre": "LUCIA",
+              "apellido": "CRUZ",
+              "edad": 11,
+              "peso": 47.02,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "683bdb9e-a7b7-4eba-bf59-b11b824e556c",
+              "numero": "AZ 2",
+              "nombre": "PAULA",
+              "apellido": "ORTIZ",
+              "edad": 12,
+              "peso": 48.43,
+              "estatura": 123.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "3c4ba80f-ec5d-4e3a-ab4f-fb020575f737",
+              "numero": "AZ 3",
+              "nombre": "LAURA",
+              "apellido": "SANCHEZ",
+              "edad": 11,
+              "peso": 50.14,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "3d6aa963-c89d-487a-bc7b-1bd5b77d3680",
+              "numero": "AZ 4",
+              "nombre": "MARIA",
+              "apellido": "MORALES",
+              "edad": 13,
+              "peso": 46.8,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.89,
+          "competidores": [
+            {
+              "id": "3cff71cc-a0a5-402e-8542-8bbc60ebba31",
+              "numero": "AZ 1",
+              "nombre": "VERONICA",
+              "apellido": "RAMIREZ",
+              "edad": 11,
+              "peso": 52.26,
+              "estatura": 115.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "51e4a626-68ce-47d3-bba0-c7bd4c3f3913",
+              "numero": "AZ 2",
+              "nombre": "GABRIELA",
+              "apellido": "RAMOS",
+              "edad": 13,
+              "peso": 51.72,
+              "estatura": 118.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.26,
+          "competidores": [
+            {
+              "id": "4c646c89-9f64-4f4f-ba1c-a711e0869dea",
+              "numero": "AZ 1",
+              "nombre": "DIANA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 41.32,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "38b73f14-79f0-4a17-96e6-f6cadd08e597",
+              "numero": "AZ 2",
+              "nombre": "CAMILA",
+              "apellido": "CHAVEZ",
+              "edad": 14,
+              "peso": 48.85,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.72,
+          "competidores": [
+            {
+              "id": "634977b1-e287-4a5c-9abb-540c79b8c6fb",
+              "numero": "VD 1",
+              "nombre": "ELIZABETH",
+              "apellido": "RODRIGUEZ",
+              "edad": 9,
+              "peso": 47.75,
+              "estatura": 125.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "0f24dca5-dcb7-42e8-a6ac-0e9bcf64238c",
+              "numero": "VD 2",
+              "nombre": "ADRIANA",
+              "apellido": "RODRIGUEZ",
+              "edad": 9,
+              "peso": 48.4,
+              "estatura": 133.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "312e56d4-d2ca-4e5a-af0d-9c2449a91cd8",
+              "numero": "VD 3",
+              "nombre": "ADRIANA",
+              "apellido": "REYES",
+              "edad": 11,
+              "peso": 47.08,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "bd55991f-e40b-4156-8191-e6d778a0149e",
+              "numero": "VD 4",
+              "nombre": "ALEXANDRA",
+              "apellido": "REYES",
+              "edad": 13,
+              "peso": 45.51,
+              "estatura": 109.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.72,
+          "competidores": [
+            {
+              "id": "1d3614c4-8e2c-4d08-a614-b59982831a47",
+              "numero": "VD 1",
+              "nombre": "LIZBETH",
+              "apellido": "CHAVEZ",
+              "edad": 11,
+              "peso": 43.1,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "e16aebff-f7a9-4d2d-b720-874c24e08fe5",
+              "numero": "VD 2",
+              "nombre": "PATRICIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 12,
+              "peso": 41.3,
+              "estatura": 112.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.66,
+          "competidores": [
+            {
+              "id": "e18f4248-56e2-4c53-847f-c464ddf5afec",
+              "numero": "VD 1",
+              "nombre": "VERONICA",
+              "apellido": "GOMEZ",
+              "edad": 12,
+              "peso": 34.99,
+              "estatura": 118.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "f1229582-6875-480c-8334-813dd4d48dd4",
+              "numero": "VD 2",
+              "nombre": "MARIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 12,
+              "peso": 37.83,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "4b6cb62f-eb98-4967-b8bc-85eae17a01df",
+              "numero": "VD 1",
+              "nombre": "ANGELICA",
+              "apellido": "LOPEZ",
+              "edad": 9,
+              "peso": 30.5,
+              "estatura": 127.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "f6b9b18a-7932-4724-a106-37ad34009f6d",
+              "numero": "VD 2",
+              "nombre": "DIANA",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 51.89,
+              "estatura": 109.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.83,
+          "competidores": [
+            {
+              "id": "d9a3737e-14f0-4eed-a039-aefa8f2f9c20",
+              "numero": "AM 1",
+              "nombre": "MONSERRAT",
+              "apellido": "RAMIREZ",
+              "edad": 11,
+              "peso": 41.57,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "1e1ec003-c24c-49e1-b282-fa55e28a0b2f",
+              "numero": "AM 2",
+              "nombre": "VERONICA",
+              "apellido": "GARCIA",
+              "edad": 12,
+              "peso": 41.57,
+              "estatura": 125.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "8143999d-11f3-410a-9a07-c6b009bf081e",
+              "numero": "AM 3",
+              "nombre": "MARIA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 40.85,
+              "estatura": 128.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "1d8ffdc9-5f98-4f5c-8a1a-d06b2a696bdd",
+              "numero": "AM 4",
+              "nombre": "ELIZABETH",
+              "apellido": "HERNANDEZ",
+              "edad": 9,
+              "peso": 37.99,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.75,
+          "competidores": [
+            {
+              "id": "6d80492c-4f80-4c10-9e45-ce0571ae9993",
+              "numero": "AM 1",
+              "nombre": "PATRICIA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 26.13,
+              "estatura": 128.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "cc08a3fb-1551-41ca-acfd-67bbfa89c471",
+              "numero": "AM 2",
+              "nombre": "ANGELICA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 25.92,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "a2aa64dc-018f-4aca-b68f-d02867dba9cd",
+              "numero": "AM 3",
+              "nombre": "VERONICA",
+              "apellido": "RODRIGUEZ",
+              "edad": 12,
+              "peso": 27.89,
+              "estatura": 114.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "d2fbde08-3d56-4324-ad86-de5db6fb71fe",
+              "numero": "AM 4",
+              "nombre": "VALENTINA",
+              "apellido": "RODRIGUEZ",
+              "edad": 11,
+              "peso": 47.63,
+              "estatura": 114.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.79,
+          "competidores": [
+            {
+              "id": "cd54073c-7c1b-4676-ae7d-7a073ec2105d",
+              "numero": "AM 1",
+              "nombre": "GABRIELA",
+              "apellido": "CHAVEZ",
+              "edad": 9,
+              "peso": 33.24,
+              "estatura": 114.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "91d5fbef-e554-4eb7-a7d5-feb4375e9cef",
+              "numero": "AM 2",
+              "nombre": "LAURA",
+              "apellido": "MORALES",
+              "edad": 10,
+              "peso": 31.5,
+              "estatura": 121.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "PATRICIA",
+          "apellido": "RAMOS",
+          "bloque": "Adultos Grupo 2",
+          "edad": 20,
+          "peso": 93.64,
+          "doyang": "MDK FLORIDO",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "ADRIANA",
+          "apellido": "CRUZ",
+          "bloque": "Adultos Grupo 2",
+          "edad": 30,
+          "peso": 92.21,
+          "doyang": "PAQUI",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.085,
+      "errors": []
+    },
+    {
+      "name": "all_infantil",
+      "file": "all_infantil.xlsx",
+      "total_competitors": 27,
+      "total_brackets": 10,
+      "avg_bracket_size": 2.7,
+      "pairing_rate": 77.78,
+      "brackets_2": 9,
+      "brackets_3": 1,
+      "brackets_4": 0,
+      "excellent": 4,
+      "good": 3,
+      "low_quality": 3,
+      "quality_rate": 40.0,
+      "sin_rival": 6,
+      "avg_score": 0.613,
+      "min_score": 0.3,
+      "max_score": 0.92,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.78,
+          "competidores": [
+            {
+              "id": "fdf16555-ab11-4c39-841f-72cf1c99d464",
+              "numero": "AZ 1",
+              "nombre": "ALEXANDRA",
+              "apellido": "DIAZ",
+              "edad": 12,
+              "peso": 42.05,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "4237987f-6203-41fc-ab90-7c368b7dea72",
+              "numero": "AZ 2",
+              "nombre": "MONSERRAT",
+              "apellido": "RAMIREZ",
+              "edad": 14,
+              "peso": 42.22,
+              "estatura": 123.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.58,
+          "competidores": [
+            {
+              "id": "27ef6b04-f8bd-4504-921a-4c2523dfd4e5",
+              "numero": "VD 1",
+              "nombre": "ADRIANA",
+              "apellido": "RAMOS",
+              "edad": 10,
+              "peso": 39.67,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "62195dbf-7f29-4903-8305-d8d55330a1eb",
+              "numero": "VD 2",
+              "nombre": "LUCIA",
+              "apellido": "PEREZ",
+              "edad": 11,
+              "peso": 52.38,
+              "estatura": 127.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.74,
+          "competidores": [
+            {
+              "id": "471ea5db-e3a8-40da-96b3-2e2c994a08ab",
+              "numero": "AM 1",
+              "nombre": "ANGELICA",
+              "apellido": "RIVERA",
+              "edad": 8,
+              "peso": 33.18,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "84569ece-136f-4a92-a13c-6b7e64116618",
+              "numero": "AM 2",
+              "nombre": "MONSERRAT",
+              "apellido": "GUTIERREZ",
+              "edad": 8,
+              "peso": 31.6,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.48,
+          "competidores": [
+            {
+              "id": "677d1b72-e407-4fbb-8751-cd94b978d665",
+              "numero": "AM 1",
+              "nombre": "ANA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 27.32,
+              "estatura": 128.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "6d00731c-b1c7-490f-bb45-8d088b92f883",
+              "numero": "AM 2",
+              "nombre": "LUCIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 11,
+              "peso": 48.8,
+              "estatura": 122.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.92,
+          "competidores": [
+            {
+              "id": "d2963697-1497-4178-b9f6-50a5bfb21076",
+              "numero": "BC 1",
+              "nombre": "ADRIANA",
+              "apellido": "LOPEZ",
+              "edad": 8,
+              "peso": 25.73,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Blanca"
+            },
+            {
+              "id": "d36f5220-1dca-499e-89ef-603e4daa5ccf",
+              "numero": "BC 2",
+              "nombre": "PAULA",
+              "apellido": "GOMEZ",
+              "edad": 8,
+              "peso": 24.64,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Blanca"
+            },
+            {
+              "id": "d3a4aefa-05eb-4578-a402-ff993e366eb3",
+              "numero": "BC 3",
+              "nombre": "ELIZABETH",
+              "apellido": "GOMEZ",
+              "edad": 6,
+              "peso": 24.33,
+              "estatura": 116.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Blanca"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "55149c08-bd1a-4e43-9f1f-8d14197cbbf6",
+              "numero": "BC 1",
+              "nombre": "LIZBETH",
+              "apellido": "HERNANDEZ",
+              "edad": 7,
+              "peso": 30.57,
+              "estatura": 101.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Blanca"
+            },
+            {
+              "id": "458c38f0-092c-4acd-b5ab-083cb0b13696",
+              "numero": "BC 2",
+              "nombre": "VALENTINA",
+              "apellido": "RAMOS",
+              "edad": 9,
+              "peso": 35.91,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Blanca"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.64,
+          "competidores": [
+            {
+              "id": "34d52e34-da09-4e92-b7c3-a4abf30e59fb",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "HERNANDEZ",
+              "edad": 8,
+              "peso": 29.26,
+              "estatura": 111.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3d882a44-bc6f-4285-9291-6f011c3448cd",
+              "numero": "MR 2",
+              "nombre": "VALENTINA",
+              "apellido": "MORALES",
+              "edad": 9,
+              "peso": 31.85,
+              "estatura": 121.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "bd368652-e11f-49be-b8ff-21e3785a65e5",
+              "numero": "MR 1",
+              "nombre": "LIZBETH",
+              "apellido": "CRUZ",
+              "edad": 11,
+              "peso": 37.03,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "cae45b1c-3e96-4ce6-ab93-28b6329b8dbd",
+              "numero": "MR 2",
+              "nombre": "SOFIA",
+              "apellido": "RAMOS",
+              "edad": 13,
+              "peso": 46.31,
+              "estatura": 117.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.76,
+          "competidores": [
+            {
+              "id": "fd35b7a9-e553-40f0-aab5-3ef6bcfcdce6",
+              "numero": "RJ 1",
+              "nombre": "LAURA",
+              "apellido": "MARTINEZ",
+              "edad": 14,
+              "peso": 31.74,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Roja"
+            },
+            {
+              "id": "2c06e0e5-bff9-4cf6-94c7-49fe593b473c",
+              "numero": "RJ 2",
+              "nombre": "DANIELA",
+              "apellido": "MORALES",
+              "edad": 14,
+              "peso": 34.98,
+              "estatura": 120.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Roja"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.63,
+          "competidores": [
+            {
+              "id": "9612fa9b-2132-4299-a83a-012c941e478b",
+              "numero": "RJ 1",
+              "nombre": "ALEXANDRA",
+              "apellido": "CRUZ",
+              "edad": 12,
+              "peso": 44.38,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Roja"
+            },
+            {
+              "id": "b049e605-14c7-46f4-961e-c747d4ee1fb4",
+              "numero": "RJ 2",
+              "nombre": "ANGELICA",
+              "apellido": "SANCHEZ",
+              "edad": 13,
+              "peso": 41.68,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Roja"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "VERONICA",
+          "apellido": "CHAVEZ",
+          "bloque": "Infantil Azul",
+          "edad": 12,
+          "peso": 35.58,
+          "doyang": "TAEKWONDO PLUS",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "KARLA",
+          "apellido": "LOPEZ",
+          "bloque": "Infantil Verde",
+          "edad": 12,
+          "peso": 50.63,
+          "doyang": "MDK EL DORADO",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "GABRIELA",
+          "apellido": "GARCIA",
+          "bloque": "Infantil Verde",
+          "edad": 11,
+          "peso": 43.7,
+          "doyang": "MDK EL DORADO",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "CAMILA",
+          "apellido": "DIAZ",
+          "bloque": "Infantil Verde",
+          "edad": 11,
+          "peso": 45.58,
+          "doyang": "CHAMPIONS",
+          "razon": "No compatible partner after Etapa 3"
+        },
+        {
+          "nombre": "ADRIANA",
+          "apellido": "CRUZ",
+          "bloque": "Infantil Amarilla",
+          "edad": 10,
+          "peso": 37.89,
+          "doyang": "CHAMPIONS",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "PAULA",
+          "apellido": "FLORES",
+          "bloque": "Infantil Roja",
+          "edad": 11,
+          "peso": 47.28,
+          "doyang": "OLIMPICO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.042,
+      "errors": []
+    },
+    {
+      "name": "all_males",
+      "file": "all_males.xlsx",
+      "status": "error",
+      "error": "No competitors: []",
+      "elapsed": 0.038
+    },
+    {
+      "name": "different_doyang",
+      "file": "different_doyang.xlsx",
+      "total_competitors": 11,
+      "total_brackets": 4,
+      "avg_bracket_size": 2.75,
+      "pairing_rate": 100.0,
+      "brackets_2": 2,
+      "brackets_3": 1,
+      "brackets_4": 1,
+      "excellent": 3,
+      "good": 0,
+      "low_quality": 1,
+      "quality_rate": 75.0,
+      "sin_rival": 0,
+      "avg_score": 0.66,
+      "min_score": 0.3,
+      "max_score": 0.85,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.85,
+          "competidores": [
+            {
+              "id": "afd4c571-0e7d-4eac-90fe-12a049ff79af",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "DIAZ",
+              "edad": 8,
+              "peso": 36.71,
+              "estatura": 116.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3d5e40d7-53f2-4e66-a450-fb0ed42b4c9d",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "SANCHEZ",
+              "edad": 9,
+              "peso": 37.57,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "2c65b7af-ec04-40f6-8576-6a67a490373b",
+              "numero": "MR 3",
+              "nombre": "LIZBETH",
+              "apellido": "TORRES",
+              "edad": 11,
+              "peso": 37.98,
+              "estatura": 117.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "1f3673cd-335b-4e2f-ad6d-df4d4b4217a0",
+              "numero": "MR 4",
+              "nombre": "PATRICIA",
+              "apellido": "ORTIZ",
+              "edad": 10,
+              "peso": 34.8,
+              "estatura": 121.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.75,
+          "competidores": [
+            {
+              "id": "85af2fef-ce1f-4563-acfb-a5865be7b5d9",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "CRUZ",
+              "edad": 9,
+              "peso": 29.24,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "0edd47a3-d696-4428-9e01-038bdad858a0",
+              "numero": "MR 2",
+              "nombre": "PATRICIA",
+              "apellido": "LOPEZ",
+              "edad": 11,
+              "peso": 29.91,
+              "estatura": 118.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "1101d53f-9bd4-4237-bc9c-be105385f7b3",
+              "numero": "MR 3",
+              "nombre": "PAULA",
+              "apellido": "SANCHEZ",
+              "edad": 8,
+              "peso": 30.05,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.74,
+          "competidores": [
+            {
+              "id": "182be50f-fa3f-445c-a129-ad04bec9e491",
+              "numero": "MR 1",
+              "nombre": "DIANA",
+              "apellido": "GARCIA",
+              "edad": 9,
+              "peso": 46.18,
+              "estatura": 131.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3adda355-8c28-42c8-b9b6-8481cbccb846",
+              "numero": "MR 2",
+              "nombre": "CAMILA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 44.54,
+              "estatura": 121.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "35771936-e903-4ab1-9a93-730f8a9e72bc",
+              "numero": "MR 1",
+              "nombre": "ALEXANDRA",
+              "apellido": "SANCHEZ",
+              "edad": 9,
+              "peso": 53.9,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "92ad9156-fc5c-46fa-96c3-49096cc25833",
+              "numero": "MR 2",
+              "nombre": "MARIA",
+              "apellido": "HERNANDEZ",
+              "edad": 13,
+              "peso": 40.23,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.016,
+      "errors": []
+    },
+    {
+      "name": "empty_sheets",
+      "file": "empty_sheets.xlsx",
+      "total_competitors": 6,
+      "total_brackets": 3,
+      "avg_bracket_size": 2.0,
+      "pairing_rate": 100.0,
+      "brackets_2": 3,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 2,
+      "good": 0,
+      "low_quality": 1,
+      "quality_rate": 66.67,
+      "sin_rival": 0,
+      "avg_score": 0.76,
+      "min_score": 0.4,
+      "max_score": 1.01,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.01,
+          "competidores": [
+            {
+              "id": "1b479094-ea07-407b-a009-ed586a1a458d",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "CHAVEZ",
+              "edad": 11,
+              "peso": 45.81,
+              "estatura": 127.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "5938862f-c539-45c3-9bc0-e31a9d8571a7",
+              "numero": "MR 2",
+              "nombre": "LAURA",
+              "apellido": "SANCHEZ",
+              "edad": 12,
+              "peso": 44.87,
+              "estatura": 127.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.87,
+          "competidores": [
+            {
+              "id": "ed394aa6-a04e-4d80-bf8d-0f3287854fa4",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "MORALES",
+              "edad": 8,
+              "peso": 39.37,
+              "estatura": 118.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "962f8641-7e60-4ccd-a9ad-64c4865c46db",
+              "numero": "MR 2",
+              "nombre": "DANIELA",
+              "apellido": "SANCHEZ",
+              "edad": 9,
+              "peso": 39.06,
+              "estatura": 131.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "85ae25fa-0ef7-4b49-b9f6-4ddc7fb0568b",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 51.91,
+              "estatura": 127.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "5aca3b50-1f7d-4a88-b767-df15281de597",
+              "numero": "MR 2",
+              "nombre": "KARLA",
+              "apellido": "FLORES",
+              "edad": 10,
+              "peso": 30.66,
+              "estatura": 112.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.022,
+      "errors": []
+    },
+    {
+      "name": "extreme_ages_diff1",
+      "file": "extreme_ages_diff1.xlsx",
+      "total_competitors": 11,
+      "total_brackets": 3,
+      "avg_bracket_size": 3.67,
+      "pairing_rate": 90.91,
+      "brackets_2": 1,
+      "brackets_3": 0,
+      "brackets_4": 2,
+      "excellent": 2,
+      "good": 1,
+      "low_quality": 0,
+      "quality_rate": 66.67,
+      "sin_rival": 1,
+      "avg_score": 0.767,
+      "min_score": 0.61,
+      "max_score": 0.99,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.99,
+          "competidores": [
+            {
+              "id": "2a32c147-e63b-481a-8586-1b6a59495bb2",
+              "numero": "MR 1",
+              "nombre": "CAMILA",
+              "apellido": "FLORES",
+              "edad": 10,
+              "peso": 54.93,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "8dddafa0-b519-4571-910e-6a4fb069cec1",
+              "numero": "MR 2",
+              "nombre": "KARLA",
+              "apellido": "ORTIZ",
+              "edad": 10,
+              "peso": 54.94,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "b1543da2-bf37-4e87-9c5b-1a105a743558",
+              "numero": "MR 3",
+              "nombre": "PATRICIA",
+              "apellido": "GARCIA",
+              "edad": 11,
+              "peso": 54.51,
+              "estatura": 111.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3e164bb8-d3fb-4851-9d08-e01b0b86d885",
+              "numero": "MR 4",
+              "nombre": "ADRIANA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 54.25,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.7,
+          "competidores": [
+            {
+              "id": "72803ab3-8f2f-4e17-8c57-007c1a6b3bdc",
+              "numero": "MR 1",
+              "nombre": "VERONICA",
+              "apellido": "RAMOS",
+              "edad": 11,
+              "peso": 35.85,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "0184bae6-32f5-4c9a-96bb-2c8e6b5dd84c",
+              "numero": "MR 2",
+              "nombre": "LUCIA",
+              "apellido": "GARCIA",
+              "edad": 11,
+              "peso": 38.3,
+              "estatura": 128.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "ea852ceb-4934-4a5f-a998-d8433b0eda14",
+              "numero": "MR 3",
+              "nombre": "LAURA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 32.25,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c4918d7a-162a-4ff6-8a7a-5ebe44b3d283",
+              "numero": "MR 4",
+              "nombre": "MARIA",
+              "apellido": "RAMIREZ",
+              "edad": 11,
+              "peso": 34.72,
+              "estatura": 134.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.61,
+          "competidores": [
+            {
+              "id": "622ad3ff-be73-42b9-acf8-7e9ebd089c8b",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "GUTIERREZ",
+              "edad": 11,
+              "peso": 46.37,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e251123c-2661-425b-a5d0-5045d651776b",
+              "numero": "MR 2",
+              "nombre": "DIANA",
+              "apellido": "HERNANDEZ",
+              "edad": 11,
+              "peso": 49.24,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "MARIA",
+          "apellido": "DIAZ",
+          "bloque": "Infantil Marrón",
+          "edad": 10,
+          "peso": 34.29,
+          "doyang": "VICTORY",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.019,
+      "errors": []
+    },
+    {
+      "name": "extreme_ages_diff3",
+      "file": "extreme_ages_diff3.xlsx",
+      "total_competitors": 8,
+      "total_brackets": 4,
+      "avg_bracket_size": 2.0,
+      "pairing_rate": 100.0,
+      "brackets_2": 4,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 3,
+      "good": 0,
+      "low_quality": 1,
+      "quality_rate": 75.0,
+      "sin_rival": 0,
+      "avg_score": 0.732,
+      "min_score": 0.3,
+      "max_score": 1.02,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.02,
+          "competidores": [
+            {
+              "id": "443b9e02-c018-4357-8acd-0176207197d2",
+              "numero": "MR 1",
+              "nombre": "LIZBETH",
+              "apellido": "RODRIGUEZ",
+              "edad": 8,
+              "peso": 41.64,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "5fc13443-8c91-46b6-bbf9-3bc740af9944",
+              "numero": "MR 2",
+              "nombre": "PAULA",
+              "apellido": "PEREZ",
+              "edad": 9,
+              "peso": 41.83,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.83,
+          "competidores": [
+            {
+              "id": "9d30b7e0-9252-47aa-ae9d-ad24398517e7",
+              "numero": "MR 1",
+              "nombre": "PAULA",
+              "apellido": "SANCHEZ",
+              "edad": 9,
+              "peso": 35.79,
+              "estatura": 115.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "567a00d9-8225-47b7-a379-e910ba8210c5",
+              "numero": "MR 2",
+              "nombre": "ANA",
+              "apellido": "GUTIERREZ",
+              "edad": 12,
+              "peso": 36.31,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.78,
+          "competidores": [
+            {
+              "id": "919cd620-1469-41c2-83cb-4ce6abfdc8cb",
+              "numero": "MR 1",
+              "nombre": "DIANA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 48.26,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3581cb63-7f98-4b26-b4b5-d4ecd5ee7db7",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "MARTINEZ",
+              "edad": 12,
+              "peso": 46.48,
+              "estatura": 121.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "ae6a426b-c7dd-47e1-9e08-b5461d371689",
+              "numero": "MR 1",
+              "nombre": "VERONICA",
+              "apellido": "MORALES",
+              "edad": 8,
+              "peso": 30.3,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "294e6d10-5f3b-4a88-a155-84ab4069f98d",
+              "numero": "MR 2",
+              "nombre": "KARLA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 51.4,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.013,
+      "errors": []
+    },
+    {
+      "name": "extreme_ages_same",
+      "file": "extreme_ages_same.xlsx",
+      "total_competitors": 3,
+      "total_brackets": 1,
+      "avg_bracket_size": 3.0,
+      "pairing_rate": 66.67,
+      "brackets_2": 1,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 1,
+      "low_quality": 0,
+      "quality_rate": 0.0,
+      "sin_rival": 1,
+      "avg_score": 0.69,
+      "min_score": 0.69,
+      "max_score": 0.69,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.69,
+          "competidores": [
+            {
+              "id": "ec8f076f-bbed-4765-832f-b246f53f7e07",
+              "numero": "MR 1",
+              "nombre": "LUCIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 45.44,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "8e4f0a54-5599-4425-b56d-564aa8805ea1",
+              "numero": "MR 2",
+              "nombre": "KARLA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 43.32,
+              "estatura": 112.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "ELIZABETH",
+          "apellido": "MARTINEZ",
+          "bloque": "Infantil Marrón",
+          "edad": 10,
+          "peso": 37.53,
+          "doyang": "OLIMPICO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.019,
+      "errors": []
+    },
+    {
+      "name": "extreme_weights_max",
+      "file": "extreme_weights_max.xlsx",
+      "total_competitors": 12,
+      "total_brackets": 6,
+      "avg_bracket_size": 2.0,
+      "pairing_rate": 100.0,
+      "brackets_2": 6,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 4,
+      "low_quality": 2,
+      "quality_rate": 0.0,
+      "sin_rival": 0,
+      "avg_score": 0.477,
+      "min_score": 0.22,
+      "max_score": 0.58,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.58,
+          "competidores": [
+            {
+              "id": "a4447207-0d03-4ed9-b308-e796f233a22f",
+              "numero": "MR 1",
+              "nombre": "DANIELA",
+              "apellido": "GARCIA",
+              "edad": 9,
+              "peso": 56.0,
+              "estatura": 119.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "234a0690-80b0-499b-bc3b-b52437f3c4e3",
+              "numero": "MR 2",
+              "nombre": "ANA",
+              "apellido": "HERNANDEZ",
+              "edad": 10,
+              "peso": 28.0,
+              "estatura": 118.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.58,
+          "competidores": [
+            {
+              "id": "148e622b-0cd7-41cd-b7a0-5c6f7249e84d",
+              "numero": "MR 1",
+              "nombre": "ELIZABETH",
+              "apellido": "GARCIA",
+              "edad": 11,
+              "peso": 44.0,
+              "estatura": 126.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "ce19ca22-edee-4434-91b2-e2a924b06683",
+              "numero": "MR 2",
+              "nombre": "VALENTINA",
+              "apellido": "MORALES",
+              "edad": 12,
+              "peso": 96.0,
+              "estatura": 127.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.58,
+          "competidores": [
+            {
+              "id": "586b8dd3-4883-4c96-b3a6-9fc22b0a16b7",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "GOMEZ",
+              "edad": 11,
+              "peso": 80.0,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e2150175-bfbc-4ada-b7b8-847a347a0951",
+              "numero": "MR 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "TORRES",
+              "edad": 12,
+              "peso": 84.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.5,
+          "competidores": [
+            {
+              "id": "8e9c4b85-2b27-403c-8b21-0dddcfc198d7",
+              "numero": "MR 1",
+              "nombre": "VALENTINA",
+              "apellido": "DIAZ",
+              "edad": 12,
+              "peso": 48.0,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "adadb639-976a-484c-a854-0b5841c03020",
+              "numero": "MR 2",
+              "nombre": "VERONICA",
+              "apellido": "FLORES",
+              "edad": 13,
+              "peso": 52.0,
+              "estatura": 112.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "numero": 5,
+          "area": 5,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "f90f753f-a827-4a39-aad6-0b26a2598bd2",
+              "numero": "MR 1",
+              "nombre": "ADRIANA",
+              "apellido": "GUTIERREZ",
+              "edad": 8,
+              "peso": 40.0,
+              "estatura": 122.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "b121a53d-b5d7-4624-82db-d877e7cc8326",
+              "numero": "MR 2",
+              "nombre": "DANIELA",
+              "apellido": "GARCIA",
+              "edad": 8,
+              "peso": 68.0,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "numero": 6,
+          "area": 6,
+          "tipo": "normal",
+          "score": 0.22,
+          "competidores": [
+            {
+              "id": "cc1bceaf-049f-4625-ab8f-ed1b90573440",
+              "numero": "MR 1",
+              "nombre": "SOFIA",
+              "apellido": "RAMIREZ",
+              "edad": 8,
+              "peso": 76.0,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "77a4a94b-061d-43f6-be92-0c34fd349026",
+              "numero": "MR 2",
+              "nombre": "MONSERRAT",
+              "apellido": "RAMOS",
+              "edad": 11,
+              "peso": 92.0,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.014,
+      "errors": []
+    },
+    {
+      "name": "extreme_weights_min",
+      "file": "extreme_weights_min.xlsx",
+      "total_competitors": 13,
+      "total_brackets": 4,
+      "avg_bracket_size": 3.25,
+      "pairing_rate": 100.0,
+      "brackets_2": 1,
+      "brackets_3": 1,
+      "brackets_4": 2,
+      "excellent": 3,
+      "good": 0,
+      "low_quality": 1,
+      "quality_rate": 75.0,
+      "sin_rival": 0,
+      "avg_score": 0.802,
+      "min_score": 0.4,
+      "max_score": 1.01,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.01,
+          "competidores": [
+            {
+              "id": "277beae1-9299-4b04-b379-3e9de78409a8",
+              "numero": "MR 1",
+              "nombre": "ALEXANDRA",
+              "apellido": "CHAVEZ",
+              "edad": 11,
+              "peso": 27.0,
+              "estatura": 119.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "d4e00b15-ebe4-47f9-9e9a-4e5e183f6625",
+              "numero": "MR 2",
+              "nombre": "LAURA",
+              "apellido": "RODRIGUEZ",
+              "edad": 11,
+              "peso": 27.5,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "84d4ddc0-d2d0-4cd8-9ec7-bdc0dd406ed7",
+              "numero": "MR 3",
+              "nombre": "PAULA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 28.5,
+              "estatura": 120.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "972aac8f-e071-40fc-b245-c12cc559e6ff",
+              "numero": "MR 4",
+              "nombre": "GABRIELA",
+              "apellido": "PEREZ",
+              "edad": 9,
+              "peso": 28.0,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.94,
+          "competidores": [
+            {
+              "id": "d6cfdfa3-4245-459f-8fd6-7589a9836868",
+              "numero": "MR 1",
+              "nombre": "LAURA",
+              "apellido": "DIAZ",
+              "edad": 11,
+              "peso": 31.0,
+              "estatura": 123.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "7991aaad-229d-4719-8d23-41a9f3e3f3d6",
+              "numero": "MR 2",
+              "nombre": "LIZBETH",
+              "apellido": "RAMIREZ",
+              "edad": 12,
+              "peso": 31.5,
+              "estatura": 122.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "a22db2b7-0a13-45d1-89b2-2d8652273656",
+              "numero": "MR 3",
+              "nombre": "DIANA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 30.5,
+              "estatura": 118.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "a55393ba-30b1-458c-8dbe-dae6175d3264",
+              "numero": "MR 4",
+              "nombre": "MARIA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 114.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.86,
+          "competidores": [
+            {
+              "id": "71bbd6d9-9f3e-4ac7-90d2-d7f39697ea78",
+              "numero": "MR 1",
+              "nombre": "VALENTINA",
+              "apellido": "RIVERA",
+              "edad": 13,
+              "peso": 25.5,
+              "estatura": 132.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "8ecddeba-e34c-4029-bbd6-ee51453ecbfd",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "MARTINEZ",
+              "edad": 13,
+              "peso": 26.0,
+              "estatura": 134.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "12949ce4-261d-4564-85f2-9894594e30c3",
+              "numero": "MR 3",
+              "nombre": "DIANA",
+              "apellido": "RIVERA",
+              "edad": 12,
+              "peso": 29.5,
+              "estatura": 132.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "324f4840-4205-4e1b-b0e4-76973668b348",
+              "numero": "MR 1",
+              "nombre": "ELIZABETH",
+              "apellido": "MORALES",
+              "edad": 8,
+              "peso": 29.0,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e91a1acf-8a59-4f74-b742-efea2d60cacb",
+              "numero": "MR 2",
+              "nombre": "PAULA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 34.0,
+              "estatura": 114.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.02,
+      "errors": []
+    },
+    {
+      "name": "extreme_weights_same",
+      "file": "extreme_weights_same.xlsx",
+      "total_competitors": 7,
+      "total_brackets": 2,
+      "avg_bracket_size": 3.5,
+      "pairing_rate": 100.0,
+      "brackets_2": 0,
+      "brackets_3": 1,
+      "brackets_4": 1,
+      "excellent": 2,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 0,
+      "avg_score": 0.94,
+      "min_score": 0.89,
+      "max_score": 0.99,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.99,
+          "competidores": [
+            {
+              "id": "7f81f971-ca0f-430e-bb11-f2b915198666",
+              "numero": "MR 1",
+              "nombre": "MONSERRAT",
+              "apellido": "CRUZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 126.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "78d877fb-2ef4-4924-ad66-1ee3aef778df",
+              "numero": "MR 2",
+              "nombre": "ANGELICA",
+              "apellido": "RAMOS",
+              "edad": 11,
+              "peso": 30.0,
+              "estatura": 126.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "527d7ae0-af2d-44cb-a1c4-532d13e0a0f5",
+              "numero": "MR 3",
+              "nombre": "KARLA",
+              "apellido": "FLORES",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 133.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e9f1ecaf-9d16-4dee-9989-af5dcb9d4cc7",
+              "numero": "MR 4",
+              "nombre": "SOFIA",
+              "apellido": "CRUZ",
+              "edad": 12,
+              "peso": 30.0,
+              "estatura": 129.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.89,
+          "competidores": [
+            {
+              "id": "3401774c-6d99-4b03-8cb9-3d162ad566bb",
+              "numero": "MR 1",
+              "nombre": "SOFIA",
+              "apellido": "RIVERA",
+              "edad": 13,
+              "peso": 30.0,
+              "estatura": 121.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "b1f79937-a19f-4da1-8b85-2a269a8f603a",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "RAMIREZ",
+              "edad": 13,
+              "peso": 30.0,
+              "estatura": 132.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "1143951d-b600-4042-b795-957ca004e3b7",
+              "numero": "MR 3",
+              "nombre": "SOFIA",
+              "apellido": "REYES",
+              "edad": 8,
+              "peso": 30.0,
+              "estatura": 133.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.015,
+      "errors": []
+    },
+    {
+      "name": "invalid_grado",
+      "file": "invalid_grado.xlsx",
+      "total_competitors": 11,
+      "total_brackets": 4,
+      "avg_bracket_size": 2.75,
+      "pairing_rate": 90.91,
+      "brackets_2": 2,
+      "brackets_3": 2,
+      "brackets_4": 0,
+      "excellent": 2,
+      "good": 1,
+      "low_quality": 1,
+      "quality_rate": 50.0,
+      "sin_rival": 1,
+      "avg_score": 0.662,
+      "min_score": 0.44,
+      "max_score": 0.84,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.76,
+          "competidores": [
+            {
+              "id": "3e213429-a896-4247-8b2e-f6c8cbdbc184",
+              "numero": "MR 1",
+              "nombre": "MARIA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 35.25,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "58ca7d94-0bd7-40c3-87af-bbb3abbae237",
+              "numero": "MR 2",
+              "nombre": "DANIELA",
+              "apellido": "GOMEZ",
+              "edad": 11,
+              "peso": 35.33,
+              "estatura": 127.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "ae67d655-930d-4feb-ab00-700f3633b5b2",
+              "numero": "MR 3",
+              "nombre": "KARLA",
+              "apellido": "ORTIZ",
+              "edad": 11,
+              "peso": 32.6,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.84,
+          "competidores": [
+            {
+              "id": "345af2e5-291a-44dd-80bd-4681ee9ec7e2",
+              "numero": "MR 1",
+              "nombre": "LIZBETH",
+              "apellido": "GOMEZ",
+              "edad": 12,
+              "peso": 53.56,
+              "estatura": 126.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "58eb35c2-0ccf-4075-9cf3-8b5b1f47803b",
+              "numero": "MR 2",
+              "nombre": "ANGELICA",
+              "apellido": "MARTINEZ",
+              "edad": 13,
+              "peso": 54.21,
+              "estatura": 112.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.61,
+          "competidores": [
+            {
+              "id": "3f66664d-4ee1-4fcc-b736-f3ecee2690b7",
+              "numero": "MR 1",
+              "nombre": "ANGELICA",
+              "apellido": "MORALES",
+              "edad": 11,
+              "peso": 44.05,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "41bb5b62-ed4f-4341-a386-0d0e156e4ec7",
+              "numero": "MR 2",
+              "nombre": "LAURA",
+              "apellido": "FLORES",
+              "edad": 13,
+              "peso": 45.61,
+              "estatura": 133.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3a04153f-0dd2-40a1-a258-c5fe976f7a72",
+              "numero": "MR 3",
+              "nombre": "ANA",
+              "apellido": "REYES",
+              "edad": 13,
+              "peso": 42.37,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.44,
+          "competidores": [
+            {
+              "id": "854a2fe3-299e-43a1-8996-bf73d669975f",
+              "numero": "MR 1",
+              "nombre": "ELIZABETH",
+              "apellido": "RODRIGUEZ",
+              "edad": 8,
+              "peso": 40.05,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c7df54b5-1748-4727-9f9d-5b0e49333130",
+              "numero": "MR 2",
+              "nombre": "ADRIANA",
+              "apellido": "CRUZ",
+              "edad": 9,
+              "peso": 48.46,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "ANGELICA",
+          "apellido": "TORRES",
+          "bloque": "Infantil Marrón",
+          "edad": 13,
+          "peso": 28.66,
+          "doyang": "KORYO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.019,
+      "errors": []
+    },
+    {
+      "name": "mix_modalidad",
+      "file": "mix_modalidad.xlsx",
+      "total_competitors": 9,
+      "total_brackets": 3,
+      "avg_bracket_size": 3.0,
+      "pairing_rate": 88.89,
+      "brackets_2": 2,
+      "brackets_3": 0,
+      "brackets_4": 1,
+      "excellent": 0,
+      "good": 3,
+      "low_quality": 0,
+      "quality_rate": 0.0,
+      "sin_rival": 1,
+      "avg_score": 0.687,
+      "min_score": 0.68,
+      "max_score": 0.69,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.68,
+          "competidores": [
+            {
+              "id": "656319f3-e750-4047-9ba6-824ddda32629",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 37.88,
+              "estatura": 116.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "f83ce57a-e9f2-4721-b0ad-d429990258cd",
+              "numero": "MR 2",
+              "nombre": "KARLA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 38.64,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3ad8ac9c-efde-4869-ba93-4b060f6d254e",
+              "numero": "MR 3",
+              "nombre": "VERONICA",
+              "apellido": "GUTIERREZ",
+              "edad": 11,
+              "peso": 34.7,
+              "estatura": 115.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "fa79c45f-8145-4ea1-bb96-b70770cf010a",
+              "numero": "MR 4",
+              "nombre": "ALEXANDRA",
+              "apellido": "CRUZ",
+              "edad": 11,
+              "peso": 48.71,
+              "estatura": 119.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.69,
+          "competidores": [
+            {
+              "id": "85e47706-18b3-48c9-80bb-a1db30abbc7f",
+              "numero": "MR 1",
+              "nombre": "LAURA",
+              "apellido": "MARTINEZ",
+              "edad": 9,
+              "peso": 28.72,
+              "estatura": 131.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "39dc38c7-e90b-4790-88ea-89ae5526bde0",
+              "numero": "MR 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "RAMIREZ",
+              "edad": 13,
+              "peso": 28.63,
+              "estatura": 120.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.69,
+          "competidores": [
+            {
+              "id": "2ce0d021-0c42-4b2b-b95a-c689c368c8f6",
+              "numero": "MR 1",
+              "nombre": "SOFIA",
+              "apellido": "HERNANDEZ",
+              "edad": 9,
+              "peso": 43.17,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "86347458-0f04-4170-ba58-a533aa2323d5",
+              "numero": "MR 2",
+              "nombre": "SOFIA",
+              "apellido": "RIVERA",
+              "edad": 13,
+              "peso": 42.08,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "DANIELA",
+          "apellido": "DIAZ",
+          "bloque": "Infantil Marrón",
+          "edad": 11,
+          "peso": 32.92,
+          "doyang": "TAEKWONDO PLUS",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.017,
+      "errors": []
+    },
+    {
+      "name": "mixed_sizes",
+      "file": "mixed_sizes.xlsx",
+      "total_competitors": 23,
+      "total_brackets": 7,
+      "avg_bracket_size": 3.29,
+      "pairing_rate": 100.0,
+      "brackets_2": 2,
+      "brackets_3": 1,
+      "brackets_4": 4,
+      "excellent": 5,
+      "good": 1,
+      "low_quality": 1,
+      "quality_rate": 71.43,
+      "sin_rival": 0,
+      "avg_score": 0.816,
+      "min_score": 0.4,
+      "max_score": 1.0,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.0,
+          "competidores": [
+            {
+              "id": "24f83fac-849b-45d6-8a57-034f8328bf6b",
+              "numero": "MR 1",
+              "nombre": "LAURA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 47.83,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "028e51e5-21cd-4a02-82b9-5aff967799b3",
+              "numero": "MR 2",
+              "nombre": "LIZBETH",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 47.8,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "24dd6deb-5b2f-4c8b-8cd9-f50700a54a74",
+              "numero": "MR 3",
+              "nombre": "LIZBETH",
+              "apellido": "CRUZ",
+              "edad": 10,
+              "peso": 49.01,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "d313dc9e-69fd-436a-bf64-43b7e6275c14",
+              "numero": "MR 4",
+              "nombre": "LUCIA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 50.28,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.9,
+          "competidores": [
+            {
+              "id": "f9a9d389-d036-40af-a6c2-75ac3836f625",
+              "numero": "MR 1",
+              "nombre": "SOFIA",
+              "apellido": "MARTINEZ",
+              "edad": 10,
+              "peso": 41.95,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "ee3518bd-aa79-4bd3-9425-bf448c8b9a16",
+              "numero": "MR 2",
+              "nombre": "MARIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 42.22,
+              "estatura": 133.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "910979bb-647b-4aaa-8bbc-d42b5cc1a0bd",
+              "numero": "MR 3",
+              "nombre": "DANIELA",
+              "apellido": "MORALES",
+              "edad": 10,
+              "peso": 41.52,
+              "estatura": 120.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3a1c78e2-3d71-4a6b-b5b6-4d7b37d7844c",
+              "numero": "MR 4",
+              "nombre": "DANIELA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 43.0,
+              "estatura": 113.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.9,
+          "competidores": [
+            {
+              "id": "a2adafea-c8d2-4f1e-9485-11bcb2ca5f1b",
+              "numero": "MR 1",
+              "nombre": "GABRIELA",
+              "apellido": "MARTINEZ",
+              "edad": 10,
+              "peso": 33.27,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "b5bac025-b46b-4960-b224-93e3109bda4e",
+              "numero": "MR 2",
+              "nombre": "ADRIANA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 33.7,
+              "estatura": 131.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "dc641187-f93e-4b11-91c9-f4d0716a667f",
+              "numero": "MR 3",
+              "nombre": "VERONICA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 32.77,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "2aa139ae-b5b6-457e-9944-c11b647cd46d",
+              "numero": "MR 4",
+              "nombre": "VALENTINA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 33.77,
+              "estatura": 115.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.91,
+          "competidores": [
+            {
+              "id": "9c815d67-a2cf-466e-b3ad-41efe84a1af2",
+              "numero": "MR 1",
+              "nombre": "ANGELICA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 32.63,
+              "estatura": 113.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "0498d6d6-5755-4e7e-afa9-f8316be6a5c0",
+              "numero": "MR 2",
+              "nombre": "ANA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 33.43,
+              "estatura": 111.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3276c238-f13b-4c98-ade8-2ca4e17bda2c",
+              "numero": "MR 3",
+              "nombre": "ALEXANDRA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 36.05,
+              "estatura": 112.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "d0d77034-9295-44b6-a164-2adaf4ea4afe",
+              "numero": "MR 4",
+              "nombre": "LAURA",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 36.31,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "numero": 5,
+          "area": 5,
+          "tipo": "normal",
+          "score": 0.94,
+          "competidores": [
+            {
+              "id": "ad058a6c-e7ed-4281-b05c-a31bc0fefdb9",
+              "numero": "MR 1",
+              "nombre": "VERONICA",
+              "apellido": "ORTIZ",
+              "edad": 10,
+              "peso": 46.88,
+              "estatura": 133.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "ad13116a-7388-4b1a-8258-19a694f08199",
+              "numero": "MR 2",
+              "nombre": "LAURA",
+              "apellido": "SANCHEZ",
+              "edad": 10,
+              "peso": 45.69,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "numero": 6,
+          "area": 6,
+          "tipo": "normal",
+          "score": 0.66,
+          "competidores": [
+            {
+              "id": "1af7d6f3-9cc8-44e7-a933-c01a86f773d8",
+              "numero": "MR 1",
+              "nombre": "PAULA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 52.43,
+              "estatura": 122.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c2c120d5-9b7d-4477-9bb5-3beefe821bb9",
+              "numero": "MR 2",
+              "nombre": "DIANA",
+              "apellido": "RAMIREZ",
+              "edad": 10,
+              "peso": 54.48,
+              "estatura": 109.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3bfcb77d-b1c2-4934-8f6c-919be31c0822",
+              "numero": "MR 3",
+              "nombre": "KARLA",
+              "apellido": "RAMIREZ",
+              "edad": 10,
+              "peso": 50.35,
+              "estatura": 112.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "numero": 7,
+          "area": 7,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "7c7a9317-3873-4cc1-9e34-90aa5c908a7b",
+              "numero": "MR 1",
+              "nombre": "GABRIELA",
+              "apellido": "MARTINEZ",
+              "edad": 10,
+              "peso": 36.69,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "d2ab13a8-d8d1-4c03-a3e7-db5831bc6c03",
+              "numero": "MR 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 30.49,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.024,
+      "errors": []
+    },
+    {
+      "name": "no_rival_perfect",
+      "file": "no_rival_perfect.xlsx",
+      "total_competitors": 7,
+      "total_brackets": 2,
+      "avg_bracket_size": 3.5,
+      "pairing_rate": 100.0,
+      "brackets_2": 0,
+      "brackets_3": 1,
+      "brackets_4": 1,
+      "excellent": 2,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 0,
+      "avg_score": 1.055,
+      "min_score": 1.01,
+      "max_score": 1.1,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.01,
+          "competidores": [
+            {
+              "id": "66fdd7cb-8469-466d-b43b-b8eb379bf450",
+              "numero": "MR 1",
+              "nombre": "VALENTINA",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 30.6,
+              "estatura": 134.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "04f667d8-316a-4c7e-9a8c-bbfa261ab890",
+              "numero": "MR 2",
+              "nombre": "VALENTINA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 30.6,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "47ff9ce1-f4d9-402b-99ca-8e46e7c20c13",
+              "numero": "MR 3",
+              "nombre": "VERONICA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 30.3,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c7414855-358c-481c-ba1b-b88c535b3232",
+              "numero": "MR 4",
+              "nombre": "SOFIA",
+              "apellido": "RAMOS",
+              "edad": 10,
+              "peso": 30.3,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 1.1,
+          "competidores": [
+            {
+              "id": "5d41c5d2-0a71-43e1-95e4-67dbe86cc4de",
+              "numero": "MR 1",
+              "nombre": "ANGELICA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "20bcef3c-e041-409f-ab80-2067ae4c2428",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "be293561-9994-4b5c-9489-21e0176f5004",
+              "numero": "MR 3",
+              "nombre": "GABRIELA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.021,
+      "errors": []
+    },
+    {
+      "name": "pairs_only",
+      "file": "pairs_only.xlsx",
+      "total_competitors": 7,
+      "total_brackets": 2,
+      "avg_bracket_size": 3.5,
+      "pairing_rate": 85.71,
+      "brackets_2": 1,
+      "brackets_3": 0,
+      "brackets_4": 1,
+      "excellent": 2,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 1,
+      "avg_score": 1.1,
+      "min_score": 1.1,
+      "max_score": 1.1,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.1,
+          "competidores": [
+            {
+              "id": "260453f2-d849-4613-987d-1c2a9b0a1cad",
+              "numero": "MR 1",
+              "nombre": "SOFIA",
+              "apellido": "SANCHEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "a16e4a39-2027-4f77-aeb6-6d8f5e658c97",
+              "numero": "MR 2",
+              "nombre": "PATRICIA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c8538873-c5f0-4b2e-8df6-2956940519b3",
+              "numero": "MR 3",
+              "nombre": "GABRIELA",
+              "apellido": "CRUZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "40505c73-6a26-42c4-9f94-1e218b3570ce",
+              "numero": "MR 4",
+              "nombre": "ADRIANA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 1.1,
+          "competidores": [
+            {
+              "id": "169a10a3-3ffa-4879-8ea3-9e4ed840a88e",
+              "numero": "MR 1",
+              "nombre": "CAMILA",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "65e0e991-f182-444b-924c-b9896d073dec",
+              "numero": "MR 2",
+              "nombre": "PATRICIA",
+              "apellido": "REYES",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "ANGELICA",
+          "apellido": "FLORES",
+          "bloque": "Infantil Marrón",
+          "edad": 10,
+          "peso": 35.0,
+          "doyang": "MDK EL DORADO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.029,
+      "errors": []
+    },
+    {
+      "name": "quads_only",
+      "file": "quads_only.xlsx",
+      "total_competitors": 6,
+      "total_brackets": 2,
+      "avg_bracket_size": 3.0,
+      "pairing_rate": 100.0,
+      "brackets_2": 1,
+      "brackets_3": 0,
+      "brackets_4": 1,
+      "excellent": 2,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 0,
+      "avg_score": 0.865,
+      "min_score": 0.8,
+      "max_score": 0.93,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.93,
+          "competidores": [
+            {
+              "id": "6f28f61c-0d88-4ce2-bf7c-71e9e12d500a",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "36695279-f51e-4c81-90b9-7af483f08731",
+              "numero": "MR 2",
+              "nombre": "LUCIA",
+              "apellido": "DIAZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3bc01e46-cd13-4c48-892d-09ad0547f30a",
+              "numero": "MR 3",
+              "nombre": "SOFIA",
+              "apellido": "ORTIZ",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "b4fc81ae-2acd-40c3-bc69-be5f14cddc3e",
+              "numero": "MR 4",
+              "nombre": "MARIA",
+              "apellido": "RIVERA",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.8,
+          "competidores": [
+            {
+              "id": "ae06048d-fd79-4250-b387-ef6f60e5aebb",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "CRUZ",
+              "edad": 10,
+              "peso": 36.0,
+              "estatura": 145.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e2673059-95a4-40ea-b538-f7b42b680e7d",
+              "numero": "MR 2",
+              "nombre": "ELIZABETH",
+              "apellido": "CRUZ",
+              "edad": 10,
+              "peso": 34.0,
+              "estatura": 140.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.017,
+      "errors": []
+    },
+    {
+      "name": "same_cinta",
+      "file": "same_cinta.xlsx",
+      "status": "error",
+      "error": "No competitors: []",
+      "elapsed": 0.021
+    },
+    {
+      "name": "same_doyang",
+      "file": "same_doyang.xlsx",
+      "total_competitors": 10,
+      "total_brackets": 4,
+      "avg_bracket_size": 2.5,
+      "pairing_rate": 90.0,
+      "brackets_2": 3,
+      "brackets_3": 1,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 3,
+      "low_quality": 1,
+      "quality_rate": 0.0,
+      "sin_rival": 1,
+      "avg_score": 0.535,
+      "min_score": 0.35,
+      "max_score": 0.62,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.62,
+          "competidores": [
+            {
+              "id": "0d78f5ff-a294-4468-a96e-2817cedce3aa",
+              "numero": "MR 1",
+              "nombre": "MARIA",
+              "apellido": "GUTIERREZ",
+              "edad": 9,
+              "peso": 38.17,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "044ceade-4873-49ff-99f0-85887341d496",
+              "numero": "MR 2",
+              "nombre": "CAMILA",
+              "apellido": "DIAZ",
+              "edad": 11,
+              "peso": 37.72,
+              "estatura": 115.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "18af89ed-47a9-4aca-ba69-9ca0b98b45b8",
+              "numero": "MR 3",
+              "nombre": "DANIELA",
+              "apellido": "FLORES",
+              "edad": 8,
+              "peso": 37.12,
+              "estatura": 118.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.59,
+          "competidores": [
+            {
+              "id": "f8c7fd64-ec4b-4eb0-a711-0924cc630182",
+              "numero": "MR 1",
+              "nombre": "LAURA",
+              "apellido": "GARCIA",
+              "edad": 8,
+              "peso": 50.75,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "cdea02a7-a21c-4df4-913a-25de6b8b88dc",
+              "numero": "MR 2",
+              "nombre": "VERONICA",
+              "apellido": "HERNANDEZ",
+              "edad": 8,
+              "peso": 51.83,
+              "estatura": 111.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.58,
+          "competidores": [
+            {
+              "id": "84bf8e86-62ae-407c-b383-6973bb6590b9",
+              "numero": "MR 1",
+              "nombre": "LIZBETH",
+              "apellido": "FLORES",
+              "edad": 8,
+              "peso": 46.77,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "f4431d37-f539-4922-98da-5fb873d8e344",
+              "numero": "MR 2",
+              "nombre": "DIANA",
+              "apellido": "REYES",
+              "edad": 13,
+              "peso": 46.38,
+              "estatura": 127.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.35,
+          "competidores": [
+            {
+              "id": "e8d02fdd-936f-4fe5-9e3f-20d855e239fa",
+              "numero": "MR 1",
+              "nombre": "ANGELICA",
+              "apellido": "GOMEZ",
+              "edad": 9,
+              "peso": 31.78,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "13ae4500-0097-4adf-86f0-b509940fa831",
+              "numero": "MR 2",
+              "nombre": "SOFIA",
+              "apellido": "RODRIGUEZ",
+              "edad": 12,
+              "peso": 29.85,
+              "estatura": 131.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "ADRIANA",
+          "apellido": "REYES",
+          "bloque": "Infantil Marrón",
+          "edad": 11,
+          "peso": 52.73,
+          "doyang": "MDK FLORIDO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.018,
+      "errors": []
+    },
+    {
+      "name": "single_competitor",
+      "file": "single_competitor.xlsx",
+      "total_competitors": 2,
+      "total_brackets": 0,
+      "avg_bracket_size": 0.0,
+      "pairing_rate": 0.0,
+      "brackets_2": 0,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 0,
+      "sin_rival": 2,
+      "avg_score": 0,
+      "min_score": 0,
+      "max_score": 0,
+      "brackets": [],
+      "unpaired": [
+        {
+          "nombre": "ADRIANA",
+          "apellido": "GOMEZ",
+          "bloque": "Adultos Grupo 1",
+          "edad": 28,
+          "peso": 70.39,
+          "doyang": "MDK FLORIDO",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "PATRICIA",
+          "apellido": "MARTINEZ",
+          "bloque": "Infantil Azul",
+          "edad": 10,
+          "peso": 33.96,
+          "doyang": "MDK CASA BLANCA",
+          "razon": "No rival in same sex & cinta block"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.017,
+      "errors": []
+    },
+    {
+      "name": "special_chars",
+      "file": "special_chars.xlsx",
+      "total_competitors": 13,
+      "total_brackets": 5,
+      "avg_bracket_size": 2.6,
+      "pairing_rate": 92.31,
+      "brackets_2": 4,
+      "brackets_3": 0,
+      "brackets_4": 1,
+      "excellent": 3,
+      "good": 2,
+      "low_quality": 0,
+      "quality_rate": 60.0,
+      "sin_rival": 1,
+      "avg_score": 0.682,
+      "min_score": 0.5,
+      "max_score": 0.87,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.87,
+          "competidores": [
+            {
+              "id": "569354d9-9d21-4db7-b485-1928493a99b3",
+              "numero": "MR 1",
+              "nombre": "ÓSCAR",
+              "apellido": "RÍOS",
+              "edad": 9,
+              "peso": 49.66,
+              "estatura": 115.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "725ae932-f6b1-4c89-889d-3e93f0234e77",
+              "numero": "MR 2",
+              "nombre": "LUCÍA",
+              "apellido": "LÓPEZ",
+              "edad": 10,
+              "peso": 49.65,
+              "estatura": 109.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "acbe0247-a62e-4fa4-81b0-8aa26ae9136a",
+              "numero": "MR 3",
+              "nombre": "NAÑO",
+              "apellido": "RÍOS",
+              "edad": 11,
+              "peso": 50.55,
+              "estatura": 119.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "c1d4c766-1978-43ce-8dfd-83695c9457d4",
+              "numero": "MR 4",
+              "nombre": "NAÑO",
+              "apellido": "RÍOS",
+              "edad": 10,
+              "peso": 47.64,
+              "estatura": 119.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.82,
+          "competidores": [
+            {
+              "id": "bbf89d84-921c-48da-bda7-f179aa7ce072",
+              "numero": "MR 1",
+              "nombre": "PEÑA",
+              "apellido": "SÁENZ",
+              "edad": 8,
+              "peso": 52.46,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "51e82fbb-2ebf-4c49-9f52-8f68df5864d8",
+              "numero": "MR 2",
+              "nombre": "ÉRIC",
+              "apellido": "SÁENZ",
+              "edad": 9,
+              "peso": 53.25,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.71,
+          "competidores": [
+            {
+              "id": "cbac3b4a-1f7e-4218-8493-796cddd885d3",
+              "numero": "MR 1",
+              "nombre": "ÉRIC",
+              "apellido": "SÁENZ",
+              "edad": 10,
+              "peso": 42.3,
+              "estatura": 111.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "fb3ad0ac-c295-47ab-bb9f-ff9ea8289363",
+              "numero": "MR 2",
+              "nombre": "MARIÁ",
+              "apellido": "PÉREZ",
+              "edad": 11,
+              "peso": 44.2,
+              "estatura": 121.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.51,
+          "competidores": [
+            {
+              "id": "ba3fa4c6-b00b-41e9-8a4e-e3cae990013c",
+              "numero": "MR 1",
+              "nombre": "ÚRSULA",
+              "apellido": "GARCÍA",
+              "edad": 8,
+              "peso": 37.53,
+              "estatura": 110.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "18bd60df-b861-43ff-8830-6902f4269a9e",
+              "numero": "MR 2",
+              "nombre": "JESÚS",
+              "apellido": "GARCÍA",
+              "edad": 13,
+              "peso": 39.46,
+              "estatura": 120.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "numero": 5,
+          "area": 5,
+          "tipo": "normal",
+          "score": 0.5,
+          "competidores": [
+            {
+              "id": "06ee8bfc-da68-4575-bd69-d0a115e30d2d",
+              "numero": "MR 1",
+              "nombre": "LUCÍA",
+              "apellido": "LÓPEZ",
+              "edad": 8,
+              "peso": 47.17,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "69d4dfc0-5812-43ee-b4dd-74e6306b6253",
+              "numero": "MR 2",
+              "nombre": "DAMIÁN",
+              "apellido": "PÉREZ",
+              "edad": 10,
+              "peso": 29.12,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "MARIÁ",
+          "apellido": "PÉREZ",
+          "bloque": "Infantil Marrón",
+          "edad": 12,
+          "peso": 51.35,
+          "doyang": "MDK FLORIDO",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.02,
+      "errors": []
+    },
+    {
+      "name": "standard_100",
+      "file": "standard_100.xlsx",
+      "total_competitors": 49,
+      "total_brackets": 20,
+      "avg_bracket_size": 2.45,
+      "pairing_rate": 89.8,
+      "brackets_2": 17,
+      "brackets_3": 2,
+      "brackets_4": 1,
+      "excellent": 8,
+      "good": 5,
+      "low_quality": 7,
+      "quality_rate": 40.0,
+      "sin_rival": 5,
+      "avg_score": 0.602,
+      "min_score": 0.2,
+      "max_score": 0.89,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.7,
+          "competidores": [
+            {
+              "id": "47a43505-65a8-4c1d-abb9-ba786d50ee75",
+              "numero": "AD 1",
+              "nombre": "ELIZABETH",
+              "apellido": "GARCIA",
+              "edad": 20,
+              "peso": 80.32,
+              "estatura": 132.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "aac9c939-a31e-41b9-96cf-cb7641b9121e",
+              "numero": "AD 2",
+              "nombre": "VERONICA",
+              "apellido": "MORALES",
+              "edad": 20,
+              "peso": 81.78,
+              "estatura": 142.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "8c6a942f-9183-44b2-980f-26c276fea599",
+              "numero": "AD 3",
+              "nombre": "ELIZABETH",
+              "apellido": "RODRIGUEZ",
+              "edad": 26,
+              "peso": 81.08,
+              "estatura": 151.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.56,
+          "competidores": [
+            {
+              "id": "900fb2fc-8f7e-4ef2-8a11-57da565c9306",
+              "numero": "AD 1",
+              "nombre": "MARIA",
+              "apellido": "FLORES",
+              "edad": 19,
+              "peso": 65.33,
+              "estatura": 126.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "6aa4bef1-34d0-4d68-9a48-061de978f7ae",
+              "numero": "AD 2",
+              "nombre": "ANA",
+              "apellido": "CRUZ",
+              "edad": 20,
+              "peso": 51.54,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.55,
+          "competidores": [
+            {
+              "id": "ce9c91de-0bd3-41b7-b746-f467d201ebbf",
+              "numero": "AD 1",
+              "nombre": "GABRIELA",
+              "apellido": "GOMEZ",
+              "edad": 15,
+              "peso": 88.61,
+              "estatura": 165.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Adultos Grupo 1"
+            },
+            {
+              "id": "da7d8166-d3ec-4e6f-a175-5a5b5b55a512",
+              "numero": "AD 2",
+              "nombre": "ADRIANA",
+              "apellido": "CHAVEZ",
+              "edad": 18,
+              "peso": 87.15,
+              "estatura": 154.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Adultos Grupo 1"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.44,
+          "competidores": [
+            {
+              "id": "947275af-d358-4aca-b5fd-e2534ce34a25",
+              "numero": "AD 1",
+              "nombre": "LUCIA",
+              "apellido": "RIVERA",
+              "edad": 21,
+              "peso": 95.59,
+              "estatura": 171.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "764e4a07-ef39-4983-8121-d932f3d03c63",
+              "numero": "AD 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "FLORES",
+              "edad": 21,
+              "peso": 57.73,
+              "estatura": 179.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.38,
+          "competidores": [
+            {
+              "id": "d6c1cf10-0429-46f7-8a32-33fb0680031a",
+              "numero": "AD 1",
+              "nombre": "PAULA",
+              "apellido": "DIAZ",
+              "edad": 17,
+              "peso": 87.7,
+              "estatura": 137.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Adultos Grupo 2"
+            },
+            {
+              "id": "1146e49b-30a6-49c9-849a-151d13574804",
+              "numero": "AD 2",
+              "nombre": "GABRIELA",
+              "apellido": "CRUZ",
+              "edad": 40,
+              "peso": 90.92,
+              "estatura": 150.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Adultos Grupo 2"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.85,
+          "competidores": [
+            {
+              "id": "391ce4b1-2b1e-479c-9052-53c4bb7aebd3",
+              "numero": "AZ 1",
+              "nombre": "MARIA",
+              "apellido": "DIAZ",
+              "edad": 12,
+              "peso": 53.35,
+              "estatura": 137.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "573ea21a-0ff9-40b8-810a-7f252bd6def5",
+              "numero": "AZ 2",
+              "nombre": "LIZBETH",
+              "apellido": "ORTIZ",
+              "edad": 12,
+              "peso": 51.64,
+              "estatura": 133.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.54,
+          "competidores": [
+            {
+              "id": "115f4be9-0ab3-4694-af66-ffb18216f082",
+              "numero": "AZ 1",
+              "nombre": "VERONICA",
+              "apellido": "MARTINEZ",
+              "edad": 13,
+              "peso": 33.98,
+              "estatura": 115.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Azul"
+            },
+            {
+              "id": "3dc78d1d-ccfd-4168-bd41-aa0a935e305c",
+              "numero": "AZ 2",
+              "nombre": "LUCIA",
+              "apellido": "RAMOS",
+              "edad": 13,
+              "peso": 56.13,
+              "estatura": 118.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Azul"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.4,
+          "competidores": [
+            {
+              "id": "152b84fb-fe1f-4cda-a429-07d7d9118943",
+              "numero": "VD 1",
+              "nombre": "GABRIELA",
+              "apellido": "GARCIA",
+              "edad": 11,
+              "peso": 51.64,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Verde"
+            },
+            {
+              "id": "902dc799-0032-4db6-ae66-8cbb7be469a0",
+              "numero": "VD 2",
+              "nombre": "VERONICA",
+              "apellido": "FLORES",
+              "edad": 11,
+              "peso": 42.1,
+              "estatura": 123.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Verde"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.46,
+          "competidores": [
+            {
+              "id": "2ec9c5b0-c249-42cf-9217-47c03dd2dfe4",
+              "numero": "AM 1",
+              "nombre": "ANGELICA",
+              "apellido": "DIAZ",
+              "edad": 9,
+              "peso": 43.15,
+              "estatura": 122.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Amarilla"
+            },
+            {
+              "id": "49ea85b1-bd4a-4b27-9dfe-aa23862d3b15",
+              "numero": "AM 2",
+              "nombre": "PAULA",
+              "apellido": "REYES",
+              "edad": 11,
+              "peso": 28.59,
+              "estatura": 120.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Amarilla"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.87,
+          "competidores": [
+            {
+              "id": "beb721ae-8734-4972-84bf-3081965deccb",
+              "numero": "BC 1",
+              "nombre": "VERONICA",
+              "apellido": "RAMOS",
+              "edad": 8,
+              "peso": 23.19,
+              "estatura": 106.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Blanca"
+            },
+            {
+              "id": "6ab8aaed-a751-4902-bf20-7f8400e83b1b",
+              "numero": "BC 2",
+              "nombre": "PATRICIA",
+              "apellido": "LOPEZ",
+              "edad": 9,
+              "peso": 22.05,
+              "estatura": 112.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Blanca"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.2,
+          "competidores": [
+            {
+              "id": "d7590ce2-f5f9-4ef3-a675-d14a27127664",
+              "numero": "BC 1",
+              "nombre": "CAMILA",
+              "apellido": "LOPEZ",
+              "edad": 6,
+              "peso": 24.45,
+              "estatura": 119.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Blanca"
+            },
+            {
+              "id": "f303f629-4288-4902-a004-c558739da10d",
+              "numero": "BC 2",
+              "nombre": "VERONICA",
+              "apellido": "HERNANDEZ",
+              "edad": 10,
+              "peso": 29.72,
+              "estatura": 103.0,
+              "modalidad": "Sencillo",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Blanca"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.81,
+          "competidores": [
+            {
+              "id": "315ff825-0966-4443-8a13-85f9bc7da3fa",
+              "numero": "MR 1",
+              "nombre": "GABRIELA",
+              "apellido": "MARTINEZ",
+              "edad": 9,
+              "peso": 36.87,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "a43c4f07-40d1-4d49-ae76-ab5a8f9d3181",
+              "numero": "MR 2",
+              "nombre": "VERONICA",
+              "apellido": "MORALES",
+              "edad": 10,
+              "peso": 37.46,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "931df95e-5b01-42d5-85ef-792abda1021c",
+              "numero": "MR 3",
+              "nombre": "VERONICA",
+              "apellido": "SANCHEZ",
+              "edad": 12,
+              "peso": 36.38,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.59,
+          "competidores": [
+            {
+              "id": "1bbcd8dd-0e82-4fdc-ac6f-531a5b573764",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "CHAVEZ",
+              "edad": 8,
+              "peso": 42.61,
+              "estatura": 134.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "767e7859-c746-4066-87e8-aa30c1d79ae0",
+              "numero": "MR 2",
+              "nombre": "MARIA",
+              "apellido": "MORALES",
+              "edad": 13,
+              "peso": 45.52,
+              "estatura": 133.0,
+              "modalidad": "Doble",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.44,
+          "competidores": [
+            {
+              "id": "166ada11-64b9-4d84-8651-b2ee6812e60a",
+              "numero": "MR 1",
+              "nombre": "PATRICIA",
+              "apellido": "MORALES",
+              "edad": 11,
+              "peso": 52.77,
+              "estatura": 132.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "5d3815f1-723e-4724-983a-dbe2b9144aff",
+              "numero": "MR 2",
+              "nombre": "PAULA",
+              "apellido": "HERNANDEZ",
+              "edad": 12,
+              "peso": 33.09,
+              "estatura": 124.0,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.79,
+          "competidores": [
+            {
+              "id": "f68fe755-a3d8-4f80-ae55-3f27e4649828",
+              "numero": "RJ 1",
+              "nombre": "CAMILA",
+              "apellido": "REYES",
+              "edad": 9,
+              "peso": 40.13,
+              "estatura": 124.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Roja"
+            },
+            {
+              "id": "665379b0-47d6-4210-91f6-7b92cc8115a0",
+              "numero": "RJ 2",
+              "nombre": "ELIZABETH",
+              "apellido": "MORALES",
+              "edad": 11,
+              "peso": 40.2,
+              "estatura": 112.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Roja"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.7,
+          "competidores": [
+            {
+              "id": "3dbced2d-fe53-4493-9dd9-c7ed7bf28700",
+              "numero": "RJ 1",
+              "nombre": "PAULA",
+              "apellido": "HERNANDEZ",
+              "edad": 11,
+              "peso": 48.46,
+              "estatura": 108.0,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Roja"
+            },
+            {
+              "id": "7031836d-1b2e-4dbf-988d-447c69b149d9",
+              "numero": "RJ 2",
+              "nombre": "DANIELA",
+              "apellido": "GARCIA",
+              "edad": 13,
+              "peso": 49.45,
+              "estatura": 128.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Roja"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.89,
+          "competidores": [
+            {
+              "id": "eea5d03c-736d-4744-b294-04e4f45d2f5c",
+              "numero": "PM 1",
+              "nombre": "DANIELA",
+              "apellido": "SANCHEZ",
+              "edad": 15,
+              "peso": 58.14,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Negra"
+            },
+            {
+              "id": "1e74151f-d002-4c12-86c5-fccbb5f3beb5",
+              "numero": "PM 2",
+              "nombre": "ANGELICA",
+              "apellido": "CRUZ",
+              "edad": 15,
+              "peso": 58.01,
+              "estatura": 129.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Negra"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.69,
+          "competidores": [
+            {
+              "id": "71acd105-c857-495b-bae3-9a589c03079f",
+              "numero": "PM 1",
+              "nombre": "LUCIA",
+              "apellido": "RAMIREZ",
+              "edad": 14,
+              "peso": 39.46,
+              "estatura": 143.0,
+              "modalidad": "Sencillo",
+              "doyang": "KORYO",
+              "bloque": "Infantil Negra"
+            },
+            {
+              "id": "34ff00a5-4314-4376-848e-655f8297bc99",
+              "numero": "PM 2",
+              "nombre": "LUCIA",
+              "apellido": "TORRES",
+              "edad": 14,
+              "peso": 37.35,
+              "estatura": 116.0,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Negra"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.44,
+          "competidores": [
+            {
+              "id": "3ddd435b-f88b-4eeb-abd0-d2c4efae35e2",
+              "numero": "PM 1",
+              "nombre": "VERONICA",
+              "apellido": "SANCHEZ",
+              "edad": 10,
+              "peso": 50.07,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Negra"
+            },
+            {
+              "id": "2d338d10-b5b4-48c3-9ac3-23f7ff09562b",
+              "numero": "PM 2",
+              "nombre": "DIANA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 63.96,
+              "estatura": 127.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Negra"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.75,
+          "competidores": [
+            {
+              "id": "f3d17eb2-604d-402d-9676-e69446d57da2",
+              "numero": "PT 1",
+              "nombre": "GABRIELA",
+              "apellido": "TORRES",
+              "edad": 6,
+              "peso": 22.61,
+              "estatura": 104.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Pre-Taekwondo"
+            },
+            {
+              "id": "bd6e0c04-82fd-4fc0-8d19-d4cb0073a4cf",
+              "numero": "PT 2",
+              "nombre": "DIANA",
+              "apellido": "RIVERA",
+              "edad": 7,
+              "peso": 20.65,
+              "estatura": 103.0,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Pre-Taekwondo"
+            },
+            {
+              "id": "744703f9-2869-49ee-88fc-ed5e97c006b3",
+              "numero": "PT 3",
+              "nombre": "CAMILA",
+              "apellido": "SANCHEZ",
+              "edad": 7,
+              "peso": 24.62,
+              "estatura": 101.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Pre-Taekwondo"
+            },
+            {
+              "id": "f451da4f-cf04-4c2f-b34b-977a936d88af",
+              "numero": "PT 4",
+              "nombre": "ANA",
+              "apellido": "LOPEZ",
+              "edad": 6,
+              "peso": 28.52,
+              "estatura": 101.0,
+              "modalidad": "Doble",
+              "doyang": "CHAMPIONS",
+              "bloque": "Pre-Taekwondo"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "MONSERRAT",
+          "apellido": "MORALES",
+          "bloque": "Adultos Grupo 2",
+          "edad": 18,
+          "peso": 97.45,
+          "doyang": "MDK CASA BLANCA",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "LIZBETH",
+          "apellido": "PEREZ",
+          "bloque": "Infantil Amarilla",
+          "edad": 11,
+          "peso": 25.28,
+          "doyang": "MDK CASA BLANCA",
+          "razon": "No rival in same sex & cinta block"
+        },
+        {
+          "nombre": "LAURA",
+          "apellido": "DIAZ",
+          "bloque": "Infantil Amarilla",
+          "edad": 9,
+          "peso": 37.69,
+          "doyang": "KUK SUL",
+          "razon": "No compatible partner after Etapa 3"
+        },
+        {
+          "nombre": "ANA",
+          "apellido": "SANCHEZ",
+          "bloque": "Infantil Marrón",
+          "edad": 8,
+          "peso": 49.7,
+          "doyang": "KUK SUL",
+          "razon": "No compatible partner after Etapa 3"
+        },
+        {
+          "nombre": "LIZBETH",
+          "apellido": "REYES",
+          "bloque": "Infantil Roja",
+          "edad": 9,
+          "peso": 25.3,
+          "doyang": "CHAMPIONS",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.073,
+      "errors": []
+    },
+    {
+      "name": "triples_only",
+      "file": "triples_only.xlsx",
+      "total_competitors": 10,
+      "total_brackets": 3,
+      "avg_bracket_size": 3.33,
+      "pairing_rate": 100.0,
+      "brackets_2": 1,
+      "brackets_3": 0,
+      "brackets_4": 2,
+      "excellent": 3,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 0,
+      "avg_score": 1.033,
+      "min_score": 0.9,
+      "max_score": 1.1,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 1.1,
+          "competidores": [
+            {
+              "id": "afb5c004-2e5d-4b0a-8120-2cc3ea8714c1",
+              "numero": "MR 1",
+              "nombre": "MONSERRAT",
+              "apellido": "GOMEZ",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "83eb0602-e7e1-44fc-8702-2ca90b071276",
+              "numero": "MR 2",
+              "nombre": "LIZBETH",
+              "apellido": "PEREZ",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3691762c-4621-4577-a052-3d6b2216a59a",
+              "numero": "MR 3",
+              "nombre": "DANIELA",
+              "apellido": "RIVERA",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Sencillo",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "d2c1657b-01da-4e51-bdc1-3f6496319796",
+              "numero": "MR 4",
+              "nombre": "LAURA",
+              "apellido": "PEREZ",
+              "edad": 10,
+              "peso": 32.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.9,
+          "competidores": [
+            {
+              "id": "831e31c3-40fa-41f9-9967-b8c3285acd24",
+              "numero": "MR 1",
+              "nombre": "DIANA",
+              "apellido": "LOPEZ",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "afd3b85f-612f-4721-9e4d-5ba55afcad90",
+              "numero": "MR 2",
+              "nombre": "DANIELA",
+              "apellido": "RAMOS",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Doble",
+              "doyang": "KORYO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "8f040a3f-b207-46cf-9bb5-60e0e6e1a426",
+              "numero": "MR 3",
+              "nombre": "KARLA",
+              "apellido": "GARCIA",
+              "edad": 10,
+              "peso": 30.0,
+              "estatura": 130.0,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "39349540-54b6-4b38-8cd1-4e34fb64d281",
+              "numero": "MR 4",
+              "nombre": "ALEXANDRA",
+              "apellido": "CHAVEZ",
+              "edad": 10,
+              "peso": 34.0,
+              "estatura": 140.0,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 1.1,
+          "competidores": [
+            {
+              "id": "26d48ed9-2fcc-40f1-bf76-c31685eb69b2",
+              "numero": "MR 1",
+              "nombre": "LUCIA",
+              "apellido": "TORRES",
+              "edad": 10,
+              "peso": 34.0,
+              "estatura": 140.0,
+              "modalidad": "Doble",
+              "doyang": "TAEKWONDO PLUS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "4dad1b36-13cd-40b7-b924-1f0ad9af87d9",
+              "numero": "MR 2",
+              "nombre": "VALENTINA",
+              "apellido": "RAMOS",
+              "edad": 10,
+              "peso": 34.0,
+              "estatura": 140.0,
+              "modalidad": "Doble",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.014,
+      "errors": []
+    },
+    {
+      "name": "weights_decimal",
+      "file": "weights_decimal.xlsx",
+      "total_competitors": 12,
+      "total_brackets": 3,
+      "avg_bracket_size": 4.0,
+      "pairing_rate": 91.67,
+      "brackets_2": 0,
+      "brackets_3": 1,
+      "brackets_4": 2,
+      "excellent": 3,
+      "good": 0,
+      "low_quality": 0,
+      "quality_rate": 100.0,
+      "sin_rival": 1,
+      "avg_score": 0.86,
+      "min_score": 0.77,
+      "max_score": 0.91,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.91,
+          "competidores": [
+            {
+              "id": "a8eac522-bfe1-4b94-b40f-b5b8e0c51544",
+              "numero": "MR 1",
+              "nombre": "ANGELICA",
+              "apellido": "PEREZ",
+              "edad": 8,
+              "peso": 28.7,
+              "estatura": 127.1,
+              "modalidad": "Sencillo",
+              "doyang": "CHAMPIONS",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "f9f3b19a-3997-4ee0-8f8a-4b9f660644c6",
+              "numero": "MR 2",
+              "nombre": "GABRIELA",
+              "apellido": "MORALES",
+              "edad": 10,
+              "peso": 28.33,
+              "estatura": 126.39,
+              "modalidad": "Sencillo",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "396a35e3-8a52-4ebe-827c-26df933e5ecf",
+              "numero": "MR 3",
+              "nombre": "MARIA",
+              "apellido": "CRUZ",
+              "edad": 8,
+              "peso": 27.59,
+              "estatura": 124.97,
+              "modalidad": "Doble",
+              "doyang": "MDK FLORIDO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "2fec466a-a322-4808-a26a-0e66b2118a62",
+              "numero": "MR 4",
+              "nombre": "ADRIANA",
+              "apellido": "FLORES",
+              "edad": 9,
+              "peso": 26.11,
+              "estatura": 122.13,
+              "modalidad": "Sencillo",
+              "doyang": "MDK EL DORADO",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.9,
+          "competidores": [
+            {
+              "id": "20c701e1-4f89-43da-97ef-3af3f020d949",
+              "numero": "MR 1",
+              "nombre": "VALENTINA",
+              "apellido": "GUTIERREZ",
+              "edad": 10,
+              "peso": 30.55,
+              "estatura": 130.65,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "9e45a10b-193f-4825-945d-071805d3a02b",
+              "numero": "MR 2",
+              "nombre": "ANGELICA",
+              "apellido": "RIVERA",
+              "edad": 11,
+              "peso": 31.66,
+              "estatura": 132.78,
+              "modalidad": "Doble",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "71a7b980-5005-4492-8f3c-aec4a7116170",
+              "numero": "MR 3",
+              "nombre": "MARIA",
+              "apellido": "DIAZ",
+              "edad": 13,
+              "peso": 30.18,
+              "estatura": 129.94,
+              "modalidad": "Doble",
+              "doyang": "VICTORY",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "db42ea8c-275d-47a6-9bf0-cf634301d9b4",
+              "numero": "MR 4",
+              "nombre": "SOFIA",
+              "apellido": "SANCHEZ",
+              "edad": 13,
+              "peso": 31.29,
+              "estatura": 132.07,
+              "modalidad": "Sencillo",
+              "doyang": "PAQUI",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.77,
+          "competidores": [
+            {
+              "id": "ceaea949-2a4a-4ff6-b442-edc9e8ffa23a",
+              "numero": "MR 1",
+              "nombre": "ALEXANDRA",
+              "apellido": "MORALES",
+              "edad": 11,
+              "peso": 26.48,
+              "estatura": 122.84,
+              "modalidad": "Sencillo",
+              "doyang": "OLIMPICO",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "965156cb-31c3-4df9-b252-5f0fad73e6ab",
+              "numero": "MR 2",
+              "nombre": "DIANA",
+              "apellido": "RAMIREZ",
+              "edad": 12,
+              "peso": 25.37,
+              "estatura": 120.71,
+              "modalidad": "Sencillo",
+              "doyang": "KUK SUL",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "617c4cdb-1532-4e70-903c-fef540d10695",
+              "numero": "MR 3",
+              "nombre": "PAULA",
+              "apellido": "SANCHEZ",
+              "edad": 12,
+              "peso": 29.07,
+              "estatura": 127.81,
+              "modalidad": "Doble",
+              "doyang": "MDK CASA BLANCA",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [
+        {
+          "nombre": "VERONICA",
+          "apellido": "CHAVEZ",
+          "bloque": "Infantil Marrón",
+          "edad": 13,
+          "peso": 32.03,
+          "doyang": "PAQUI",
+          "razon": "No compatible partner after Etapa 3"
+        }
+      ],
+      "status": "success",
+      "elapsed": 0.017,
+      "errors": []
+    },
+    {
+      "name": "worst_case",
+      "file": "worst_case.xlsx",
+      "total_competitors": 10,
+      "total_brackets": 5,
+      "avg_bracket_size": 2.0,
+      "pairing_rate": 100.0,
+      "brackets_2": 5,
+      "brackets_3": 0,
+      "brackets_4": 0,
+      "excellent": 0,
+      "good": 3,
+      "low_quality": 2,
+      "quality_rate": 0.0,
+      "sin_rival": 0,
+      "avg_score": 0.46,
+      "min_score": 0.2,
+      "max_score": 0.6,
+      "brackets": [
+        {
+          "id": 1,
+          "numero": 1,
+          "area": 1,
+          "tipo": "normal",
+          "score": 0.6,
+          "competidores": [
+            {
+              "id": "d94c6e77-56ac-414e-a6cf-9ad250a64dbd",
+              "numero": "MR 1",
+              "nombre": "VERONICA",
+              "apellido": "DIAZ",
+              "edad": 13,
+              "peso": 48.0,
+              "estatura": 135.0,
+              "modalidad": "Doble",
+              "doyang": "ESCUELA_7",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "e21f6855-ada6-455c-a7e8-66aa63dded8a",
+              "numero": "MR 2",
+              "nombre": "MONSERRAT",
+              "apellido": "TORRES",
+              "edad": 14,
+              "peso": 52.0,
+              "estatura": 140.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_8",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "numero": 2,
+          "area": 2,
+          "tipo": "normal",
+          "score": 0.6,
+          "competidores": [
+            {
+              "id": "31fafdcd-b618-4491-a01a-9b3e59d3e914",
+              "numero": "MR 1",
+              "nombre": "ANA",
+              "apellido": "CRUZ",
+              "edad": 15,
+              "peso": 56.0,
+              "estatura": 145.0,
+              "modalidad": "Doble",
+              "doyang": "ESCUELA_9",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "bf82daef-86b4-4632-a4ea-dd306affe4ca",
+              "numero": "MR 2",
+              "nombre": "MONSERRAT",
+              "apellido": "DIAZ",
+              "edad": 16,
+              "peso": 60.0,
+              "estatura": 150.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_10",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "numero": 3,
+          "area": 3,
+          "tipo": "normal",
+          "score": 0.6,
+          "competidores": [
+            {
+              "id": "7ba8339e-1545-4083-932d-f41ecd94e5fc",
+              "numero": "MR 1",
+              "nombre": "VERONICA",
+              "apellido": "RAMOS",
+              "edad": 18,
+              "peso": 68.0,
+              "estatura": 160.0,
+              "modalidad": "Doble",
+              "doyang": "ESCUELA_12",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "bf509146-f72e-4ba4-ad2d-f8caead59f5b",
+              "numero": "MR 2",
+              "nombre": "ALEXANDRA",
+              "apellido": "GOMEZ",
+              "edad": 19,
+              "peso": 72.0,
+              "estatura": 165.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_13",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "numero": 4,
+          "area": 4,
+          "tipo": "normal",
+          "score": 0.3,
+          "competidores": [
+            {
+              "id": "03d323e3-3171-4063-addf-f3364f60dd62",
+              "numero": "MR 1",
+              "nombre": "LIZBETH",
+              "apellido": "TORRES",
+              "edad": 6,
+              "peso": 20.0,
+              "estatura": 100.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_0",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "7ce19782-76b9-402d-a7ec-432cd880029e",
+              "numero": "MR 2",
+              "nombre": "DIANA",
+              "apellido": "RAMIREZ",
+              "edad": 8,
+              "peso": 28.0,
+              "estatura": 110.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_2",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "numero": 5,
+          "area": 5,
+          "tipo": "normal",
+          "score": 0.2,
+          "competidores": [
+            {
+              "id": "1b199886-751f-48e4-b20d-5bfdcdf1f3d4",
+              "numero": "MR 1",
+              "nombre": "KARLA",
+              "apellido": "RODRIGUEZ",
+              "edad": 10,
+              "peso": 36.0,
+              "estatura": 120.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_4",
+              "bloque": "Infantil Marrón"
+            },
+            {
+              "id": "3ba99325-d454-4f11-b46f-b3e29b30c74c",
+              "numero": "MR 2",
+              "nombre": "ADRIANA",
+              "apellido": "FLORES",
+              "edad": 24,
+              "peso": 92.0,
+              "estatura": 190.0,
+              "modalidad": "Sencillo",
+              "doyang": "ESCUELA_18",
+              "bloque": "Infantil Marrón"
+            }
+          ]
+        }
+      ],
+      "unpaired": [],
+      "status": "success",
+      "elapsed": 0.018,
+      "errors": []
+    }
+  ],
+  "summary": {
+    "total_runs": 26,
+    "successful": 24,
+    "failed": 2,
+    "avg_pairing_rate": 89.19,
+    "avg_quality_rate": 52.7,
+    "avg_time": 0.044
+  }
+}

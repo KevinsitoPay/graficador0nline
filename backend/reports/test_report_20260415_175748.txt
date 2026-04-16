@@ -1,0 +1,47 @@
+============================================================
+TEST REPORT - GRAFICADOR
+Generated: 2026-04-15T17:57:47.451193
+============================================================
+
+SUMMARY
+----------------------------------------
+Total fixtures: 29
+Successful: 29
+Failed: 0
+Average pairing rate: 68.94%
+Average quality rate: 96.55%
+Average time: 0.025s
+
+PER-FIXTURE RESULTS
+------------------------------------------------------------
+Fixture                    Comp Brackets   Pair%   Qual%   Status
+------------------------------------------------------------
+all_adultos                  20        4    40.0   100.0  success
+all_females                  50       13    56.0   100.0  success
+all_infantil                 60       16   58.33   100.0  success
+all_males                    50        9    36.0   100.0  success
+cross_cinta                  30       12   93.33   100.0  success
+different_doyang             20        4    50.0   100.0  success
+edge_grados                  12        4   83.33   100.0  success
+empty_sheets                 10        2    40.0   100.0  success
+extreme_ages_diff1           20        7    75.0   100.0  success
+extreme_ages_diff3           20        6    65.0   100.0  success
+extreme_ages_same            20        8    90.0   100.0  success
+extreme_heights               8        2   100.0   100.0  success
+extreme_weights_max          20        5    50.0   100.0  success
+extreme_weights_min          20        7    80.0   100.0  success
+extreme_weights_same         20        7    85.0   100.0  success
+invalid_grado                20        7    70.0   100.0  success
+mix_modalidad                20        6    70.0   100.0  success
+mixed_sizes                  50       18    88.0   100.0  success
+no_rival_perfect             21        7   95.24   100.0  success
+pairs_only                   20        8    95.0   100.0  success
+quads_only                   20        8   100.0   100.0  success
+same_cinta                   20        7    70.0   100.0  success
+same_doyang                  20        5    50.0   100.0  success
+single_competitor             3        0     0.0       0  success
+special_chars                20        6    70.0   100.0  success
+standard_100                100       17    39.0   100.0  success
+triples_only                 21        8   100.0   100.0  success
+weights_decimal              20        6    90.0   100.0  success
+worst_case                   20        6    60.0   100.0  success
