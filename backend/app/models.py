@@ -41,6 +41,7 @@ class Competidor(BaseModel):
     modalidad: str
     doyang: str
     bloque: str
+    categoria_edad: Optional[str] = None
     numero_competidor: Optional[str] = None
 
 class ScoreBreakdown(BaseModel):
@@ -51,7 +52,8 @@ class ScoreBreakdown(BaseModel):
     peso_score: float
     estatura_diff: int
     estatura_score: float
-    doyang_bonus: float
+    doyang_penalty: float = 0
+    cinta_penalty: float = 0
     total: float
 
 
@@ -63,6 +65,11 @@ class Bracket(BaseModel):
     tipo: str
     score: float
     score_breakdown: Optional[ScoreBreakdown] = None
+    nivel_aprobacion: Optional[str] = None  # verde_claro, amarillo, naranja, rojo
+    requiere_aprobacion: bool = False
+    aprobador_requerido: Optional[str] = None  # colaborador, coordenadora
+    ronda_origen: Optional[str] = None  # etapa2, etapa3_ronda1, etc.
+    failure_reasons: Optional[List[str]] = None  # razones por las cuales el score es 0
 
 class Unpaired(BaseModel):
     competidor: Competidor
@@ -86,6 +93,21 @@ class GlobalStats(BaseModel):
     sin_rival_total: int
     excellent_brackets: int
     low_quality_brackets: int
+    brackets_verde: int = 0
+    brackets_amarillo: int = 0
+    brackets_naranja: int = 0
+    brackets_rojo: int = 0
+    etapa2_count: int = 0
+    ronda1_count: int = 0
+    ronda2_count: int = 0
+    ronda3_count: int = 0
+    ronda4_count: int = 0
+    fase2_5_count: int = 0
+    nivel5_count: int = 0
+    nivel6_count: int = 0
+    nivel7_count: int = 0
+    avg_score: float = 0.0
+    emparejamiento_pct: float = 0.0
 
 class Results(BaseModel):
     global_stats: GlobalStats

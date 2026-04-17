@@ -30,13 +30,13 @@ SCHOOLS = [
     "MDK FLORIDO",
     "MDK CASA BLANCA",
     "MDK EL DORADO",
-    "KUK SUL",
-    "CHAMPIONS",
-    "TAEKWONDO PLUS",
-    "OLIMPICO",
-    "VICTORY",
-    "KORYO",
-    "PAQUI",
+    "MDK ALBA ROJA",
+    "MDK AGUAJE DE LA TUNA",
+    "MDK DEL VALLE",
+    "MDK OBRERA",
+    "MDK MURUA",
+    "MDK VILLA DEL SOL",
+    "MDK OTAY",
 ]
 
 FIRST_NAMES_M = [
@@ -169,6 +169,7 @@ def create_random_fixture(num_competitors=20, num_blocks=5):
 def run_random_test():
     """Run a single random test case"""
     filepath = None
+    start_time = time.time()
     try:
         # Generate random fixture
         num_competitors = random.randint(100, 200)
@@ -213,6 +214,8 @@ def run_random_test():
                         "nombre": c.nombre,
                         "apellido": c.apellido,
                         "edad": c.edad,
+                        "categoria_edad": c.categoria_edad,
+                        "sexo": c.sexo,
                         "peso": c.peso_kg,
                         "estatura": c.estatura_cm,
                         "modalidad": c.modalidad,
@@ -233,9 +236,13 @@ def run_random_test():
                     "peso_score": b.score_breakdown.peso_score,
                     "estatura_diff": b.score_breakdown.estatura_diff,
                     "estatura_score": b.score_breakdown.estatura_score,
-                    "doyang_bonus": b.score_breakdown.doyang_bonus,
+                    "doyang_penalty": b.score_breakdown.doyang_penalty,
+                    "cinta_penalty": b.score_breakdown.cinta_penalty,
                     "total": b.score_breakdown.total,
                 }
+            
+            if b.failure_reasons:
+                brackets_data[-1]["failure_reasons"] = b.failure_reasons
         
         # Unpaired competitors
         unpaired_data = []
@@ -265,6 +272,7 @@ def run_random_test():
             "sin_rival": gs.sin_rival_total,
             "status": "success",
             "errors": errors,
+            "elapsed": round(time.time() - start_time, 3),
             # Full data for expanded view
             "brackets": brackets_data,
             "unpaired": unpaired_data,
@@ -275,6 +283,7 @@ def run_random_test():
             "status": "error",
             "error": str(e),
             "type": "random",
+            "elapsed": round(time.time() - start_time, 3),
         }
     
     finally:
@@ -285,6 +294,33 @@ def run_random_test():
             except:
                 pass
 
+
+# =============================================================================
+# SCORING BREAKDOWN GUIDE
+# =============================================================================
+#
+# The compatibility score (0–100 pts) is computed as:
+#
+#   Total = (PesoScore × 0.50) + (EstaturaScore × 0.25) + (EdadScore × 0.20) + DoyangBonus
+#
+# Each component score = 100 × (1 − (diff / max_val) ^ 1.8)
+#
+# | Component   | Weight | Max Pts | How to max                        |
+# |-------------|--------|---------|-----------------------------------|
+# | Peso        | 50%    | 50.00   | diff = 0 kg                       |
+# | Estatura    | 25%    | 25.00   | diff = 0 cm                       |
+# | Edad        | 20%    | 20.00   | diff = 0 years                    |
+# | DoyangBonus | flat   | +8.00   | Different doyang (+8, capped at 100)
+#
+# MAXIMUM = 100 pts (identical competitors + different doyang)
+# NOTE: Same doyang competitors cap at ~92 pts (missing the +8 bonus)
+#
+# Score thresholds:
+#   >= 70 pts -> Excelente (no approval needed)
+#   50-69 pts -> Aceptable
+#   < 50 pts  -> Bajo (requires approval in ronda 3/4)
+#
+# =============================================================================
 
 def run_random_tests(count=25):
     """Run multiple random tests and return report"""
@@ -301,6 +337,7 @@ def run_random_tests(count=25):
     
     avg_pairing = sum(r.get("pairing_rate", 0) for r in successful) / len(successful) if successful else 0
     avg_quality = sum(r.get("quality_rate", 0) for r in successful) / len(successful) if successful else 0
+    avg_time = sum(r.get("elapsed", 0) for r in successful) / len(successful) if successful else 0
     
     summary = {
         "total_runs": count,
@@ -308,7 +345,7 @@ def run_random_tests(count=25):
         "failed": len(failed),
         "avg_pairing_rate": round(avg_pairing, 2),
         "avg_quality_rate": round(avg_quality, 2),
-        "avg_time": 0,
+        "avg_time": round(avg_time, 3),
     }
     
     return {

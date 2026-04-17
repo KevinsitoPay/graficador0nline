@@ -19,13 +19,13 @@ SCHOOLS = [
     "MDK FLORIDO",
     "MDK CASA BLANCA",
     "MDK EL DORADO",
-    "KUK SUL",
-    "CHAMPIONS",
-    "TAEKWONDO PLUS",
-    "OLIMPICO",
-    "VICTORY",
-    "KORYO",
-    "PAQUI",
+    "MDK ALBA ROJA",
+    "MDK AGUAJE DE LA TUNA",
+    "MDK DEL VALLE",
+    "MDK OBRERA",
+    "MDK MURUA",
+    "MDK VILLA DEL SOL",
+    "MDK OTAY",
 ]
 
 FIRST_NAMES_M = [

@@ -45,22 +45,33 @@ export default function TestReport() {
   const [testType, setTestType] = useState(null);
   const [expandedRow, setExpandedRow] = useState(null);
   const [randomCount, setRandomCount] = useState(25);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [progressCurrent, setProgressCurrent] = useState(0);
+  const [progressTotal, setProgressTotal] = useState(0);
 
   const runStaticTests = async () => {
     setLoading(true);
     setError(null);
     setTestType('static');
     setExpandedRow(null);
+    setProgressTotal(0);
+    setProgressCurrent(0);
     
     try {
       const res = await fetch('http://localhost:8000/tests');
       const data = await res.json();
       
       if (data.success) {
+        const totalFixtures = data.report.fixtures?.length || 0;
+        setProgressTotal(totalFixtures);
+        
         const reportWithType = {
           ...data.report,
           testType: 'static',
-          fixtures: data.report.fixtures.map((f, i) => ({...f, type: 'Static', index: i}))
+          fixtures: data.report.fixtures.map((f, i) => {
+            setProgressCurrent(i + 1);
+            return {...f, type: 'Static', index: i};
+          })
         };
         setReport(reportWithType);
       } else {
@@ -78,6 +89,8 @@ export default function TestReport() {
     setError(null);
     setTestType('random');
     setExpandedRow(null);
+    setProgressTotal(count);
+    setProgressCurrent(0);
     
     try {
       const res = await fetch(`http://localhost:8000/tests/random/${count}`);
@@ -87,7 +100,10 @@ export default function TestReport() {
         const reportWithType = {
           ...data.report,
           testType: 'random',
-          tests: data.report.tests.map((t, i) => ({...t, type: 'Random', index: i}))
+          tests: data.report.tests.map((t, i) => {
+            setProgressCurrent(i + 1);
+            return {...t, type: 'Random', index: i};
+          })
         };
         setReport(reportWithType);
       } else {
@@ -156,38 +172,108 @@ export default function TestReport() {
     URL.revokeObjectURL(url);
   };
 
-  useEffect(() => {
-    fetchLatestReport();
-  }, []);
-
-  const fetchLatestReport = async () => {
-    try {
-      const res = await fetch('http://localhost:8000/tests/latest');
-      const data = await res.json();
-      
-      if (data.success) {
-        const reportWithType = {
-          ...data.report,
-          testType: 'static',
-          fixtures: data.report.fixtures.map((f, i) => ({...f, type: 'Static', index: i}))
-        };
-        setReport(reportWithType);
-      }
-    } catch (err) {
-      // Ignore - no report yet
-    }
-  };
-
   const toggleRow = (index) => {
     setExpandedRow(expandedRow === index ? null : index);
   };
 
-  if (!report && !loading) {
+  useEffect(() => {
+    let interval;
+    if (loading) {
+      setElapsedTime(0);
+      interval = setInterval(() => {
+        setElapsedTime(t => t + 0.1);
+      }, 100);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [loading]);
+
+  if (loading) {
+    const progress = progressTotal > 0 ? (progressCurrent / progressTotal) * 100 : null;
+    return (
+      <div className="test-report loading">
+        <div className="loading-content">
+          <div className="loading-info">
+            <p>Running tests...</p>
+            {progressTotal > 0 && (
+              <p className="progress-text">Test {progressCurrent} of {progressTotal}</p>
+            )}
+          </div>
+          <div className="loading-timer">{elapsedTime.toFixed(1)}s</div>
+          {progress !== null && (
+            <div className="progress-bar-container">
+              <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+            </div>
+          )}
+          <div className="spinner"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!report) {
     return (
       <div className="test-report">
         <h3>Test Report</h3>
         <p>Run tests to evaluate the algorithm.</p>
-        
+
+        <details className="scoring-guide">
+          <summary>Scoring Breakdown Guide</summary>
+          <p>The compatibility score (0–100 pts) is computed as:</p>
+          <pre>Total = 100 − (PesoPenalty + EdadPenalty + EstaturaPenalty + DoyangPenalty + CintaPenalty)</pre>
+          <p>Penalties are calculated using: <code>penalty = max × (diff / threshold) ^ 1.8</code></p>
+          <table className="scoring-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Max Penalty</th>
+                <th>Threshold</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Peso</td>
+                <td>40</td>
+                <td>5 kg</td>
+                <td>diff_peso / 5</td>
+              </tr>
+              <tr>
+                <td>Edad</td>
+                <td>30</td>
+                <td>1 año</td>
+                <td>diff_edad / 1</td>
+              </tr>
+              <tr>
+                <td>Estatura</td>
+                <td>20</td>
+                <td>10 cm</td>
+                <td>diff_estatura / 10</td>
+              </tr>
+              <tr>
+                <td>Doyang</td>
+                <td>10</td>
+                <td>same doyang</td>
+                <td>+10 if same doyang</td>
+              </tr>
+              <tr>
+                <td>Cinta</td>
+                <td>flexible</td>
+                <td>nivel diff</td>
+                <td>5 × |nivel_c1 − nivel_c2|</td>
+              </tr>
+            </tbody>
+          </table>
+          <p><strong>MAXIMUM = 100 pts</strong> (identical competitors + different doyang + same cinta level)</p>
+          <p>Score thresholds:</p>
+          <ul>
+            <li>≥ 70 pts → Excelente (no approval needed)</li>
+            <li>50–69 pts → Aceptable</li>
+            <li>&lt; 50 pts → Bajo (may require approval)</li>
+          </ul>
+        </details>
+
         <div className="test-controls">
           <button onClick={runStaticTests} disabled={loading}>
             Run Static Tests
@@ -215,17 +301,8 @@ export default function TestReport() {
     );
   }
 
-  if (loading) {
-    return (
-      <div className="test-report loading">
-        <p>Running tests...</p>
-        <div className="spinner"></div>
-      </div>
-    );
-  }
-
-  const fixtures = report.tests || report.fixtures || [];
-  const summary = report.summary;
+  const fixtures = report?.tests || report?.fixtures || [];
+  const summary = report?.summary || {};
 
   const isLLMReport = testType === 'llm' && report && report.markdown;
 
@@ -270,7 +347,7 @@ export default function TestReport() {
       </div>
       
       <div className="timestamp">
-        Generated: {report.timestamp}
+        Generated: {report?.timestamp}
       </div>
 
       <div className="tabs">
@@ -328,6 +405,7 @@ export default function TestReport() {
                 <th title="Número de gráficas generadas">Gráficas</th>
                 <th title="Porcentaje de emparejamiento: % de competidores emparejados exitosamente">Emparej%</th>
                 <th title="Porcentaje de calidad: % de gráficas con puntuación >= 70%">Calidad%</th>
+                <th title="Tiempo de ejecución">Tiempo</th>
                 <th title="Competidores sin rival">Sin Rival</th>
                 <th title="Estado de la prueba: Aprobado o Fallido">Estado</th>
               </tr>
@@ -347,6 +425,7 @@ export default function TestReport() {
                     <td>{f.total_brackets || '-'}</td>
                     <td>{f.pairing_rate || '-'}</td>
                     <td>{f.quality_rate || '-'}</td>
+                    <td>{f.elapsed ? `${f.elapsed}s` : '-'}</td>
                     <td>{f.sin_rival || '-'}</td>
                     <td className={f.status === 'success' ? 'status-ok' : 'status-err'}>
                       {f.status}

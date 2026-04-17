@@ -812,3 +812,121 @@
 .test-report table th[title]:hover {
   background: #e9ecef;
 }
+
+/* Scoring Guide */
+.test-report .scoring-guide {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.test-report .scoring-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.test-report .scoring-guide p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.test-report .scoring-guide pre {
+  background: #e9ecef;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.test-report .scoring-guide code {
+  background: #e9ecef;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.test-report .scoring-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.test-report .scoring-table th,
+.test-report .scoring-table td {
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.test-report .scoring-table th {
+  background: #e9ecef;
+  font-weight: 600;
+}
+
+.test-report .scoring-guide ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.test-report .scoring-guide li {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* Loading Progress Bar */
+.test-report.loading .loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.test-report.loading .loading-info {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.test-report.loading .loading-info p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.test-report.loading .progress-text {
+  font-size: 14px !important;
+  color: #666 !important;
+}
+
+.test-report.loading .loading-timer {
+  font-size: 36px;
+  font-weight: bold;
+  color: #007bff;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 20px;
+}
+
+.test-report.loading .progress-bar-container {
+  width: 100%;
+  max-width: 400px;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.test-report.loading .progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #28a745);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}

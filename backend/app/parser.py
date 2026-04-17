@@ -4,6 +4,25 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 from app.models import Competidor
 
+EDAD_CATEGORIES = {
+    "Preescolar": (3, 5),
+    "Infantil_6_7": (6, 7),
+    "Infantil_8_9": (8, 9),
+    "Infantil_10_11": (10, 11),
+    "Infantil_12_13": (12, 13),
+    "Cadete": (14, 15),
+    "Juvenil": (16, 17),
+    "Adulto": (18, 29),
+    "Sub_Master": (30, 45),
+    "Master": (46, 200),
+}
+
+def get_categoria_edad(edad: int) -> str:
+    for categoria, (min_edad, max_edad) in EDAD_CATEGORIES.items():
+        if min_edad <= edad <= max_edad:
+            return categoria
+    return "Adulto"
+
 VALID_BLOCKS = [
     "Adultos Grupo 1",
     "Adultos Grupo 2",
@@ -189,6 +208,7 @@ def parse_excel(file_path: str) -> Tuple[List[Competidor], List[Dict]]:
                     modalidad=normalize_modalidad(str(row.get("Modalidad", "Doble"))),
                     doyang=str(row.get("Doyang", "")).strip(),
                     bloque=sheet_name,
+                    categoria_edad=get_categoria_edad(edad),
                 )
                 
                 if comp.sexo not in ["M", "F"]:

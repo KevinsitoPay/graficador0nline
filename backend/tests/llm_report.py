@@ -16,16 +16,14 @@ def analyze_failure_reasons(bracket: dict) -> List[str]:
     if not breakdown:
         return reasons
     
-    edad_diff = breakdown.get("edad_diff", 0)
-    peso_diff = breakdown.get("peso_diff", 0)
-    estatura_diff = breakdown.get("estatura_diff", 0)
-    
-    if breakdown.get("edad_score", 1) < 0.3:
-        reasons.append(f"edad_diff={edad_diff} anos")
-    if breakdown.get("peso_score", 1) < 0.2:
-        reasons.append(f"peso_diff={peso_diff}kg")
-    if breakdown.get("estatura_score", 1) < 0.1:
-        reasons.append(f"estatura_diff={estatura_diff}cm")
+    # New scoring: 0-100 scale
+    # Low scores: edad < 8, peso < 10, estatura < 6
+    if breakdown.get("edad_score", 25) < 8:
+        reasons.append(f"edad_diff={breakdown.get('edad_diff', 0)} anos")
+    if breakdown.get("peso_score", 40) < 10:
+        reasons.append(f"peso_diff={breakdown.get('peso_diff', 0)}kg")
+    if breakdown.get("estatura_score", 25) < 6:
+        reasons.append(f"estatura_diff={breakdown.get('estatura_diff', 0)}cm")
     
     return reasons
 
@@ -70,7 +68,7 @@ def calculate_component_metrics(tests: List[dict]) -> dict:
     edad_scores = []
     peso_scores = []
     estatura_scores = []
-    doyang_bonus_count = 0
+    doyang_penalty_count = 0
     total_brackets = 0
     
     for test in tests:
@@ -86,7 +84,7 @@ def calculate_component_metrics(tests: List[dict]) -> dict:
                 peso_scores.append(bd.get("peso_score", 0))
                 estatura_scores.append(bd.get("estatura_score", 0))
                 if bd.get("doyang_bonus", 0) > 0:
-                    doyang_bonus_count += 1
+                    doyang_penalty_count += 1
     
     n = len(edad_diffs) if edad_diffs else 1
     
@@ -120,14 +118,14 @@ def calculate_component_metrics(tests: List[dict]) -> dict:
             "edad_avg": round(sum(edad_scores) / n, 2) if n > 0 else 0,
             "peso_avg": round(sum(peso_scores) / n, 2) if n > 0 else 0,
             "estatura_avg": round(sum(estatura_scores) / n, 2) if n > 0 else 0,
-            "doyang_bonus_count": doyang_bonus_count,
-            "doyang_bonus_pct": round(doyang_bonus_count / n * 100, 1) if n > 0 else 0
+            "doyang_penalty_count": doyang_penalty_count,
+            "doyang_penalty_pct": round(doyang_penalty_count / n * 100, 1) if n > 0 else 0
         }
     }
 
 
-def extract_low_quality_brackets(tests: List[dict], threshold: float = 1.0) -> List[dict]:
-    """Extraer brackets de baja calidad"""
+def extract_low_quality_brackets(tests: List[dict], threshold: float = 30.0) -> List[dict]:
+    """Extraer brackets de baja calidad (score < 30 = muy bajo)"""
     low_quality = []
     
     for test in tests:
@@ -155,6 +153,8 @@ def extract_low_quality_brackets(tests: List[dict], threshold: float = 1.0) -> L
                     "test": test_name,
                     "bloque": comps[0].get("bloque", "Unknown") if comps else "Unknown",
                     "tipo": bracket.get("tipo", "unknown"),
+                    "nivel_aprobacion": bracket.get("nivel_aprobacion", "unknown"),
+                    "ronda_origen": bracket.get("ronda_origen", "unknown"),
                     "score": bracket.get("score", 0),
                     "competidores": comps_info,
                     "breakdown": breakdown,
@@ -240,6 +240,106 @@ def analyze_by_category(tests: List[dict]) -> dict:
     return categories
 
 
+def extract_zero_score_brackets(tests: List[dict]) -> List[dict]:
+    """Extraer brackets con score == 0 con analisis detallado de fallos"""
+    zero_score_brackets = []
+    
+    for test in tests:
+        test_name = test.get("name", "unknown")
+        for bracket in test.get("brackets", []):
+            if bracket.get("score", -1) == 0:
+                comps = bracket.get("competidores", [])
+                
+                categorias_edad = list(set(c.get("categoria_edad", "Unknown") for c in comps))
+                sexos = list(set(c.get("sexo", c.get("sexo", "?")) for c in comps))
+                cintas = list(set(c.get("cinta_block", "Unknown") for c in comps))
+                
+                age_diffs = []
+                peso_diffs = []
+                est_diffs = []
+                
+                for i in range(len(comps)):
+                    for j in range(i + 1, len(comps)):
+                        c1, c2 = comps[i], comps[j]
+                        age_diffs.append(abs(c1.get("edad", 0) - c2.get("edad", 0)))
+                        peso_diffs.append(abs(c1.get("peso", 0) - c2.get("peso", 0)))
+                        est_diffs.append(abs(c1.get("estatura", 0) - c2.get("estatura", 0)))
+                
+                max_age_diff = max(age_diffs) if age_diffs else 0
+                max_peso_diff = max(peso_diffs) if peso_diffs else 0
+                max_est_diff = max(est_diffs) if est_diffs else 0
+                
+                nivel = bracket.get("nivel_aprobacion", "unknown")
+                ronda = bracket.get("ronda_origen", "unknown")
+                
+                failure_reasons = bracket.get("failure_reasons", [])
+                
+                primera_falla = failure_reasons[0] if failure_reasons else "desconocido"
+                
+                comps_info = []
+                for c in comps:
+                    comps_info.append({
+                        "nombre": c.get("nombre", ""),
+                        "apellido": c.get("apellido", ""),
+                        "edad": c.get("edad", 0),
+                        "categoria_edad": c.get("categoria_edad", "Unknown"),
+                        "sexo": c.get("sexo", "?"),
+                        "peso": c.get("peso", 0),
+                        "estatura": c.get("estatura", 0),
+                        "cinta_block": c.get("cinta_block", "Unknown"),
+                        "doyang": c.get("doyang", ""),
+                    })
+                
+                zero_score_brackets.append({
+                    "test": test_name,
+                    "bracket_id": bracket.get("numero", 0),
+                    "bloque": comps[0].get("bloque", "Unknown") if comps else "Unknown",
+                    "ronda_origen": ronda,
+                    "nivel_aprobacion": nivel,
+                    "competidores": comps_info,
+                    "categorias_edad": categorias_edad,
+                    "categorias_diferentes": len(categorias_edad) > 1,
+                    "sexos": sexos,
+                    "sexos_diferentes": len(sexos) > 1,
+                    "cintas": cintas,
+                    "diferencias": {
+                        "edad": max_age_diff,
+                        "peso": round(max_peso_diff, 2),
+                        "estatura": max_est_diff,
+                    },
+                    "failure_reasons": failure_reasons,
+                    "primera_falla": primera_falla,
+                    "tipo_falla": _clasificar_falla(failure_reasons),
+                })
+    
+    return zero_score_brackets
+
+
+def _clasificar_falla(reasons: List[str]) -> str:
+    """Clasificar el tipo de falla principal"""
+    if not reasons:
+        return "desconocido"
+    
+    primera = reasons[0].lower()
+    
+    if "categoria_edad" in primera:
+        return "categoria_edad_diferente"
+    elif "sexo" in primera:
+        return "sexo_diferente"
+    elif "cinta" in primera:
+        return "cinta_no_permitida"
+    elif "peso" in primera:
+        return "peso_limite_excedido"
+    elif "edad" in primera and "limite" in primera:
+        return "edad_limite_excedido"
+    elif "estatura" in primera:
+        return "estatura_limite_excedido"
+    elif "penalizacion" in primera or "score_negativo" in primera:
+        return "penalizaciones_llevaron_a_cero"
+    else:
+        return "otra"
+
+
 def generate_llm_markdown(report: dict) -> str:
     """Generar reporte completo en formato Markdown"""
     
@@ -247,16 +347,21 @@ def generate_llm_markdown(report: dict) -> str:
     summary = report.get("summary", {})
     
     lines = []
-    lines.append("# 📊 Reporte de Analisis - Algoritmo de Emparejamiento")
+    lines.append("# Reporte de Analisis - Algoritmo de Emparejamiento")
     lines.append("")
     lines.append(f"**Fecha:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     lines.append(f"**Total pruebas ejecutadas:** {summary.get('total_runs', len(tests))}")
+    lines.append(f"**Sistema de puntaje:** 0-100 puntos")
+    lines.append(f"  - Peso: 40 pts max (prioridad alta)")
+    lines.append(f"  - Estatura: 25 pts max")
+    lines.append(f"  - Edad: 25 pts max (variable por categoria)")
+    lines.append(f"  - Doyang: +10% multiplicativo si diferente escuela")
     lines.append("")
     lines.append("---")
     lines.append("")
     
     # 1. RESUMEN EJECUTIVO
-    lines.append("## 📌 1. Resumen Ejecutivo")
+    lines.append("## 1. Resumen Ejecutivo")
     lines.append("")
     
     if tests:
@@ -324,8 +429,48 @@ def generate_llm_markdown(report: dict) -> str:
     lines.append("---")
     lines.append("")
     
-    # 3. ANALISIS POR CATEGORIA
-    lines.append("## 🧩 3. Analisis por Categoria (Bloque)")
+    # 3. DISTRIBUCION POR RONDA Y COLOR
+    lines.append("## 3. Distribucion por Ronda y Color")
+    lines.append("")
+    
+    rounds = {"etapa2": 0, "ronda1": 0, "ronda2": 0, "ronda3": 0, "ronda4": 0}
+    colors = {"verde_claro": 0, "amarillo": 0, "naranja": 0, "rojo": 0}
+    
+    for test in tests:
+        for b in test.get("brackets", []):
+            ronda = b.get("ronda_origen", "etapa2")
+            rounds[ronda] = rounds.get(ronda, 0) + 1
+            color = b.get("nivel_aprobacion", "verde_claro")
+            colors[color] = colors.get(color, 0) + 1
+    
+    total_brackets = sum(rounds.values()) or 1
+    
+    lines.append("### Por Ronda")
+    lines.append("")
+    lines.append("| Ronda | Brackets | Porcentaje | Color |")
+    lines.append("|-------|----------|------------|-------|")
+    lines.append(f"| Etapa 2 (optimo) | {rounds['etapa2']} | {round(rounds['etapa2']/total_brackets*100,1)}% | Verde claro |")
+    lines.append(f"| Ronda 1 (estandar) | {rounds['ronda1']} | {round(rounds['ronda1']/total_brackets*100,1)}% | Verde claro |")
+    lines.append(f"| Ronda 2 (relajado) | {rounds['ronda2']} | {round(rounds['ronda2']/total_brackets*100,1)}% | Amarillo |")
+    lines.append(f"| Ronda 3 (cintas ady.) | {rounds['ronda3']} | {round(rounds['ronda3']/total_brackets*100,1)}% | Naranja |")
+    lines.append(f"| Ronda 4 (forzado) | {rounds['ronda4']} | {round(rounds['ronda4']/total_brackets*100,1)}% | Rojo |")
+    lines.append("")
+    
+    lines.append("### Por Color")
+    lines.append("")
+    lines.append("| Color | Significado | Brackets |")
+    lines.append("|-------|-------------|----------|")
+    lines.append(f"| Verde claro | Estandar, aprobado automatico | {colors.get('verde_claro', 0)} |")
+    lines.append(f"| Amarillo | Relajado, solo notificacion | {colors.get('amarillo', 0)} |")
+    lines.append(f"| Naranja | Cintas adyacentes, requiere colaborador | {colors.get('naranja', 0)} |")
+    lines.append(f"| Rojo | Forzado, requiere coordinadora | {colors.get('rojo', 0)} |")
+    lines.append("")
+    
+    lines.append("---")
+    lines.append("")
+    
+    # 4. ANALISIS POR CATEGORIA
+    lines.append("## 4. Analisis por Categoria (Bloque)")
     lines.append("")
     
     categories = analyze_by_category(tests)
@@ -345,17 +490,17 @@ def generate_llm_markdown(report: dict) -> str:
     lines.append("")
     
     # 4. BRACKETS DE BAJA CALIDAD
-    lines.append("## 🔍 4. Brackets de Baja Calidad (< 1.0)")
+    lines.append("## 4. Brackets de Baja Calidad (< 30 puntos)")
     lines.append("")
     
-    low_quality = extract_low_quality_brackets(tests, threshold=1.0)
-    lines.append(f"**Total:** {len(low_quality)} brackets de baja calidad")
+    low_quality = extract_low_quality_brackets(tests, threshold=30.0)
+    lines.append(f"**Total:** {len(low_quality)} brackets de baja calidad (score < 30)")
     lines.append("")
     
     for i, bq in enumerate(low_quality[:10], 1):
         lines.append(f"### {i}. Bracket #{bq['bracket_id']} ({bq['test']}, {bq['bloque']})")
         lines.append("")
-        lines.append(f"**Tipo:** {bq['tipo']} | **Score:** {bq['score']}")
+        lines.append(f"**Tipo:** {bq['tipo']} | **Ronda:** {bq.get('ronda_origen', 'N/A')} | **Color:** {bq.get('nivel_aprobacion', 'N/A')} | **Score:** {bq['score']}/100")
         lines.append("")
         lines.append("**Competidores:**")
         for c in bq["competidores"]:
@@ -365,10 +510,10 @@ def generate_llm_markdown(report: dict) -> str:
         bd = bq.get("breakdown", {})
         if bd:
             lines.append("**Desglose:**")
-            lines.append(f"- Edad diff: {bd.get('edad_diff', 0)} anos -> {bd.get('edad_score', 0)} pts")
-            lines.append(f"- Peso diff: {bd.get('peso_diff', 0)}kg -> {bd.get('peso_score', 0)} pts")
-            lines.append(f"- Estatura diff: {bd.get('estatura_diff', 0)}cm -> {bd.get('estatura_score', 0)} pts")
-            lines.append(f"- Doyang bonus: {bd.get('doyang_bonus', 0)} pts")
+            lines.append(f"- Edad: diff={bd.get('edad_diff', 0)} anos, score={bd.get('edad_score', 0)}/25 pts")
+            lines.append(f"- Peso: diff={bd.get('peso_diff', 0)}kg, score={bd.get('peso_score', 0)}/40 pts")
+            lines.append(f"- Estatura: diff={bd.get('estatura_diff', 0)}cm, score={bd.get('estatura_score', 0)}/25 pts")
+            lines.append(f"- Doyang penalty: -{bd.get('doyang_penalty', 0)} pts")
             lines.append("")
         
         if bq["failure_reasons"]:
@@ -383,7 +528,7 @@ def generate_llm_markdown(report: dict) -> str:
     lines.append("")
     
     # 5. ANALISIS DE UNPAIRED
-    lines.append("## ❌ 5. Analisis de Competidores Sin Rival")
+    lines.append("## 5. Analisis de Competidores Sin Rival")
     lines.append("")
     
     unpaired_analysis = analyze_unpaired(tests)
@@ -412,7 +557,7 @@ def generate_llm_markdown(report: dict) -> str:
     lines.append("")
     
     # 6. METRICAS POR COMPONENTE
-    lines.append("## 📈 6. Metricas por Componente")
+    lines.append("## 6. Metricas por Componente (sobre 100 pts)")
     lines.append("")
     
     metrics = calculate_component_metrics(tests)
@@ -428,21 +573,91 @@ def generate_llm_markdown(report: dict) -> str:
     
     lines.append("### Scores Promedio por Componente")
     lines.append("")
-    lines.append("| Componente | Score Promedio |")
-    lines.append("|------------|----------------|")
-    lines.append(f"| Edad | {metrics['scores']['edad_avg']} |")
-    lines.append(f"| Peso | {metrics['scores']['peso_avg']} |")
-    lines.append(f"| Estatura | {metrics['scores']['estatura_avg']} |")
+    lines.append("| Componente | Score Promedio | Maximo |")
+    lines.append("|------------|----------------|--------|")
+    lines.append(f"| Edad | {metrics['scores']['edad_avg']} | 25 |")
+    lines.append(f"| Peso | {metrics['scores']['peso_avg']} | 40 |")
+    lines.append(f"| Estatura | {metrics['scores']['estatura_avg']} | 25 |")
+    lines.append(f"| Doyang penalty | -{metrics['scores']['doyang_penalty_pct']}% | -10% |")
     lines.append("")
-    lines.append(f"**Doyang bonus aplicado:** {metrics['scores']['doyang_bonus_pct']}% de brackets")
     lines.append(f"**Total brackets analizados:** {metrics['total_brackets']}")
     lines.append("")
     
     lines.append("---")
     lines.append("")
     
+    # 6B. BRACKETS CON SCORE == 0
+    lines.append("## 6B. Brackets con Score == 0 (Fallo Total)")
+    lines.append("")
+    
+    zero_score = extract_zero_score_brackets(tests)
+    lines.append(f"**Total:** {len(zero_score)} brackets con score 0")
+    lines.append("")
+    
+    if zero_score:
+        tipo_fallas = Counter(b["tipo_falla"] for b in zero_score)
+        lines.append("### Resumen de Tipos de Falla")
+        lines.append("")
+        lines.append("| Tipo de Falla | Cantidad |")
+        lines.append("|---------------|----------|")
+        for tipo, count in tipo_fallas.most_common():
+            lines.append(f"| {tipo} | {count} |")
+        lines.append("")
+        
+        lines.append("### Detalle de Cada Bracket con Score 0")
+        lines.append("")
+        
+        for i, z in enumerate(zero_score[:20], 1):
+            lines.append(f"#### {i}. Bracket #{z['bracket_id']} ({z['test']})")
+            lines.append("")
+            lines.append(f"**Bloque:** {z['bloque']} | **Ronda:** {z['ronda_origen']} | **Nivel:** {z['nivel_aprobacion']}")
+            lines.append("")
+            
+            lines.append("**Categorias de edad de competidores:**")
+            for cat in z["categorias_edad"]:
+                lines.append(f"- `{cat}`")
+            if z["categorias_diferentes"]:
+                lines.append("⚠️ **PROBLEMA:** Categorias DIFERENTES en mismo bracket!")
+            lines.append("")
+            
+            lines.append(f"**Diferencias reales:**")
+            lines.append(f"- Edad: {z['diferencias']['edad']} anos")
+            lines.append(f"- Peso: {z['diferencias']['peso']} kg")
+            lines.append(f"- Estatura: {z['diferencias']['estatura']} cm")
+            lines.append("")
+            
+            if z["failure_reasons"]:
+                lines.append(f"**Primera condicion que fallo:** `{z['primera_falla']}`")
+                lines.append(f"**Tipo de falla:** `{z['tipo_falla']}`")
+                lines.append("")
+            
+            lines.append("**Competidores:**")
+            for c in z["competidores"]:
+                lines.append(f"- {c['nombre']} {c['apellido']}: edad={c['edad']} ({c['categoria_edad']}), sexo={c['sexo']}, cinta={c['cinta_block']}")
+            lines.append("")
+            
+            lines.append("---")
+            lines.append("")
+        
+        if len(zero_score) > 20:
+            lines.append(f"_... y {len(zero_score) - 20} mas_")
+            lines.append("")
+        
+        lines.append("### Posibles Causas Identificadas")
+        lines.append("")
+        lines.append("| Causa | Como detectarla en este reporte |")
+        lines.append("|-------|----------------------------------|")
+        lines.append("| Categoria de edad no se asigna correctamente | Verificar que todos competidores del mismo bracket tengan la misma categoria_edad. Si no, el filtro fallo. |")
+        lines.append("| Filtro de categoria no se aplica en fase de relajacion | Brackets formados en nivel naranja/rojo donde se permitio mezcla de categorias. Revisar la logica de esos niveles. |")
+        lines.append("| Limites de edad demasiado estrictos | Si las edades estan dentro de la misma categoria pero la diferencia es >1 ano. Aqui el error es de asignacion de categoria. |")
+        lines.append("| Problemas con el matching global (Blossom) | Puede estar emparejando competidores de diferentes categorias porque no se separaron los subgrupos correctamente antes del matching. |")
+        lines.append("")
+    
+    lines.append("---")
+    lines.append("")
+    
     # 7. RECOMENDACIONES
-    lines.append("## 🎯 Recomendaciones")
+    lines.append("## 7. Recomendaciones")
     lines.append("")
     
     recommendations = []
@@ -460,7 +675,8 @@ def generate_llm_markdown(report: dict) -> str:
     if low_q_pct > 10:
         recommendations.append(f"- **Calidad:** {round(low_q_pct, 1)}% de brackets tienen score < 1.0. Revisar casos problematicos.")
     
-    unpaired_pct = unpaired_analysis["total"] / sum(t.get("total_competitors", 0) for t in tests) * 100 if tests else 0
+    total_competitors = sum(t.get("total_competitors", 0) for t in tests)
+    unpaired_pct = unpaired_analysis["total"] / total_competitors * 100 if total_competitors > 0 else 0
     if unpaired_pct > 20:
         recommendations.append(f"- **Emparejamiento:** {round(unpaired_pct, 1)}% de competidores no encuentran rival. Considerar relajamiento controlado.")
     

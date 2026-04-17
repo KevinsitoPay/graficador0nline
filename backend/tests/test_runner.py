@@ -46,6 +46,7 @@ def compute_metrics(results, competitors):
                     "nombre": c.nombre,
                     "apellido": c.apellido,
                     "edad": c.edad,
+                    "categoria_edad": c.categoria_edad,
                     "peso": c.peso_kg,
                     "estatura": c.estatura_cm,
                     "modalidad": c.modalidad,
@@ -66,9 +67,13 @@ def compute_metrics(results, competitors):
                 "peso_score": b.score_breakdown.peso_score,
                 "estatura_diff": b.score_breakdown.estatura_diff,
                 "estatura_score": b.score_breakdown.estatura_score,
-                "doyang_bonus": b.score_breakdown.doyang_bonus,
+                "doyang_penalty": b.score_breakdown.doyang_penalty,
+                "cinta_penalty": b.score_breakdown.cinta_penalty,
                 "total": b.score_breakdown.total,
             }
+        
+        if b.failure_reasons:
+            bracket_dict["failure_reasons"] = b.failure_reasons
         
         brackets_data.append(bracket_dict)
     
