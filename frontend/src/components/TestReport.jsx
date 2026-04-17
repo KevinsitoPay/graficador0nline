@@ -529,6 +529,18 @@ Exportar para LLM ({randomCount})
               <span className="stat-value">{summary.avg_time}s</span>
               <span className="stat-label">Tiempo Promedio</span>
             </div>
+            <div className="stat-box">
+              <span className="stat-value">{summary.avg_brackets_2 ?? summary.brackets_2 ?? 0}</span>
+              <span className="stat-label">Gráf. 2 Prom.</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{summary.avg_brackets_3 ?? summary.brackets_3 ?? 0}</span>
+              <span className="stat-label">Gráf. 3 Prom.</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-value">{summary.avg_brackets_4 ?? summary.brackets_4 ?? 0}</span>
+              <span className="stat-label">Gráf. 4 Prom.</span>
+            </div>
           </div>
         </div>
       )}
@@ -547,6 +559,9 @@ Exportar para LLM ({randomCount})
                 <th title="Porcentaje de calidad: % de gráficas con puntuación >= 70%">Calidad%</th>
                 <th title="Tiempo de ejecución">Tiempo</th>
                 <th title="Competidores sin rival">Sin Rival</th>
+                <th title="Gráficas de 2 competidores">×2</th>
+                <th title="Gráficas de 3 competidores">×3</th>
+                <th title="Gráficas de 4 competidores">×4</th>
                 <th title="Estado de la prueba: Aprobado o Fallido">Estado</th>
               </tr>
             </thead>
@@ -567,13 +582,16 @@ Exportar para LLM ({randomCount})
                     <td>{f.quality_rate || '-'}</td>
                     <td>{f.elapsed ? `${f.elapsed}s` : '-'}</td>
                     <td>{f.sin_rival || '-'}</td>
+                    <td>{f.brackets_2 || '-'}</td>
+                    <td>{f.brackets_3 || '-'}</td>
+                    <td>{f.brackets_4 || '-'}</td>
                     <td className={f.status === 'success' ? 'status-ok' : 'status-err'}>
                       {f.status}
                     </td>
                   </tr>
                   {expandedRow === i && f.brackets && (
                     <tr className="expanded-content">
-                      <td colSpan={9}>
+                      <td colSpan={12}>
                         <div className="bracket-details">
                           <h4>Brackets ({f.brackets.length})</h4>
                           {f.brackets.map((b, bi) => (

@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-04-17T15:53:08.714012",
+  "type": "random",
+  "total_tests": 25,
+  "tests": [
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.23,
+      "name": "random_1"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.33,
+      "name": "random_2"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.363,
+      "name": "random_3"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.236,
+      "name": "random_4"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.355,
+      "name": "random_5"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.296,
+      "name": "random_6"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.317,
+      "name": "random_7"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.318,
+      "name": "random_8"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.398,
+      "name": "random_9"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.367,
+      "name": "random_10"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.327,
+      "name": "random_11"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.49,
+      "name": "random_12"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.275,
+      "name": "random_13"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.282,
+      "name": "random_14"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.46,
+      "name": "random_15"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.297,
+      "name": "random_16"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.324,
+      "name": "random_17"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.317,
+      "name": "random_18"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.245,
+      "name": "random_19"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.343,
+      "name": "random_20"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.366,
+      "name": "random_21"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.287,
+      "name": "random_22"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.392,
+      "name": "random_23"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.37,
+      "name": "random_24"
+    },
+    {
+      "status": "error",
+      "error": "cannot access local variable 'avg' where it is not associated with a value",
+      "type": "random",
+      "elapsed": 0.317,
+      "name": "random_25"
+    }
+  ],
+  "summary": {
+    "total_runs": 25,
+    "successful": 0,
+    "failed": 25,
+    "avg_pairing_rate": 0,
+    "avg_quality_rate": 0,
+    "avg_time": 0,
+    "avg_brackets_2": 0,
+    "avg_brackets_3": 0,
+    "avg_brackets_4": 0
+  }
+}

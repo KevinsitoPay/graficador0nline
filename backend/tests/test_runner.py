@@ -168,6 +168,9 @@ def run_all_fixtures_from_dir(fixtures_dir):
     all_pairing = []
     all_quality = []
     all_time = []
+    all_brackets_2 = []
+    all_brackets_3 = []
+    all_brackets_4 = []
     
     for fixture in fixture_files:
         name = fixture.stem
@@ -187,6 +190,9 @@ def run_all_fixtures_from_dir(fixtures_dir):
             all_pairing.append(metrics.get("pairing_rate", 0))
             all_quality.append(metrics.get("quality_rate", 0))
             all_time.append(metrics.get("elapsed", 0))
+            all_brackets_2.append(metrics.get("brackets_2", 0))
+            all_brackets_3.append(metrics.get("brackets_3", 0))
+            all_brackets_4.append(metrics.get("brackets_4", 0))
     
     # Compute summary
     successful = len(all_pairing)
@@ -196,6 +202,9 @@ def run_all_fixtures_from_dir(fixtures_dir):
     report["summary"]["avg_pairing_rate"] = round(sum(all_pairing) / successful, 2) if successful else 0
     report["summary"]["avg_quality_rate"] = round(sum(all_quality) / successful, 2) if successful else 0
     report["summary"]["avg_time"] = round(sum(all_time) / successful, 3) if successful else 0
+    report["summary"]["avg_brackets_2"] = round(sum(all_brackets_2) / successful, 1) if successful else 0
+    report["summary"]["avg_brackets_3"] = round(sum(all_brackets_3) / successful, 1) if successful else 0
+    report["summary"]["avg_brackets_4"] = round(sum(all_brackets_4) / successful, 1) if successful else 0
     
     return report
 

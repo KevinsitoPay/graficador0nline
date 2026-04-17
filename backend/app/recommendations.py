@@ -7,7 +7,7 @@ from app.models import Competidor, Bracket, ScoreBreakdown
 from app.algorithm import (
     score, puede_emparejarse, _calcular_bracket_score,
     CINTA_ADYACENTE, RELAXATION_LEVELS, get_cinta_normalizada,
-    bloques_adultos_compatibles, misma_modalidad_valida
+    _bloques_adultos_compatibles, _modalidad_grupo_ok
 )
 
 RELAXATION_LEVELS_EXTENDED = RELAXATION_LEVELS + [

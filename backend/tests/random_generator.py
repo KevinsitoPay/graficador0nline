@@ -377,6 +377,9 @@ def run_random_tests(count=25, edge_case_prob=EDGE_CASE_PROB):
     avg_pairing = sum(r.get("pairing_rate", 0) for r in successful) / len(successful) if successful else 0
     avg_quality = sum(r.get("quality_rate", 0) for r in successful) / len(successful) if successful else 0
     avg_time = sum(r.get("elapsed", 0) for r in successful) / len(successful) if successful else 0
+    avg_brackets_2 = sum(r.get("brackets_2", 0) for r in successful) / len(successful) if successful else 0
+    avg_brackets_3 = sum(r.get("brackets_3", 0) for r in successful) / len(successful) if successful else 0
+    avg_brackets_4 = sum(r.get("brackets_4", 0) for r in successful) / len(successful) if successful else 0
     summary = {
         "total_runs": count,
         "successful": len(successful),
@@ -384,6 +387,9 @@ def run_random_tests(count=25, edge_case_prob=EDGE_CASE_PROB):
         "avg_pairing_rate": round(avg_pairing, 2),
         "avg_quality_rate": round(avg_quality, 2),
         "avg_time": round(avg_time, 3),
+        "avg_brackets_2": round(avg_brackets_2, 1),
+        "avg_brackets_3": round(avg_brackets_3, 1),
+        "avg_brackets_4": round(avg_brackets_4, 1),
     }
     return {
         "timestamp": datetime.now().isoformat(),
