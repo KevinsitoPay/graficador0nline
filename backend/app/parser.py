@@ -191,9 +191,12 @@ def parse_excel(file_path: str) -> Tuple[List[Competidor], List[Dict]]:
                 numero = str(row.get("No", ""))
                 
                 sexo_raw = str(row.get("H/M", "")).strip().upper()
-                sexo = sexo_raw
                 if sexo_raw == "H":
-                    sexo = "M"
+                    sexo = "M"  # Hombre -> Masculino
+                elif sexo_raw == "M":
+                    sexo = "F"  # Mujer -> Femenino
+                else:
+                    sexo = sexo_raw  # fallback
                 
                 comp = Competidor(
                     id=str(uuid.uuid4()),

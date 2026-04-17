@@ -12,7 +12,9 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from app.parser import parse_excel
 from app.algorithm import generate_results
 
-
+# =============================================================================
+# CONSTANTES REALISTAS
+# =============================================================================
 BLOCKS = [
     "Adultos Grupo 1",
     "Adultos Grupo 2",
@@ -26,37 +28,25 @@ BLOCKS = [
     "Pre-Taekwondo",
 ]
 
+
+
 SCHOOLS = [
-    "MDK FLORIDO",
-    "MDK CASA BLANCA",
-    "MDK EL DORADO",
-    "MDK ALBA ROJA",
-    "MDK AGUAJE DE LA TUNA",
-    "MDK DEL VALLE",
-    "MDK OBRERA",
-    "MDK MURUA",
-    "MDK VILLA DEL SOL",
-    "MDK OTAY",
+    "MDK FLORIDO", "MDK CASA BLANCA", "MDK EL DORADO", "MDK ALBA ROJA",
+    "MDK AGUAJE DE LA TUNA", "MDK DEL VALLE", "MDK OBRERA", "MDK MURUA",
+    "MDK VILLA DEL SOL", "MDK OTAY",
 ]
 
-FIRST_NAMES_M = [
-    "JESUS", "DAMIAN", "ALEX", "DIEGO", "MIGUEL", "LUIS", "CARLOS", "JUAN", "PEDRO", "GABRIEL",
-    "ADRIAN", "BRANDON", "KEVIN", "JOSE", "ANGEL", "DANIEL", "ESTEBAN", "IVAN", "OSCAR", "RAUL",
-]
+FIRST_NAMES_M = ["JESUS", "DAMIAN", "ALEX", "DIEGO", "MIGUEL", "LUIS", "CARLOS", "JUAN", "PEDRO", "GABRIEL",
+                 "ADRIAN", "BRANDON", "KEVIN", "JOSE", "ANGEL", "DANIEL", "ESTEBAN", "IVAN", "OSCAR", "RAUL"]
+FIRST_NAMES_F = ["SOFIA", "MARIA", "CAMILA", "VALENTINA", "LUCIA", "PAULA", "ANA", "LAURA", "KARLA", "GABRIELA",
+                 "ADRIANA", "MONSERRAT", "DANIELA", "ALEXANDRA", "ELIZABETH", "PATRICIA", "ANGELICA", "VERONICA", "DIANA", "LIZBETH"]
+LAST_NAMES = ["LOPEZ", "GARCIA", "MARTINEZ", "RODRIGUEZ", "HERNANDEZ", "PEREZ", "SANCHEZ", "RAMIREZ", "TORRES", "FLORES",
+              "RIVERA", "GOMEZ", "DIAZ", "REYES", "MORALES", "CRUZ", "ORTIZ", "GUTIERREZ", "CHAVEZ", "RAMOS"]
 
-FIRST_NAMES_F = [
-    "SOFIA", "MARIA", "CAMILA", "VALENTINA", "LUCIA", "PAULA", "ANA", "LAURA", "KARLA", "GABRIELA",
-    "ADRIANA", "MONSERRAT", "DANIELA", "ALEXANDRA", "ELIZABETH", "PATRICIA", "ANGELICA", "VERONICA", "DIANA", "LIZBETH",
-]
-
-LAST_NAMES = [
-    "LOPEZ", "GARCIA", "MARTINEZ", "RODRIGUEZ", "HERNANDEZ", "PEREZ", "SANCHEZ", "RAMIREZ", "TORRES", "FLORES",
-    "RIVERA", "GOMEZ", "DIAZ", "REYES", "MORALES", "CRUZ", "ORTIZ", "GUTIERREZ", "CHAVEZ", "RAMOS",
-]
-
-GRADOS = {
+# Grados por bloque (coherentes con el algoritmo)
+GRADOS_POR_BLOQUE = {
     "Adultos Grupo 1": ["1er Dan", "2do Dan", "3er Dan"],
-    "Adultos Grupo 2": ["1er Dan", "2do Dan", "3er Dan"],
+    "Adultos Grupo 2": ["Blanca", "Amarilla", "Verde", "Azul"],
     "Infantil Azul": ["7 KUP", "6 KUP", "5 KUP"],
     "Infantil Verde": ["8 KUP", "7 KUP", "6 KUP"],
     "Infantil Amarilla": ["9 KUP", "8 KUP", "7 KUP"],
@@ -67,138 +57,253 @@ GRADOS = {
     "Pre-Taekwondo": ["Pre-Taekwondo"],
 }
 
-EDAD_RANGES = {
-    "Adultos Grupo 1": (18, 30),
-    "Adultos Grupo 2": (18, 40),
-    "Infantil Azul": (6, 13),
-    "Infantil Verde": (6, 13),
-    "Infantil Amarilla": (6, 13),
-    "Infantil Blanca": (6, 13),
-    "Infantil Marrón": (6, 13),
-    "Infantil Roja": (6, 13),
-    "Infantil Negra": (6, 13),
-    "Pre-Taekwondo": (3, 5),
+# Rangos de edad realistas por categoría (usadas internamente)
+EDAD_POR_CATEGORIA = {
+    "Preescolar": (3, 5),
+    "Infantil_6_7": (6, 7),
+    "Infantil_8_9": (8, 9),
+    "Infantil_10_11": (10, 11),
+    "Infantil_12_13": (12, 13),
+    "Cadete": (14, 15),
+    "Juvenil": (16, 17),
+    "Adulto": (18, 29),
+    "Sub_Master": (30, 45),
+    "Master": (46, 60),
 }
 
-PESO_RANGES = {
-    "Adultos Grupo 1": (45, 90),
-    "Adultos Grupo 2": (50, 100),
-    "Infantil Azul": (30, 60),
-    "Infantil Verde": (28, 55),
-    "Infantil Amarilla": (25, 50),
-    "Infantil Blanca": (20, 40),
-    "Infantil Marrón": (28, 55),
-    "Infantil Roja": (25, 50),
-    "Infantil Negra": (30, 65),
-    "Pre-Taekwondo": (15, 30),
+# Parámetros para distribución normal de peso y estatura por edad (media, desviación)
+# Basado en tablas de crecimiento infantil y adulto promedio
+PESO_POR_EDAD = {
+    "Preescolar": (18, 3),      # media 18 kg, desv 3
+    "Infantil_6_7": (23, 4),
+    "Infantil_8_9": (30, 5),
+    "Infantil_10_11": (38, 6),
+    "Infantil_12_13": (48, 7),
+    "Cadete": (55, 8),
+    "Juvenil": (62, 9),
+    "Adulto": (70, 12),
+    "Sub_Master": (75, 12),
+    "Master": (75, 12),
 }
 
-ESTATURA_RANGES = {
-    "Adultos Grupo 1": (150, 195),
-    "Adultos Grupo 2": (145, 200),
-    "Infantil Azul": (130, 175),
-    "Infantil Verde": (125, 165),
-    "Infantil Amarilla": (115, 155),
-    "Infantil Blanca": (105, 140),
-    "Infantil Marrón": (120, 165),
-    "Infantil Roja": (115, 160),
-    "Infantil Negra": (130, 180),
-    "Pre-Taekwondo": (95, 125),
+ESTATURA_POR_EDAD = {
+    "Preescolar": (105, 8),     # media 105 cm, desv 8
+    "Infantil_6_7": (120, 8),
+    "Infantil_8_9": (135, 9),
+    "Infantil_10_11": (145, 10),
+    "Infantil_12_13": (155, 10),
+    "Cadete": (162, 9),
+    "Juvenil": (168, 9),
+    "Adulto": (170, 10),
+    "Sub_Master": (170, 10),
+    "Master": (168, 10),
 }
 
+# Probabilidad de generar un edge case (fuera de rango normal)
+EDGE_CASE_PROB = 0.05  # 5% de competidores serán casos límite
 
-def generate_random_competitor(block):
-    """Generate a single random competitor"""
-    sexo = random.choice(["H", "M"])
+# =============================================================================
+# FUNCIONES AUXILIARES
+# =============================================================================
+
+def get_categoria_edad(edad: int) -> str:
+    for cat, (min_e, max_e) in EDAD_POR_CATEGORIA.items():
+        if min_e <= edad <= max_e:
+            return cat
+    return "Adulto"
+
+def get_bloque_por_cinta_edad(cinta: str, edad: int) -> str:
+    """Asigna bloque según reglas del torneo (mismo que en algorithm.py)"""
+    if edad <= 5:
+        return "Pre-Taekwondo"
+    elif edad >= 18:
+        # Adultos: Grupo 1 = marrón, roja, negra Dan
+        if cinta in ["Marrón", "Roja", "1er Dan", "2do Dan", "3er Dan"]:
+            return "Adultos Grupo 1"
+        else:
+            return "Adultos Grupo 2"
+    else:
+        # Infantiles: según cinta (mapeo directo)
+        mapeo = {
+            "Azul": "Infantil Azul",
+            "Verde": "Infantil Verde",
+            "Amarilla": "Infantil Amarilla",
+            "Blanca": "Infantil Blanca",
+            "Marrón": "Infantil Marrón",
+            "Roja": "Infantil Roja",
+            "1er Poom": "Infantil Negra",
+            "1er Dan": "Infantil Negra",  # Dan infantil (raro, pero posible)
+        }
+        return mapeo.get(cinta, "Infantil Blanca")  # fallback
+
+def generar_edad_y_categoria(bloque: str) -> tuple:
+    """Genera edad coherente con el bloque y devuelve (edad, categoria_edad)"""
+    # Obtener rango de edad según bloque (usando rangos realistas)
+    rangos_bloque = {
+        "Adultos Grupo 1": (18, 35),
+        "Adultos Grupo 2": (18, 40),
+        "Infantil Azul": (6, 13),
+        "Infantil Verde": (6, 13),
+        "Infantil Amarilla": (6, 13),
+        "Infantil Blanca": (6, 13),
+        "Infantil Marrón": (6, 13),
+        "Infantil Roja": (6, 13),
+        "Infantil Negra": (6, 13),
+        "Pre-Taekwondo": (3, 5),
+    }
+    min_e, max_e = rangos_bloque.get(bloque, (18, 40))
+    edad = random.randint(min_e, max_e)
+    categoria = get_categoria_edad(edad)
+    return edad, categoria
+
+def generar_peso_estatura_realista(edad: int, categoria: str, edge_case: bool = False) -> tuple:
+    """Genera peso (kg) y estatura (cm) con distribución normal, opcionalmente edge case"""
+    # Obtener parámetros para la categoría de edad
+    media_peso, std_peso = PESO_POR_EDAD.get(categoria, (70, 12))
+    media_est, std_est = ESTATURA_POR_EDAD.get(categoria, (170, 10))
     
-    edad_min, edad_max = EDAD_RANGES[block]
-    peso_min, peso_max = PESO_RANGES[block]
-    estatura_min, estatura_max = ESTATURA_RANGES[block]
+    if edge_case:
+        # Caso extremo: peso o estatura muy por encima o debajo (percentil 95 o 5)
+        if random.random() < 0.5:
+            # Peso extremo
+            factor = random.choice([1.5, 0.6])  # +50% o -40%
+            peso = media_peso * factor
+            peso = max(10, min(150, peso))
+        else:
+            peso = max(10, min(150, random.gauss(media_peso, std_peso * 2)))
+        
+        if random.random() < 0.5:
+            # Estatura extrema
+            factor = random.choice([1.2, 0.8])
+            est = media_est * factor
+            est = max(80, min(210, est))
+        else:
+            est = max(80, min(210, random.gauss(media_est, std_est * 2)))
+    else:
+        # Caso normal: distribución gaussiana truncada a rangos realistas
+        peso = random.gauss(media_peso, std_peso)
+        peso = max(10, min(150, peso))
+        est = random.gauss(media_est, std_est)
+        est = max(80, min(210, est))
+    
+    return round(peso, 2), int(round(est))
+
+def generate_random_competidor(bloque: str, edge_case_prob: float = EDGE_CASE_PROB) -> dict:
+    """Genera un competidor con datos coherentes con el bloque"""
+    sexo = random.choice(["H", "M"])
+    # Generar edad y categoría coherente con el bloque
+    edad, categoria_edad = generar_edad_y_categoria(bloque)
+    
+    # Elegir grado según bloque
+    grado = random.choice(GRADOS_POR_BLOQUE[bloque])
+    # Normalizar nombre de cinta para que coincida con lo que espera el algoritmo
+    if grado in ["1er Dan", "2do Dan", "3er Dan"]:
+        cinta_block = "Negra (Dan)"
+    elif grado == "1er Poom":
+        cinta_block = "Negra (Poom)"
+    elif grado in ["Blanca", "Amarilla", "Verde", "Azul", "Marrón", "Roja"]:
+        cinta_block = grado
+    elif grado in ["10 KUP", "9 KUP", "8 KUP", "7 KUP", "6 KUP", "5 KUP", "4 KUP", "3 KUP", "2 KUP", "1 KUP"]:
+        # Mapear KUP a nombre de cinta (simplificado)
+        if grado in ["10 KUP"]:
+            cinta_block = "Blanca"
+        elif grado in ["9 KUP", "8 KUP"]:
+            cinta_block = "Amarilla"
+        elif grado in ["7 KUP", "6 KUP"]:
+            cinta_block = "Verde"
+        elif grado in ["5 KUP", "4 KUP"]:
+            cinta_block = "Azul"
+        elif grado in ["3 KUP", "2 KUP"]:
+            cinta_block = "Marrón"
+        else:  # 1 KUP
+            cinta_block = "Roja"
+    else:
+        cinta_block = grado  # fallback
+    
+    # Decidir si es edge case
+    edge_case = random.random() < edge_case_prob
+    peso, estatura = generar_peso_estatura_realista(edad, categoria_edad, edge_case)
     
     return {
         "Nombre": random.choice(FIRST_NAMES_M if sexo == "H" else FIRST_NAMES_F),
         "Apellido": random.choice(LAST_NAMES),
-        "Edad": random.randint(edad_min, edad_max),
+        "Edad": edad,
         "H/M": sexo,
-        "Grado": random.choice(GRADOS[block]),
-        "Peso": round(random.uniform(peso_min, peso_max), 2),
-        "Estatura": random.randint(estatura_min, estatura_max),
-        "Modalidad": random.choice(["Doble", "Sencillo"]).capitalize(),
+        "Grado": grado,
+        "Peso": peso,
+        "Estatura": estatura,
+        "Modalidad": random.choice(["Doble", "Sencillo"]),
         "Doyang": random.choice(SCHOOLS),
+        # Campos internos (no van al Excel pero útiles para debug)
+        "_categoria_edad": categoria_edad,
+        "_cinta_block": cinta_block,
+        "_bloque": bloque,
     }
 
+# =============================================================================
+# GENERACIÓN DE ARCHIVO EXCEL
+# =============================================================================
 
-def create_random_fixture(num_competitors=20, num_blocks=5):
-    """Create a random fixture Excel file and return path"""
-    # Use timestamp for unique filename
+def create_random_fixture(num_competitors=900, num_blocks=10, edge_case_prob=EDGE_CASE_PROB):
+    """Crea un archivo Excel con datos realistas y opcionalmente edge cases"""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     filename = f"random_{timestamp}.xlsx"
     filepath = Path(tempfile.gettempdir()) / filename
     
-    # Select random blocks
+    # Usar todos los bloques o una selección
     blocks_to_use = random.sample(BLOCKS, min(num_blocks, len(BLOCKS)))
     
-    # Distribute competitors among blocks
+    # Distribuir competidores equitativamente entre bloques (para tener densidad realista)
+    base_count = num_competitors // len(blocks_to_use)
+    remainder = num_competitors % len(blocks_to_use)
     competitors_per_block = []
     for i, block in enumerate(blocks_to_use):
-        count = max(2, num_competitors // num_blocks)
-        if i == 0:
-            count = num_competitors - (len(blocks_to_use) - 1) * 2
+        count = base_count + (1 if i < remainder else 0)
+        if count < 2:
+            count = 2
         competitors_per_block.append((block, count))
     
-    # Generate Excel
+    # Generar Excel
     workbook = xlsxwriter.Workbook(str(filepath))
+    headers = ["No", "Nombre", "Apellido", "Edad", "H/M", "Grado", "Peso", "Estatura", "Modalidad", "Doyang"]
     
     for block, count in competitors_per_block:
         worksheet = workbook.add_worksheet(block)
-        headers = ["No", "Nombre", "Apellido", "Edad", "H/M", "Grado", "Peso", "Estatura", "Modalidad", "Doyang"]
-        
         for col, header in enumerate(headers):
             worksheet.write(0, col, header)
-        
         for i in range(count):
-            comp = generate_random_competitor(block)
-            comp["No"] = i + 1  # Add row number
+            comp = generate_random_competidor(block, edge_case_prob)
+            comp["No"] = i + 1
             for col, header in enumerate(headers):
                 worksheet.write(i + 1, col, comp[header])
     
     workbook.close()
     return filepath
 
+# =============================================================================
+# EJECUCIÓN DE PRUEBAS
+# =============================================================================
 
-def run_random_test():
-    """Run a single random test case"""
+def run_random_test(edge_case_prob=EDGE_CASE_PROB):
+    """Ejecuta una prueba aleatoria con datos realistas"""
     filepath = None
     start_time = time.time()
     try:
-        # Generate random fixture
-        num_competitors = random.randint(100, 200)
-        num_blocks = random.randint(5, 10)
-        
-        filepath = create_random_fixture(num_competitors, num_blocks)
-        
-        # Run through parser and algorithm
+        num_competitors = random.randint(900, 1200)
+        num_blocks = random.randint(8, 10)  # usar casi todos los bloques para densidad
+        filepath = create_random_fixture(num_competitors, num_blocks, edge_case_prob)
         competitors, errors = parse_excel(str(filepath))
-        
         if not competitors:
-            return {
-                "status": "error",
-                "error": f"No competitors parsed: {errors}",
-                "type": "random",
-            }
-        
+            return {"status": "error", "error": f"No competitors parsed: {errors}", "type": "random"}
         results = generate_results(competitors)
-        
-        # Compute metrics
         gs = results.global_stats
         total = gs.total_competidores
         paired = total - gs.sin_rival_total
         pairing_rate = (paired / total * 100) if total > 0 else 0
-        
         excellent = gs.excellent_brackets
         quality_rate = (excellent / gs.total_brackets * 100) if gs.total_brackets > 0 else 0
         
-        # Convert brackets to serializable format
+        # Datos detallados (opcional, puedes mantener igual)
         brackets_data = []
         for b in results.brackets:
             brackets_data.append({
@@ -207,26 +312,11 @@ def run_random_test():
                 "area": b.area,
                 "tipo": b.tipo,
                 "score": b.score,
-                "competidores": [
-                    {
-                        "id": c.id,
-                        "numero": c.numero_competidor,
-                        "nombre": c.nombre,
-                        "apellido": c.apellido,
-                        "edad": c.edad,
-                        "categoria_edad": c.categoria_edad,
-                        "sexo": c.sexo,
-                        "peso": c.peso_kg,
-                        "estatura": c.estatura_cm,
-                        "modalidad": c.modalidad,
-                        "doyang": c.doyang,
-                        "bloque": c.bloque,
-                        "cinta_block": c.cinta_block,
-                    }
-                    for c in b.competidores
-                ]
+                "competidores": [{"id": c.id, "nombre": c.nombre, "apellido": c.apellido, "edad": c.edad,
+                                  "categoria_edad": c.categoria_edad, "sexo": c.sexo, "peso": c.peso_kg,
+                                  "estatura": c.estatura_cm, "modalidad": c.modalidad, "doyang": c.doyang,
+                                  "bloque": c.bloque, "cinta_block": c.cinta_block} for c in b.competidores]
             })
-            
             if b.score_breakdown:
                 brackets_data[-1]["score_breakdown"] = {
                     "modalidad_ok": b.score_breakdown.modalidad_ok,
@@ -240,22 +330,13 @@ def run_random_test():
                     "cinta_penalty": b.score_breakdown.cinta_penalty,
                     "total": b.score_breakdown.total,
                 }
-            
             if b.failure_reasons:
                 brackets_data[-1]["failure_reasons"] = b.failure_reasons
         
-        # Unpaired competitors
-        unpaired_data = []
-        for u in results.unpaired:
-            unpaired_data.append({
-                "nombre": u.competidor.nombre,
-                "apellido": u.competidor.apellido,
-                "bloque": u.competidor.bloque,
-                "edad": u.competidor.edad,
-                "peso": u.competidor.peso_kg,
-                "doyang": u.competidor.doyang,
-                "razon": u.razon,
-            })
+        unpaired_data = [{"nombre": u.competidor.nombre, "apellido": u.competidor.apellido,
+                          "bloque": u.competidor.bloque, "edad": u.competidor.edad,
+                          "peso": u.competidor.peso_kg, "doyang": u.competidor.doyang,
+                          "razon": u.razon} for u in results.unpaired]
         
         return {
             "name": f"random_{filepath.stem}",
@@ -273,72 +354,29 @@ def run_random_test():
             "status": "success",
             "errors": errors,
             "elapsed": round(time.time() - start_time, 3),
-            # Full data for expanded view
             "brackets": brackets_data,
             "unpaired": unpaired_data,
         }
-        
     except Exception as e:
-        return {
-            "status": "error",
-            "error": str(e),
-            "type": "random",
-            "elapsed": round(time.time() - start_time, 3),
-        }
-    
+        return {"status": "error", "error": str(e), "type": "random", "elapsed": round(time.time() - start_time, 3)}
     finally:
-        # Clean up temporary file
         if filepath and os.path.exists(filepath):
             try:
                 os.unlink(filepath)
             except:
                 pass
 
-
-# =============================================================================
-# SCORING BREAKDOWN GUIDE
-# =============================================================================
-#
-# The compatibility score (0–100 pts) is computed as:
-#
-#   Total = (PesoScore × 0.50) + (EstaturaScore × 0.25) + (EdadScore × 0.20) + DoyangBonus
-#
-# Each component score = 100 × (1 − (diff / max_val) ^ 1.8)
-#
-# | Component   | Weight | Max Pts | How to max                        |
-# |-------------|--------|---------|-----------------------------------|
-# | Peso        | 50%    | 50.00   | diff = 0 kg                       |
-# | Estatura    | 25%    | 25.00   | diff = 0 cm                       |
-# | Edad        | 20%    | 20.00   | diff = 0 years                    |
-# | DoyangBonus | flat   | +8.00   | Different doyang (+8, capped at 100)
-#
-# MAXIMUM = 100 pts (identical competitors + different doyang)
-# NOTE: Same doyang competitors cap at ~92 pts (missing the +8 bonus)
-#
-# Score thresholds:
-#   >= 70 pts -> Excelente (no approval needed)
-#   50-69 pts -> Aceptable
-#   < 50 pts  -> Bajo (requires approval in ronda 3/4)
-#
-# =============================================================================
-
-def run_random_tests(count=25):
-    """Run multiple random tests and return report"""
+def run_random_tests(count=25, edge_case_prob=EDGE_CASE_PROB):
     results = []
-    
     for i in range(count):
-        result = run_random_test()
+        result = run_random_test(edge_case_prob)
         result["name"] = f"random_{i+1}"
         results.append(result)
-    
-    # Compute summary
     successful = [r for r in results if r.get("status") == "success"]
     failed = [r for r in results if r.get("status") == "error"]
-    
     avg_pairing = sum(r.get("pairing_rate", 0) for r in successful) / len(successful) if successful else 0
     avg_quality = sum(r.get("quality_rate", 0) for r in successful) / len(successful) if successful else 0
     avg_time = sum(r.get("elapsed", 0) for r in successful) / len(successful) if successful else 0
-    
     summary = {
         "total_runs": count,
         "successful": len(successful),
@@ -347,7 +385,6 @@ def run_random_tests(count=25):
         "avg_quality_rate": round(avg_quality, 2),
         "avg_time": round(avg_time, 3),
     }
-    
     return {
         "timestamp": datetime.now().isoformat(),
         "type": "random",
@@ -356,8 +393,7 @@ def run_random_tests(count=25):
         "summary": summary,
     }
 
-
 if __name__ == "__main__":
-    # Test run
-    report = run_random_tests(5)
+    # Ejecutar 5 pruebas con 5% de edge cases
+    report = run_random_tests(5, edge_case_prob=0.05)
     print(f"Random tests: {report['summary']}")

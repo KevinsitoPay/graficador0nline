@@ -1,8 +1,10 @@
 from typing import List, Dict, Tuple, Optional, Set
 from app.models import Competidor, Bracket, BlockStats, GlobalStats, Unpaired, Results, ScoreBreakdown
 import logging
+from functools import lru_cache
 
-logging.basicConfig(level=logging.INFO)
+# Configuración de logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 BLOCK_ORDER = [
@@ -68,14 +70,13 @@ CINTA_ADYACENTE: Dict[str, List[str]] = {
     "Negra (Dan)": ["Roja"],
 }
 
+# Niveles de relajación ajustados a límites máximos: 6.5 kg y 14 cm
 RELAXATION_LEVELS: List[Dict] = [
-    {"nivel": 1, "peso": 5.0, "edad": 1.0, "estatura": 10, "mezcla_cintas": False, "score_min": 85, "color": "verde"},
-    {"nivel": 2, "peso": 5.5, "edad": 1.1, "estatura": 11, "mezcla_cintas": False, "score_min": 80, "color": "verde"},
-    {"nivel": 3, "peso": 6.0, "edad": 1.2, "estatura": 12, "mezcla_cintas": False, "score_min": 75, "color": "amarillo"},
+    {"nivel": 1, "peso": 5.0, "edad": 1.0, "estatura": 10, "mezcla_cintas": False, "score_min": 80, "color": "verde"},
+    {"nivel": 2, "peso": 5.5, "edad": 1.1, "estatura": 11, "mezcla_cintas": False, "score_min": 75, "color": "verde"},
+    {"nivel": 3, "peso": 6.0, "edad": 1.2, "estatura": 12, "mezcla_cintas": False, "score_min": 70, "color": "amarillo"},
     {"nivel": 4, "peso": 6.0, "edad": 2.0, "estatura": 12, "mezcla_cintas": True, "score_min": 70, "color": "naranja"},
-    {"nivel": 5, "peso": 7.0, "edad": 3.0, "estatura": 14, "mezcla_cintas": True, "score_min": 65, "color": "naranja"},
-    {"nivel": 6, "peso": 8.0, "edad": 5.0, "estatura": 16, "mezcla_cintas": True, "score_min": 50, "color": "rojo"},
-    {"nivel": 7, "peso": 10.0, "edad": 10.0, "estatura": 20, "mezcla_cintas": True, "score_min": 0, "color": "rojo_intenso"},
+    {"nivel": 5, "peso": 6.5, "edad": 2.5, "estatura": 14, "mezcla_cintas": True, "score_min": 60, "color": "rojo"},
 ]
 
 
@@ -97,35 +98,65 @@ def get_cintas_adyacentes(cinta: str) -> List[str]:
     return CINTA_ADYACENTE.get(cinta, [])
 
 
+def asignar_bloque_correcto(competidor: Competidor) -> None:
+    if competidor.edad >= 18:
+        cinta_norm = get_cinta_normalizada(competidor.cinta_block)
+        if cinta_norm in ["Marrón", "Roja", "Negra (Dan)"]:
+            competidor.bloque = "Adultos Grupo 1"
+        else:
+            competidor.bloque = "Adultos Grupo 2"
+    elif competidor.edad <= 5:
+        competidor.bloque = "Pre-Taekwondo"
+
+
+def bloques_adultos_compatibles(c1: Competidor, c2: Competidor) -> bool:
+    bloques_adultos = {"Adultos Grupo 1", "Adultos Grupo 2"}
+    if c1.bloque in bloques_adultos and c2.bloque in bloques_adultos:
+        return c1.bloque == c2.bloque
+    return True
+
+
 def cintas_permitidas(c1: Competidor, c2: Competidor, nivel: int) -> bool:
     if nivel <= 3:
         return c1.cinta_block == c2.cinta_block
-    
     cinta1 = get_cinta_normalizada(c1.cinta_block)
     cinta2 = get_cinta_normalizada(c2.cinta_block)
-    
     if cinta1 == cinta2:
         return True
-    
-    nivel1 = CINTA_LEVEL.get(cinta1, 0)
-    nivel2 = CINTA_LEVEL.get(cinta2, 0)
-    
     if nivel == 4:
         ady1 = get_cintas_adyacentes(cinta1)
-        return cinta2 in ady1 if nivel1 > 0 else False
-    
+        return cinta2 in ady1
+    nivel1 = CINTA_LEVEL.get(cinta1, 0)
+    nivel2 = CINTA_LEVEL.get(cinta2, 0)
     return abs(nivel1 - nivel2) <= 2
+
+
+_score_cache: Dict[Tuple[str, str, float, float, float], float] = {}
+
+def _cached_score(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[float, List[str]]:
+    key = (c1.id, c2.id, limits["peso"], limits["edad"], limits["estatura"])
+    if key in _score_cache:
+        return _score_cache[key], []
+    s, razones = score(c1, c2, limits)
+    _score_cache[key] = s
+    return s, razones
 
 
 def score(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[float, List[str]]:
     razones = []
     
-    if c1.categoria_edad != c2.categoria_edad:
-        razones.append(f"categoria_edad_diferente: {c1.categoria_edad} vs {c2.categoria_edad}")
+    # Validación estricta de sexo
+    if c1.sexo != c2.sexo:
+        msg = f"❌ INTENTO DE EMPAREJAR SEXOS DIFERENTES: {c1.nombre} ({c1.sexo}) vs {c2.nombre} ({c2.sexo})"
+        logger.error(msg)
+        raise ValueError(msg)
+    
+    if not bloques_adultos_compatibles(c1, c2):
+        razones.append("bloques_adultos_incompatibles")
         return 0.0, razones
     
-    if c1.sexo != c2.sexo:
-        razones.append(f"sexo_diferente: {c1.sexo} vs {c2.sexo}")
+    if c1.categoria_edad != c2.categoria_edad:
+        razones.append(f"categoria_edad_diferente: {c1.categoria_edad} vs {c2.categoria_edad}")
         return 0.0, razones
     
     diff_peso = abs(c1.peso_kg - c2.peso_kg)
@@ -135,11 +166,9 @@ def score(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[float, List[str
     if diff_peso > limits["peso"]:
         razones.append(f"peso_limite_excedido: {diff_peso:.2f}kg > {limits['peso']}kg")
         return 0.0, razones
-    
     if diff_edad > limits["edad"]:
         razones.append(f"edad_limite_excedido: {diff_edad} > {limits['edad']}")
         return 0.0, razones
-    
     if diff_est > limits["estatura"]:
         razones.append(f"estatura_limite_excedido: {diff_est}cm > {limits['estatura']}cm")
         return 0.0, razones
@@ -158,7 +187,6 @@ def score(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[float, List[str
     penalidad_cinta = 5 * abs(nivel_c1 - nivel_c2)
     
     total = 100 - (penalidad_peso + penalidad_edad + penalidad_estatura + penalidad_doyang + penalidad_cinta)
-    
     if total <= 0:
         razones.append("score_negativo_por_penalizaciones")
         return 0.0, razones
@@ -167,10 +195,12 @@ def score(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[float, List[str
 
 
 def puede_emparejarse(c1: Competidor, c2: Competidor, limits: Dict) -> Tuple[bool, str]:
+    if c1.sexo != c2.sexo:
+        return False, "sexo_diferente"
+    if not bloques_adultos_compatibles(c1, c2):
+        return False, "bloques_adultos_incompatibles"
     if c1.categoria_edad != c2.categoria_edad:
         return False, f"categorias_edad_diferentes: {c1.categoria_edad} != {c2.categoria_edad}"
-    if c1.sexo != c2.sexo:
-        return False, f"sexo_diferente: {c1.sexo} != {c2.sexo}"
     diff_peso = abs(c1.peso_kg - c2.peso_kg)
     diff_edad = abs(c1.edad - c2.edad)
     diff_est = abs(c1.estatura_cm - c2.estatura_cm)
@@ -188,6 +218,15 @@ def misma_modalidad_valida(modalidades: List[str]) -> bool:
         return True
     count_doble = modalidades.count("Doble")
     return count_doble != 1
+
+
+def bono_modalidad_mixta(competidores: List[Competidor]) -> float:
+    if len(competidores) != 4:
+        return 0.0
+    dobles = sum(1 for c in competidores if c.modalidad == "Doble")
+    if dobles == 2:
+        return 5.0
+    return 0.0
 
 
 def calcular_score_breakdown(c1: Competidor, c2: Competidor, limits: Dict) -> Dict:
@@ -239,6 +278,13 @@ def calcular_score_breakdown(c1: Competidor, c2: Competidor, limits: Dict) -> Di
     }
 
 
+def _validar_sexo_bracket(competidores: List[Competidor]) -> bool:
+    if not competidores:
+        return True
+    sexo = competidores[0].sexo
+    return all(c.sexo == sexo for c in competidores)
+
+
 def _crear_bracket(
     competidores: List[Competidor],
     tipo: str,
@@ -250,6 +296,10 @@ def _crear_bracket(
     ronda_origen: str,
     failure_reasons: Optional[List[str]] = None
 ) -> Bracket:
+    if not _validar_sexo_bracket(competidores):
+        sexos = set(c.sexo for c in competidores)
+        logger.error(f"🚨 BRACKET MIXTO DETECTADO en {ronda_origen}: {sexos}")
+        raise ValueError(f"Bracket con sexos mixtos en {ronda_origen}")
     return Bracket(
         id=0,
         numero=0,
@@ -292,6 +342,9 @@ def _calcular_bracket_score(competidores: List[Competidor], limits: Dict) -> Tup
             breakdowns.append(bd)
     
     avg_score = sum(scores) / len(scores) if scores else 0.0
+    bono = bono_modalidad_mixta(competidores)
+    avg_score = min(100.0, avg_score + bono)
+    
     breakdown = {
         "modalidad_ok": modalidad_ok and all(b["modalidad_ok"] for b in breakdowns),
         "edad_diff": int(sum(b["edad_diff"] for b in breakdowns) / len(breakdowns)) if breakdowns else 0,
@@ -310,7 +363,9 @@ def _calcular_bracket_score(competidores: List[Competidor], limits: Dict) -> Tup
 def preparar_competidores(competitors: List[Competidor]) -> List[Competidor]:
     for c in competitors:
         c.categoria_edad = get_categoria_edad(c.edad)
+        asignar_bloque_correcto(c)
     return sorted(competitors, key=lambda c: (
+        c.bloque,
         c.categoria_edad,
         c.sexo,
         c.cinta_block,
@@ -331,6 +386,9 @@ def _maximum_weight_matching(competitors: List[Competidor], limits: Dict, score_
             if c1.categoria_edad != c2.categoria_edad:
                 continue
             if c1.sexo != c2.sexo:
+                logger.warning(f"Intento de emparejar sexos diferentes: {c1.nombre} ({c1.sexo}) y {c2.nombre} ({c2.sexo})")
+                continue
+            if not bloques_adultos_compatibles(c1, c2):
                 continue
             if not cintas_permitidas(c1, c2, nivel):
                 continue
@@ -339,7 +397,7 @@ def _maximum_weight_matching(competitors: List[Competidor], limits: Dict, score_
                 continue
             if not misma_modalidad_valida([c1.modalidad, c2.modalidad]):
                 continue
-            s, _ = score(c1, c2, limits)
+            s, _ = _cached_score(c1, c2, limits)
             if s >= score_min:
                 edges.append((i, j, s))
     if not edges:
@@ -359,30 +417,30 @@ def _formar_brackets_3_4(competitors: List[Competidor], limits: Dict, used_ids: 
     disponibles = [c for c in competitors if c.id not in used_ids]
     if len(disponibles) < 3:
         return [], disponibles
-    
     disponibles_sorted = sorted(disponibles, key=lambda c: c.peso_kg)
     brackets = []
     used_in_this_round = set()
+    window = 10
     
-    # 1. PRIORIZAR CUARTETOS
+    # 1. CUARTETOS
     i = 0
     while i < len(disponibles_sorted) - 3:
         c1 = disponibles_sorted[i]
         mejor_cuarteto = None
         mejor_avg = 0
-        # Ventana más amplia para encontrar mejores grupos
-        for j in range(i+1, min(i+20, len(disponibles_sorted)-2)):
+        for j in range(i+1, min(i+window, len(disponibles_sorted)-2)):
             c2 = disponibles_sorted[j]
-            for k in range(j+1, min(j+20, len(disponibles_sorted)-1)):
+            for k in range(j+1, min(j+window, len(disponibles_sorted)-1)):
                 c3 = disponibles_sorted[k]
-                for l in range(k+1, min(k+20, len(disponibles_sorted))):
+                for l in range(k+1, min(k+window, len(disponibles_sorted))):
                     c4 = disponibles_sorted[l]
                     ids = {c1.id, c2.id, c3.id, c4.id}
                     if ids & used_in_this_round:
                         continue
                     if not (c1.sexo == c2.sexo == c3.sexo == c4.sexo):
                         continue
-                    # Verificar cintas permitidas entre todos los pares
+                    if not all(bloques_adultos_compatibles(a,b) for a,b in [(c1,c2),(c1,c3),(c1,c4),(c2,c3),(c2,c4),(c3,c4)]):
+                        continue
                     pares = [(c1,c2),(c1,c3),(c1,c4),(c2,c3),(c2,c4),(c3,c4)]
                     ok_cintas = all(cintas_permitidas(a,b, nivel) for a,b in pares)
                     if not ok_cintas:
@@ -393,7 +451,7 @@ def _formar_brackets_3_4(competitors: List[Competidor], limits: Dict, used_ids: 
                     modalidades = [c.modalidad for c in [c1,c2,c3,c4]]
                     if not misma_modalidad_valida(modalidades):
                         continue
-                    scores = [score(a,b, limits)[0] for a,b in pares]
+                    scores = [_cached_score(a,b, limits)[0] for a,b in pares]
                     avg = sum(scores)/len(scores)
                     if avg >= score_min and avg > mejor_avg:
                         mejor_avg = avg
@@ -407,20 +465,22 @@ def _formar_brackets_3_4(competitors: List[Competidor], limits: Dict, used_ids: 
             continue
         i += 1
     
-    # 2. LUEGO TRÍOS
+    # 2. TRÍOS
     i = 0
     while i < len(disponibles_sorted) - 2:
         c1 = disponibles_sorted[i]
         mejor_trio = None
         mejor_avg = 0
-        for j in range(i+1, min(i+20, len(disponibles_sorted)-1)):
+        for j in range(i+1, min(i+window, len(disponibles_sorted)-1)):
             c2 = disponibles_sorted[j]
-            for k in range(j+1, min(j+20, len(disponibles_sorted))):
+            for k in range(j+1, min(j+window, len(disponibles_sorted))):
                 c3 = disponibles_sorted[k]
                 ids = {c1.id, c2.id, c3.id}
                 if ids & used_in_this_round:
                     continue
                 if not (c1.sexo == c2.sexo == c3.sexo):
+                    continue
+                if not all(bloques_adultos_compatibles(a,b) for a,b in [(c1,c2),(c1,c3),(c2,c3)]):
                     continue
                 pares = [(c1,c2),(c1,c3),(c2,c3)]
                 ok_cintas = all(cintas_permitidas(a,b, nivel) for a,b in pares)
@@ -431,9 +491,9 @@ def _formar_brackets_3_4(competitors: List[Competidor], limits: Dict, used_ids: 
                     continue
                 if not misma_modalidad_valida([c1.modalidad, c2.modalidad, c3.modalidad]):
                     continue
-                s12, _ = score(c1, c2, limits)
-                s13, _ = score(c1, c3, limits)
-                s23, _ = score(c2, c3, limits)
+                s12, _ = _cached_score(c1, c2, limits)
+                s13, _ = _cached_score(c1, c3, limits)
+                s23, _ = _cached_score(c2, c3, limits)
                 avg = (s12 + s13 + s23) / 3
                 if avg >= score_min and avg > mejor_avg:
                     mejor_avg = avg
@@ -455,23 +515,21 @@ def _formar_brackets_3_4(competitors: List[Competidor], limits: Dict, used_ids: 
 def matching_global_con_relajacion(competitors: List[Competidor], nivel: int, limits: Dict, score_min: float) -> Tuple[List[Bracket], List[Competidor]]:
     if len(competitors) < 2:
         return [], competitors
-    
     used_ids: Set[str] = set()
     brackets: List[Bracket] = []
     remaining = list(competitors)
     
-    # Primero formar cuartetos y tríos (prioridad)
-    trios_cuartetos, remaining = _formar_brackets_3_4(remaining, limits, used_ids, score_min, nivel)
-    brackets.extend(trios_cuartetos)
-    used_ids.update(c.id for b in trios_cuartetos for c in b.competidores)
+    if nivel <= 3:
+        trios_cuartetos, remaining = _formar_brackets_3_4(remaining, limits, used_ids, score_min, nivel)
+        brackets.extend(trios_cuartetos)
+        used_ids.update(c.id for b in trios_cuartetos for c in b.competidores)
+        remaining = [c for c in remaining if c.id not in used_ids]
     
-    # Luego formar pares con los restantes
-    remaining = [c for c in remaining if c.id not in used_ids]
     pairs = _maximum_weight_matching(remaining, limits, score_min, nivel)
     for i, j in pairs:
         c1, c2 = remaining[i], remaining[j]
         s, bd, razones = _calcular_bracket_score([c1, c2], limits)
-        color = RELAXATION_LEVELS[nivel-1]["color"] if nivel <= len(RELAXATION_LEVELS) else "rojo_intenso"
+        color = RELAXATION_LEVELS[nivel-1]["color"] if nivel <= len(RELAXATION_LEVELS) else "rojo"
         requiere_aprob = nivel >= 3
         aprobador = None if not requiere_aprob else ("colaborador" if nivel == 3 else "coordinadora")
         brackets.append(_crear_bracket([c1, c2], f"nivel{nivel}", s, bd, color, requiere_aprob, aprobador, f"fase3_nivel{nivel}", razones))
@@ -491,7 +549,6 @@ def fase_2_5_reorganizar(brackets: List[Bracket], unpaired: List[Competidor]) ->
         brackets_4 = [b for b in brackets if len(b.competidores) == 4 and _es_homogeneo(b.competidores)]
         if not brackets_4:
             break
-        
         for u in unpaired[:]:
             best_option = None
             best_min_score = 0
@@ -499,9 +556,13 @@ def fase_2_5_reorganizar(brackets: List[Bracket], unpaired: List[Competidor]) ->
                 comps = b4.competidores
                 for i in range(4):
                     for j in range(i+1, 4):
+                        if not (comps[i].sexo == comps[j].sexo == u.sexo):
+                            continue
                         trio = [comps[i], comps[j], u]
                         resto = [comps[k] for k in range(4) if k not in (i,j)]
                         if len(resto) != 2:
+                            continue
+                        if resto[0].sexo != resto[1].sexo:
                             continue
                         if not _cumple_limites(trio, limits) or not _cumple_limites(resto, limits):
                             continue
@@ -560,12 +621,27 @@ def _score_promedio_bracket(competidores: List[Competidor], limits: Dict) -> flo
     scores = []
     for i in range(len(competidores)):
         for j in range(i+1, len(competidores)):
-            s, _ = score(competidores[i], competidores[j], limits)
+            s, _ = _cached_score(competidores[i], competidores[j], limits)
             scores.append(s)
     return sum(scores)/len(scores) if scores else 0.0
 
 
+def _limpiar_brackets_mixtos(brackets: List[Bracket], unpaired: List[Competidor]) -> Tuple[List[Bracket], List[Competidor]]:
+    nuevos_brackets = []
+    nuevos_unpaired = list(unpaired)
+    for b in brackets:
+        if _validar_sexo_bracket(b.competidores):
+            nuevos_brackets.append(b)
+        else:
+            logger.warning(f"Bracket {b.id} con sexos mixtos, desarmando")
+            nuevos_unpaired.extend(b.competidores)
+    return nuevos_brackets, nuevos_unpaired
+
+
 def generar_brackets(competitors: List[Competidor]) -> Results:
+    global _score_cache
+    _score_cache.clear()
+    
     if not competitors:
         return Results(
             global_stats=GlobalStats(
@@ -585,22 +661,25 @@ def generar_brackets(competitors: List[Competidor]) -> Results:
     for c in competitors:
         cinta = get_cinta_normalizada(c.cinta_block)
         if cinta in ["Negra (Poom)", "Negra (Dan)"]:
-            key = (c.categoria_edad, c.sexo, cinta, c.grado_raw)
+            key = (c.bloque, c.categoria_edad, c.sexo, cinta, c.grado_raw)
         else:
-            key = (c.categoria_edad, c.sexo, cinta)
+            key = (c.bloque, c.categoria_edad, c.sexo, cinta)
         grupos_iniciales.setdefault(key, []).append(c)
     
     todos_brackets: List[Bracket] = []
     no_emparejados: List[Competidor] = []
     
+    # Nivel 1
     for key, grupo in grupos_iniciales.items():
-        brackets_n1, rest_n1 = matching_global_con_relajacion(grupo, 1, {"peso":5.0, "edad":1.0, "estatura":10}, 85)
+        brackets_n1, rest_n1 = matching_global_con_relajacion(grupo, 1, {"peso":5.0, "edad":1.0, "estatura":10}, 80)
         todos_brackets.extend(brackets_n1)
         no_emparejados.extend(rest_n1)
     
+    # Fase 2.5
     todos_brackets, no_emparejados = fase_2_5_reorganizar(todos_brackets, no_emparejados)
     
-    for nivel in range(2, 8):
+    # Niveles 2 a 5 (relajación progresiva hasta máximos 6.5kg y 14cm)
+    for nivel in range(2, 6):  # solo niveles 2,3,4,5
         if not no_emparejados:
             break
         config = RELAXATION_LEVELS[nivel-1]
@@ -610,7 +689,7 @@ def generar_brackets(competitors: List[Competidor]) -> Results:
         
         grupos_relajados: Dict[Tuple, List[Competidor]] = {}
         for c in no_emparejados:
-            key = (c.categoria_edad, c.sexo)
+            key = (c.bloque, c.categoria_edad, c.sexo)
             grupos_relajados.setdefault(key, []).append(c)
         
         nuevos_brackets = []
@@ -636,28 +715,11 @@ def generar_brackets(competitors: List[Competidor]) -> Results:
         todos_brackets.extend(nuevos_brackets)
         no_emparejados = nuevos_no_emparejados
     
-    # Último recurso (nivel 8)
-    if no_emparejados:
-        limits_extremos = {"peso": 15.0, "edad": 20.0, "estatura": 30}
-        grupos_extremos: Dict[Tuple, List[Competidor]] = {}
-        for c in no_emparejados:
-            key = (c.categoria_edad, c.sexo)
-            grupos_extremos.setdefault(key, []).append(c)
-        
-        nuevos_brackets = []
-        nuevos_no_emparejados = []
-        for key, grupo in grupos_extremos.items():
-            if len(grupo) < 2:
-                nuevos_no_emparejados.extend(grupo)
-                continue
-            b, r = matching_global_con_relajacion(grupo, 8, limits_extremos, 0)
-            nuevos_brackets.extend(b)
-            nuevos_no_emparejados.extend(r)
-        
-        todos_brackets.extend(nuevos_brackets)
-        no_emparejados = nuevos_no_emparejados
-    
+    # No hay último recurso: los que quedan se reportan como sin rival (revisión manual)
     sin_rival_final = [Unpaired(competidor=c, razon="No compatible partner after all relaxation levels") for c in no_emparejados]
+    
+    # Limpieza final de brackets mixtos (por si acaso)
+    todos_brackets, _ = _limpiar_brackets_mixtos(todos_brackets, [])
     
     asignar_numeracion(todos_brackets, competitors)
     
@@ -676,15 +738,13 @@ def generar_brackets(competitors: List[Competidor]) -> Results:
     brackets_verde = sum(1 for b in todos_brackets if b.nivel_aprobacion == "verde")
     brackets_amarillo = sum(1 for b in todos_brackets if b.nivel_aprobacion == "amarillo")
     brackets_naranja = sum(1 for b in todos_brackets if b.nivel_aprobacion == "naranja")
-    brackets_rojo = sum(1 for b in todos_brackets if b.nivel_aprobacion in ["rojo", "rojo_intenso"])
+    brackets_rojo = sum(1 for b in todos_brackets if b.nivel_aprobacion == "rojo")
     
     etapa2_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel1")
     nivel2_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel2")
     nivel3_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel3")
     nivel4_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel4")
     nivel5_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel5")
-    nivel6_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel6")
-    nivel7_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase3_nivel7")
     fase2_5_count = sum(1 for b in todos_brackets if b.ronda_origen == "fase2_5")
     
     avg_size = sum(len(b.competidores) for b in todos_brackets) / total_brackets if total_brackets > 0 else 0.0
@@ -710,8 +770,8 @@ def generar_brackets(competitors: List[Competidor]) -> Results:
         ronda4_count=nivel4_count,
         fase2_5_count=fase2_5_count,
         nivel5_count=nivel5_count,
-        nivel6_count=nivel6_count,
-        nivel7_count=nivel7_count,
+        nivel6_count=0,
+        nivel7_count=0,
         avg_score=round(avg_score, 2),
         emparejamiento_pct=round(emparejamiento_pct, 1),
     )
@@ -763,12 +823,10 @@ def asignar_numeracion(brackets: List[Bracket], todos_competidores: List[Competi
         if c.bloque not in por_bloque:
             por_bloque[c.bloque] = []
         por_bloque[c.bloque].append(c)
-    
     for bloque, comps in por_bloque.items():
         prefijo = BLOCK_PREFIXES.get(bloque, "XX")
         for idx, c in enumerate(sorted(comps, key=lambda x: (x.edad, x.peso_kg)), start=1):
             c.numero_competidor = f"{prefijo} {idx}"
-    
     graf_num = 1
     for bloque in BLOCK_ORDER:
         brackets_bloque = [b for b in brackets if b.competidores[0].bloque == bloque]
