@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import UnpairedManager from './UnpairedManager';
 
 export default function ResultsPanel({ initialResults = null }) {
   const [results, setResults] = useState(initialResults);
@@ -39,6 +40,12 @@ export default function ResultsPanel({ initialResults = null }) {
           onClick={() => setActiveTab('unpaired')}
         >
           Sin Rival ({unpaired.length})
+        </button>
+        <button 
+          className={activeTab === 'manage' ? 'active' : ''} 
+          onClick={() => setActiveTab('manage')}
+        >
+          Gestión
         </button>
       </div>
 
@@ -235,6 +242,10 @@ export default function ResultsPanel({ initialResults = null }) {
             </table>
           )}
         </div>
+      )}
+
+      {activeTab === 'manage' && (
+        <UnpairedManager initialData={{ brackets, unpaired }} />
       )}
     </div>
   );

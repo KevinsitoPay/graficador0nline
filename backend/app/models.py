@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, Dict
 from enum import Enum
 
 class Sexo(str, Enum):
@@ -119,3 +119,47 @@ class UploadResponse(BaseModel):
     success: bool
     message: str
     results: Optional[Results] = None
+
+
+class Recomendacion(BaseModel):
+    id: str
+    tipo: str
+    competidor: "Competidor"
+    bracket_origen_id: Optional[int] = None
+    bracket_destino_id: Optional[int] = None
+    competidores_propuestos: List["Competidor"]
+    score_esperado: float
+    justificacion: str
+    limites_usados: Dict
+    nivel_relajacion: int
+
+
+class ActionRecord(BaseModel):
+    id: str
+    timestamp: str
+    tipo: str
+    competidor_id: str
+    bracket_origen_id: Optional[int] = None
+    bracket_destino_id: Optional[int] = None
+    competidores_ids: List[str]
+    usuario: str = "colaborador"
+    justificacion: Optional[str] = None
+    reversed: bool = False
+
+
+class ApplyRecommendationRequest(BaseModel):
+    recomendacion_id: str
+    competidor_id: str
+    bracket_id: int
+
+
+class ManualAssignRequest(BaseModel):
+    competidor_id: str
+    bracket_id: int
+    usuario: str = "colaborador"
+
+
+class FinalizeRequest(BaseModel):
+    brackets: List["Bracket"]
+    unpaired: List["Unpaired"]
+    competencias: List["Competidor"]

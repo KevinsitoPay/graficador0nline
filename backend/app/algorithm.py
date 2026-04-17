@@ -322,6 +322,23 @@ def _calcular_bracket_score(competidores: List[Competidor], limits: Dict) -> Tup
     
     modalidades = [c.modalidad for c in competidores]
     modalidad_ok = misma_modalidad_valida(modalidades)
+    
+    # VALIDACIÓN CRÍTICA: Si la modalidad es inválida (exactamente un Doble), el score es 0
+    if not modalidad_ok:
+        breakdown = {
+            "modalidad_ok": False,
+            "edad_diff": 0,
+            "edad_score": 0,
+            "peso_diff": 0,
+            "peso_score": 0,
+            "estatura_diff": 0,
+            "estatura_score": 0,
+            "doyang_penalty": 0,
+            "cinta_penalty": 0,
+            "total": 0
+        }
+        return 0.0, breakdown, ["modalidad_invalida: exactamente un competidor Doble"]
+    
     all_reasons = []
     
     if len(competidores) == 2:

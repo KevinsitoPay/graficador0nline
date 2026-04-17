@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 import tempfile
 import os
 import json
@@ -8,8 +8,9 @@ from pathlib import Path
 from datetime import datetime
 
 from app.parser import parse_excel
-from app.algorithm import generate_results
+from app.algorithm import generate_results, asignar_numeracion
 from app.models import UploadResponse, Results
+from app.recommendations import recommendation_manager
 
 app = FastAPI(title="Graficador - Taekwondo Bracket System")
 
@@ -196,3 +197,161 @@ def generate_llm_report(count: int = 25):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+@app.post("/api/recommendations/generate")
+def generate_recommendations(request: dict):
+    """Generate recommendations for unpaired competitors"""
+    from app.models import Competidor, Bracket, Unpaired
+    
+    try:
+        brackets_data = request.get("brackets", [])
+        unpaired_data = request.get("unpaired", [])
+        
+        brackets = [Bracket(**b) for b in brackets_data]
+        unpaired = [Unpaired(**u) for u in unpaired_data]
+        unpaired_comps = [u.competidor for u in unpaired]
+        
+        recomendaciones = recommendation_manager.generar_recomendaciones(unpaired_comps, brackets)
+        
+        return {
+            "success": True,
+            "recommendations": [r.dict() for r in recomendaciones]
+        }
+    except Exception as e:
+        return {"success": False, "message": str(e)}
+
+
+@app.post("/api/recommendations/apply")
+def apply_recommendation(request: dict):
+    """Apply a recommendation"""
+    try:
+        recomendacion_id = request.get("recomendacion_id")
+        brackets_data = request.get("brackets", [])
+        unpaired_data = request.get("unpaired", [])
+        usuario = request.get("usuario", "colaborador")
+        
+        brackets = [Bracket(**b) for b in brackets_data]
+        unpaired = [Unpaired(**u) for u in unpaired_data]
+        unpaired_comps = [u.competidor for u in unpaired]
+        
+        recomendaciones = recommendation_manager.generar_recomendaciones(unpaired_comps, brackets)
+        
+        rec = next((r for r in recomendaciones if r.id == recomendacion_id), None)
+        if not rec:
+            return {"success": False, "message": "Recomendación no encontrada"}
+        
+        brackets, unpaired = recommendation_manager.aplicar_recomendacion(
+            rec, brackets, unpaired, usuario
+        )
+        
+        return {
+            "success": True,
+            "brackets": [b.dict() for b in brackets],
+            "unpaired": [{"competidor": u.dict(), "razon": "Manual"} for u in unpaired]
+        }
+    except Exception as e:
+        return {"success": False, "message": str(e)}
+
+
+@app.post("/api/manual_assign")
+def manual_assign(request: dict):
+    """Manual assignment of competitor to bracket"""
+    try:
+        competidor_data = request.get("competidor")
+        bracket_id = request.get("bracket_id")
+        brackets_data = request.get("brackets", [])
+        unpaired_data = request.get("unpaired", [])
+        usuario = request.get("usuario", "colaborador")
+        
+        competidor = Competidor(**competidor_data)
+        brackets = [Bracket(**b) for b in brackets_data]
+        unpaired = [Unpaired(**u) for u in unpaired_data]
+        unpaired_comps = [u.competidor for u in unpaired]
+        
+        bracket = next((b for b in brackets if b.id == bracket_id), None)
+        if not bracket:
+            return {"success": False, "message": "Bracket no encontrado"}
+        
+        brackets, unpaired = recommendation_manager.asignacion_manual(
+            competidor, bracket, brackets, unpaired_comps, usuario
+        )
+        
+        return {
+            "success": True,
+            "brackets": [b.dict() for b in brackets],
+            "unpaired": [{"competidor": u.dict(), "razon": "Manual"} for u in unpaired]
+        }
+    except Exception as e:
+        return {"success": False, "message": str(e)}
+
+
+@app.post("/api/undo")
+def undo_last_action():
+    """Undo last action"""
+    action = recommendation_manager.deshacer_ultima()
+    if action:
+        return {"success": True, "action": action.dict()}
+    return {"success": False, "message": "No hay acciones para deshacer"}
+
+
+@app.get("/api/history")
+def get_history():
+    """Get action history"""
+    history = recommendation_manager.obtener_historial()
+    return {"success": True, "history": [h.dict() for h in history]}
+
+
+@app.post("/api/finalize")
+def finalize_pairing(request: dict):
+    """Finalize pairing and export"""
+    try:
+        brackets_data = request.get("brackets", [])
+        unpaired_data = request.get("unpaired", [])
+        competidores_data = request.get("competidores", [])
+        
+        brackets = [Bracket(**b) for b in brackets_data]
+        competidores = [Competidor(**c) for c in competidores_data]
+        
+        asignar_numeracion(brackets, competidores)
+        
+        report_dir = Path("C:/Users/USUARIO/Desktop/sitiosLocales/Graficador/backend/exports")
+        report_dir.mkdir(exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        json_path = report_dir / f"final_results_{timestamp}.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "brackets": [b.dict() for b in brackets],
+                "unpaired": [u.dict() for u in unpaired_data],
+                "timestamp": timestamp
+            }, f, indent=2, ensure_ascii=False)
+        
+        return {
+            "success": True,
+            "brackets": [b.dict() for b in brackets],
+            "export_file": str(json_path)
+        }
+    except Exception as e:
+        return {"success": False, "message": str(e)}
+
+
+@app.get("/api/export/pdf")
+def export_pdf(request: dict):
+    """Export results to PDF"""
+    try:
+        brackets_data = request.get("brackets", [])
+        unpaired_data = request.get("unpaired", [])
+        
+        from app.export_pdf import generar_pdf
+        
+        report_dir = Path("C:/Users/USUARIO/Desktop/sitiosLocales/Graficador/backend/exports")
+        report_dir.mkdir(exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        pdf_path = report_dir / f"brackets_{timestamp}.pdf"
+        
+        generar_pdf(brackets_data, unpaired_data, str(pdf_path))
+        
+        return {"success": True, "pdf_file": str(pdf_path)}
+    except Exception as e:
+        return {"success": False, "message": str(e)}
