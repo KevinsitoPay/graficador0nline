@@ -8,6 +8,22 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 
+CINTA_ORDER = [
+    "Pre-Taekwondo", "Blanca", "Amarilla", "Verde", "Azul",
+    "Marrón", "Roja", "Negra (Poom)", "Negra (Dan)"
+]
+
+
+def cinta_diff(c1: str, c2: str) -> int:
+    """Calcula la diferencia de cinta (-1, 0, 1, 2, etc.)"""
+    try:
+        i1 = CINTA_ORDER.index(c1)
+        i2 = CINTA_ORDER.index(c2)
+        return abs(i1 - i2)
+    except (ValueError, IndexError):
+        return -1
+
+
 def analyze_failure_reasons(bracket: dict) -> List[str]:
     """Analizar razones por las cuales un bracket tiene baja calidad"""
     reasons = []
@@ -48,6 +64,82 @@ def analyze_unpaired_reasons(unpaired: List[dict]) -> Dict[str, int]:
             reasons["sin_rival"] += 1
     
     return dict(reasons)
+
+
+def analyze_cinta_distribution(tests: List[dict]) -> dict:
+    """Analizar distribución de mezcla de cintas en brackets"""
+    misma_cinta = 0
+    adyacente = 0
+    diferencia_2 = 0
+    mayor = 0
+    total = 0
+
+    for test in tests:
+        for bracket in test.get("brackets", []):
+            comps = bracket.get("competidores", [])
+            if len(comps) < 2:
+                continue
+            total += 1
+            cintas = [c.get("cinta_block", "") for c in comps]
+            max_diff = 0
+            for i in range(len(cintas)):
+                for j in range(i + 1, len(cintas)):
+                    d = cinta_diff(cintas[i], cintas[j])
+                    if d >= 0:
+                        max_diff = max(max_diff, d)
+            if max_diff == 0:
+                misma_cinta += 1
+            elif max_diff == 1:
+                adyacente += 1
+            elif max_diff == 2:
+                diferencia_2 += 1
+            else:
+                mayor += 1
+
+    return {
+        "total": total,
+        "misma_cinta": misma_cinta,
+        "misma_cinta_pct": round(misma_cinta / total * 100, 1) if total else 0,
+        "adyacente": adyacente,
+        "adyacente_pct": round(adyacente / total * 100, 1) if total else 0,
+        "diferencia_2": diferencia_2,
+        "diferencia_2_pct": round(diferencia_2 / total * 100, 1) if total else 0,
+        "mayor": mayor,
+        "mayor_pct": round(mayor / total * 100, 1) if total else 0,
+    }
+
+
+def analyze_score_by_nivel(tests: List[dict]) -> dict:
+    """Score promedio por nivel de relajación"""
+    niveles = {
+        "etapa2": [], "ronda1": [], "ronda2": [], "ronda3": [],
+        "ronda4": [], "nivel5": [], "nivel6": [], "nivel7": [],
+        "post_proc": []
+    }
+
+    for test in tests:
+        for bracket in test.get("brackets", []):
+            ronda = bracket.get("ronda_origen", "etapa2")
+            if ronda in niveles:
+                niveles[ronda].append(bracket.get("score", 0))
+            elif "post" in ronda.lower():
+                niveles["post_proc"].append(bracket.get("score", 0))
+            else:
+                niveles["ronda4"].append(bracket.get("score", 0))
+
+    result = {}
+    for nivel, scores in niveles.items():
+        if scores:
+            result[nivel] = {
+                "count": len(scores),
+                "avg_score": round(sum(scores) / len(scores), 2),
+                "min": min(scores),
+                "max": max(scores)
+            }
+        else:
+            result[nivel] = {"count": 0, "avg_score": 0, "min": 0, "max": 0}
+
+    return result
 
 
 def calculate_percentile(data: List[float], p: float) -> float:
@@ -165,45 +257,170 @@ def extract_low_quality_brackets(tests: List[dict], threshold: float = 30.0) -> 
 
 
 def analyze_unpaired(tests: List[dict]) -> dict:
-    """Analizar competidores no emparejados"""
+    """Analizar competidores no emparejados con razones detalladas"""
     by_bloque = {}
     by_reason = Counter()
+    by_cinta = Counter()
     profiles = []
     total_unpaired = 0
-    
+    failure_details = []
+
     for test in tests:
         for u in test.get("unpaired", []):
             total_unpaired += 1
             bloque = u.get("bloque", "Unknown")
+            cinta = u.get("cinta_block", "Unknown")
             reason = u.get("razon", "Unknown")
-            
+            nombre = u.get("nombre", "")
+            apellido = u.get("apellido", "")
+
             if bloque not in by_bloque:
                 by_bloque[bloque] = {"count": 0, "competitors": []}
             by_bloque[bloque]["count"] += 1
             by_bloque[bloque]["competitors"].append({
-                "nombre": u.get("nombre", ""),
-                "apellido": u.get("apellido", ""),
+                "nombre": nombre,
+                "apellido": apellido,
                 "edad": u.get("edad", 0),
                 "peso": u.get("peso", 0),
+                "estatura": u.get("estatura", 0),
+                "cinta_block": cinta,
                 "doyang": u.get("doyang", ""),
                 "razon": reason
             })
-            
+
             by_reason[reason] += 1
-            
+            by_cinta[cinta] += 1
+
+            razon_detallada = []
+            if "compatible" in reason.lower():
+                razon_detallada.append("sin_rival_en_bloque")
+            else:
+                if bloques_sin_rival_posibles(u, test):
+                    razon_detallada.append("competidores_incompatibles_en_peso")
+                else:
+                    razon_detallada.append("ninguno_cumple_restricciones")
+
+            failure_details.append({
+                "nombre": nombre,
+                "apellido": apellido,
+                "bloque": bloque,
+                "cinta_block": cinta,
+                "edad": u.get("edad", 0),
+                "peso": u.get("peso", 0),
+                "estatura": u.get("estatura", 0),
+                "doyang": u.get("doyang", ""),
+                "razon": reason,
+                "razones_detalladas": razon_detallada
+            })
+
             profiles.append({
                 "bloque": bloque,
                 "edad": u.get("edad", 0),
                 "peso": u.get("peso", 0),
                 "razon": reason
             })
-    
+
     return {
         "total": total_unpaired,
         "by_bloque": by_bloque,
         "by_reason": dict(by_reason.most_common(10)),
-        "profiles": profiles[:20]
+        "by_cinta": dict(by_cinta.most_common(10)),
+        "profiles": profiles[:20],
+        "failure_details": failure_details[:30]
     }
+
+
+def bloques_sin_rival_posibles(unpaired: dict, test: dict) -> list:
+    """Determinar qué bloques podrían tener al competidor sin rival"""
+    resultados = []
+    for b in test.get("brackets", []):
+        comps = b.get("competidores", [])
+        if not comps:
+            continue
+        if comps[0].get("bloque") != unpaired.get("bloque"):
+            continue
+        diffs = []
+        for c in comps:
+            peso_diff = abs(c.get("peso", 0) - unpaired.get("peso", 0))
+            if peso_diff > 7.5:
+                diffs.append(f"peso: {round(peso_diff, 1)}kg > 7.5kg")
+            edad_diff = abs(c.get("edad", 0) - unpaired.get("edad", 0))
+            if edad_diff > 3:
+                diffs.append(f"edad: {edad_diff} anos > 3")
+        if diffs:
+            resultados.append({" bracket_id": b.get("numero"), "razones": diffs})
+    return resultados
+
+
+def extract_unpaired_detailed(tests: List[dict]) -> List[dict]:
+    """Extraer detalle completo de competidores sin rival"""
+    resultados = []
+
+    for test in tests:
+        test_name = test.get("name", "unknown")
+        for u in test.get("unpaired", []):
+            nombre = u.get("nombre", "")
+            apellido = u.get("apellido", "")
+            bloque = u.get("bloque", "Unknown")
+            cinta = u.get("cinta_block", "Unknown")
+            edad = u.get("edad", 0)
+            peso = u.get("peso", 0)
+            estatura = u.get("estatura", 0)
+            doyang = u.get("doyang", "")
+            reason = u.get("razon", "Unknown")
+
+            intentos = []
+            for b in test.get("brackets", []):
+                comps = b.get("competidores", [])
+                if not comps:
+                    continue
+                if comps[0].get("bloque") != bloque:
+                    continue
+                for c in comps:
+                    razones = []
+                    if abs(c.get("peso", 0) - peso) > 7.5:
+                        razones.append(f"peso_abs: {round(abs(c.get('peso', 0) - peso), 1)}kg > 7.5kg")
+                    if cinta != c.get("cinta_block", ""):
+                        razones.append(f"cintas: {cinta} vs {c.get('cinta_block', '')}")
+                    if abs(c.get("edad", 0) - edad) > 3:
+                        razones.append(f"edad_cat: {edad} vs {c.get('edad', 0)}")
+                    if razones:
+                        intentos.append({
+                            "competidor": f"{c.get('nombre', '')} {c.get('apellido', '')}",
+                            "razones": razones,
+                            "bracket_id": b.get("numero")
+                        })
+
+            razones_fallo = []
+            if "compatible" in reason.lower():
+                razones_fallo.append("no_hay_rival_compatible_en_bloque")
+            else:
+                if "peso" in reason.lower():
+                    razones_fallo.append("restriccion_peso_mayor")
+                if "edad" in reason.lower():
+                    razones_fallo.append("restriccion_edad_mayor")
+                if "cinta" in reason.lower():
+                    razones_fallo.append("restriccion_cinta_no_cumple")
+
+            ultimo_intento = intentos[0] if intentos else None
+
+            resultados.append({
+                "test": test_name,
+                "nombre": nombre,
+                "apellido": apellido,
+                "bloque": bloque,
+                "cinta_block": cinta,
+                "edad": edad,
+                "peso": peso,
+                "estatura": estatura,
+                "doyang": doyang,
+                "razon": reason,
+                "razones_fallo": razones_fallo,
+                "ultimo_intento": ultimo_intento,
+                "intentos": intentos[:5]
+            })
+
+    return resultados
 
 
 def analyze_by_category(tests: List[dict]) -> dict:
@@ -552,10 +769,68 @@ def generate_llm_markdown(report: dict) -> str:
     for reason, count in sorted(unpaired_analysis["by_reason"].items(), key=lambda x: x[1], reverse=True):
         lines.append(f"| {reason} | {count} |")
     lines.append("")
-    
+
+    cinta_data = unpaired_analysis.get("by_cinta", {})
+    if cinta_data:
+        lines.append("### Por Cinta (sin rival)")
+        lines.append("")
+        lines.append("| Cinta | Sin Rival |")
+        lines.append("|--------|----------|")
+        for cinta, count in cinta_data.items():
+            lines.append(f"| {cinta} | {count} |")
+        lines.append("")
+
+    unpaired_detailed = extract_unpaired_detailed(tests)
+    if unpaired_detailed:
+        lines.append("### Competidores Sin Rival - Detalle")
+        lines.append("")
+        for i, u in enumerate(unpaired_detailed[:15], 1):
+            lines.append(f"**{i}. {u['nombre']} {u['apellido']}** ({u['bloque']}, {u['cinta_block']})")
+            lines.append(f"- Edad: {u['edad']}, Peso: {u['peso']} kg, Estatura: {u['estatura']} cm")
+            lines.append(f"- **Razón:** {u['razon']}")
+            if u["razones_fallo"]:
+                lines.append(f"- **Razones de fallo:** {', '.join(u['razones_fallo'])}")
+            if u["ultimo_intento"]:
+                lines.append(f"- **Último intento con:** {u['ultimo_intento']['competidor']} (razones: {', '.join(u['ultimo_intento']['razones'])})")
+            lines.append("")
+
     lines.append("---")
     lines.append("")
-    
+
+    # 5B. DISTRIBUCION DE MEZCLA DE CINTAS
+    lines.append("## 5B. Distribucion de Mezcla de Cintas")
+    lines.append("")
+
+    cinta_dist = analyze_cinta_distribution(tests)
+    lines.append(f"**Total brackets analizados:** {cinta_dist['total']}")
+    lines.append("")
+    lines.append("| Tipo de Mezcla | Cantidad | Porcentaje |")
+    lines.append("|---------------|----------|------------|")
+    lines.append(f"| Misma cinta exacta | {cinta_dist['misma_cinta']} | {cinta_dist['misma_cinta_pct']}% |")
+    lines.append(f"| Cintas adyacentes (diff 1) | {cinta_dist['adyacente']} | {cinta_dist['adyacente_pct']}% |")
+    lines.append(f"| Diferencia 2 | {cinta_dist['diferencia_2']} | {cinta_dist['diferencia_2_pct']}% |")
+    lines.append(f"| Mayor diferencia | {cinta_dist['mayor']} | {cinta_dist['mayor_pct']}% |")
+    lines.append("")
+
+    lines.append("---")
+    lines.append("")
+
+    # 5C. SCORE PROMEDIO POR NIVEL DE RELAJACION
+    lines.append("## 5C. Score Promedio por Nivel de Relajacion")
+    lines.append("")
+
+    score_by_nivel = analyze_score_by_nivel(tests)
+    lines.append("| Nivel | Brackets | Score Avg | Min | Max |")
+    lines.append("|-------|----------|-----------|-----|-----|")
+    for nivel in ["etapa2", "ronda1", "ronda2", "ronda3", "ronda4", "nivel5", "nivel6", "nivel7", "post_proc"]:
+        data = score_by_nivel.get(nivel, {})
+        nombre_nivel = {"etapa2": "Etapa 2", "ronda1": "Ronda 1", "ronda2": "Ronda 2", "ronda3": "Ronda 3", "ronda4": "Ronda 4", "nivel5": "Nivel 5", "nivel6": "Nivel 6", "nivel7": "Nivel 7", "post_proc": "Post-Procesamiento"}.get(nivel, nivel)
+        lines.append(f"| {nombre_nivel} | {data.get('count', 0)} | {data.get('avg_score', 0)} | {data.get('min', 0)} | {data.get('max', 0)} |")
+    lines.append("")
+
+    lines.append("---")
+    lines.append("")
+
     # 6. METRICAS POR COMPONENTE
     lines.append("## 6. Metricas por Componente (sobre 100 pts)")
     lines.append("")

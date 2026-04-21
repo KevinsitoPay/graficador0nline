@@ -5,12 +5,12 @@ import uuid
 
 from app.models import Competidor, Bracket, ScoreBreakdown
 from app.algorithm import (
-    score, puede_emparejarse, _calcular_bracket_score,
-    CINTA_ADYACENTE, RELAXATION_LEVELS, get_cinta_normalizada,
-    _bloques_adultos_compatibles, _modalidad_grupo_ok
+    score, puede_emparejarse, calcular_bracket_score,
+    CINTA_ADYACENTE, RELAX_LEVELS, get_cinta_normalizada,
+    bloques_adultos_compatibles, modalidad_grupo_ok
 )
 
-RELAXATION_LEVELS_EXTENDED = RELAXATION_LEVELS + [
+RELAX_LEVELS_EXTENDED = RELAX_LEVELS + [
     {"nivel": 6, "peso": 7.0, "edad": 3.0, "estatura": 16, "mezcla_cintas": True, "score_min": 50, "color": "rojo_oscuro"},
 ]
 
@@ -74,7 +74,7 @@ class RecomendacionManager:
         limites_base = {"peso": 6.5, "edad": 2.5, "estatura": 14}
         
         for nivel in range(1, 7):
-            config = RELAXATION_LEVELS_EXTENDED[nivel - 1]
+            config = RELAX_LEVELS_EXTENDED[nivel - 1]
             limits = {"peso": config["peso"], "edad": config["edad"], "estatura": config["estatura"]}
             
             for bracket in brackets:
@@ -94,7 +94,7 @@ class RecomendacionManager:
                 if not _validar_grupo(nuevos_comps, limits):
                     continue
                 
-                s, bd, _ = _calcular_bracket_score(nuevos_comps, limits)
+                s, bd, _ = calcular_bracket_score(nuevos_comps, limits)
                 
                 if s >= config["score_min"]:
                     recomendaciones.append(Recomendacion(
@@ -121,7 +121,7 @@ class RecomendacionManager:
         recomendaciones = []
         
         for nivel in range(1, 7):
-            config = RELAXATION_LEVELS_EXTENDED[nivel - 1]
+            config = RELAX_LEVELS_EXTENDED[nivel - 1]
             limits = {"peso": config["peso"], "edad": config["edad"], "estatura": config["estatura"]}
             
             brackets_4 = [b for b in brackets if len(b.competidores) == 4]
@@ -150,8 +150,8 @@ class RecomendacionManager:
                         if not _validar_grupo(grupo1, limits) or not _validar_grupo(grupo2, limits):
                             continue
                         
-                        s1, _, _ = _calcular_bracket_score(grupo1, limits)
-                        s2, _, _ = _calcular_bracket_score(grupo2, limits)
+                        s1, _, _ = calcular_bracket_score(grupo1, limits)
+                        s2, _, _ = calcular_bracket_score(grupo2, limits)
                         
                         if s1 >= config["score_min"] and s2 >= config["score_min"]:
                             min_score = min(s1, s2)
@@ -185,7 +185,7 @@ class RecomendacionManager:
             return recomendaciones
         
         for nivel in range(1, 7):
-            config = RELAXATION_LEVELS_EXTENDED[nivel - 1]
+            config = RELAX_LEVELS_EXTENDED[nivel - 1]
             limits = {"peso": config["peso"], "edad": config["edad"], "estatura": config["estatura"]}
             
             competidores_por_grupo: Dict[Tuple, List[Competidor]] = {}
@@ -207,7 +207,7 @@ class RecomendacionManager:
                         if not puede:
                             continue
                         
-                        s, bd, _ = _calcular_bracket_score(nuevo_grupo, limits)
+                        s, bd, _ = calcular_bracket_score(nuevo_grupo, limits)
                         
                         if s >= config["score_min"]:
                             recomendaciones.append(Recomendacion(
@@ -237,7 +237,7 @@ class RecomendacionManager:
             for i, b in enumerate(brackets):
                 if b.id == recomendacion.bracket_destino_id:
                     nuevos_comps = list(b.competidores) + [recomendacion.competidor]
-                    s, bd, _ = _calcular_bracket_score(nuevos_comps, recomendacion.limites_usados)
+                    s, bd, _ = calcular_bracket_score(nuevos_comps, recomendacion.limites_usados)
                     brackets[i] = Bracket(
                         id=b.id,
                         numero=b.numero,
@@ -262,8 +262,8 @@ class RecomendacionManager:
                     grupo1 = competidores[:3]
                     grupo2 = competidores[3:]
                     
-                    s1, bd1, _ = _calcular_bracket_score(grupo1, recomendacion.limites_usados)
-                    s2, bd2, _ = _calcular_bracket_score(grupo2, recomendacion.limites_usados)
+                    s1, bd1, _ = calcular_bracket_score(grupo1, recomendacion.limites_usados)
+                    s2, bd2, _ = calcular_bracket_score(grupo2, recomendacion.limites_usados)
                     
                     new_id1 = b.id
                     new_id2 = max((br.id for br in brackets), default=0) + 1
@@ -303,7 +303,7 @@ class RecomendacionManager:
         elif recomendacion.tipo == "nuevo_bracket":
             new_id = max((b.id for b in brackets), default=0) + 1
             nuevos_comps = recomendacion.competidores_propuestos
-            s, bd, _ = _calcular_bracket_score(nuevos_comps, recomendacion.limites_usados)
+            s, bd, _ = calcular_bracket_score(nuevos_comps, recomendacion.limites_usados)
             
             brackets.append(Bracket(
                 id=new_id,
@@ -350,7 +350,7 @@ class RecomendacionManager:
         for i, b in enumerate(brackets):
             if b.id == bracket.id:
                 nuevos_comps = list(b.competidores) + [competidor]
-                s, bd, _ = _calcular_bracket_score(nuevos_comps, {"peso": 7.0, "edad": 3.0, "estatura": 16})
+                s, bd, _ = calcular_bracket_score(nuevos_comps, {"peso": 7.0, "edad": 3.0, "estatura": 16})
                 brackets[i] = Bracket(
                     id=b.id,
                     numero=b.numero,

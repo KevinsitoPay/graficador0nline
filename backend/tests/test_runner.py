@@ -84,6 +84,7 @@ def compute_metrics(results, competitors):
             "nombre": u.competidor.nombre,
             "apellido": u.competidor.apellido,
             "bloque": u.competidor.bloque,
+            "cinta_block": u.competidor.cinta_block,
             "edad": u.competidor.edad,
             "peso": u.competidor.peso_kg,
             "doyang": u.competidor.doyang,

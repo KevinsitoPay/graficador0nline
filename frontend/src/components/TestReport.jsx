@@ -136,6 +136,51 @@ export default function TestReport() {
     URL.revokeObjectURL(url);
   };
 
+  const downloadUnpaired = () => {
+    if (!report) return;
+    
+    const unpairedData = [];
+    
+    if (report.tests) {
+      report.tests.forEach((test) => {
+        if (test.unpaired && test.unpaired.length > 0) {
+          test.unpaired.forEach((comp) => {
+            unpairedData.push({
+              test_name: test.name,
+              ...comp
+            });
+          });
+        }
+      });
+    } else if (report.fixtures) {
+      report.fixtures.forEach((fixture) => {
+        if (fixture.unpaired && fixture.unpaired.length > 0) {
+          fixture.unpaired.forEach((comp) => {
+            unpairedData.push({
+              fixture_name: fixture.name,
+              ...comp
+            });
+          });
+        }
+      });
+    }
+    
+    if (unpairedData.length === 0) {
+      alert('No hay competidores sin rival para exportar');
+      return;
+    }
+    
+    const blob = new Blob([JSON.stringify(unpairedData, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `sin_rival_${Date.now()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const runLLMReport = async (count) => {
     setLoading(true);
     setError(null);
@@ -160,7 +205,7 @@ export default function TestReport() {
 
   const downloadLLMReport = () => {
     if (!report || !report.markdown) return;
-    
+
     const blob = new Blob([report.markdown], {type: 'text/markdown'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -170,6 +215,18 @@ export default function TestReport() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const copyLLMReport = async () => {
+    if (!report || !report.markdown) return;
+
+    try {
+      await navigator.clipboard.writeText(report.markdown);
+      alert('Reporte copiado al portapapeles');
+    } catch (err) {
+      console.error('Error al copiar:', err);
+      alert('Error al copiar el reporte');
+    }
   };
 
   const toggleRow = (index) => {
@@ -452,14 +509,24 @@ Exportar para LLM ({randomCount})
         <h3>Test Report {testType ? `(${testType === 'random' ? 'Random' : testType === 'llm' ? 'LLM Report' : 'Static'})` : ''}</h3>
         <div className="actions">
           {!isLLMReport && (
-            <button onClick={downloadReport} className="export-btn" disabled={!report}>
-              Exportar JSON
-            </button>
+            <>
+              <button onClick={downloadReport} className="export-btn" disabled={!report}>
+                Exportar JSON
+              </button>
+              <button onClick={downloadUnpaired} className="export-btn" disabled={!report}>
+                Exportar Sin Rival
+              </button>
+            </>
           )}
           {isLLMReport && (
-            <button onClick={downloadLLMReport} className="export-btn llm-export" disabled={!report}>
-              Descargar Markdown
-            </button>
+            <>
+              <button onClick={copyLLMReport} className="export-btn copy-btn" disabled={!report}>
+                Copiar Reporte
+              </button>
+              <button onClick={downloadLLMReport} className="export-btn llm-export" disabled={!report}>
+                Descargar Markdown
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -670,14 +737,15 @@ Exportar para LLM ({randomCount})
                           {f.unpaired && f.unpaired.length > 0 && (
                             <div className="unpaired-section">
                               <h4>Sin Rival ({f.unpaired.length})</h4>
-                              {f.unpaired.map((u, ui) => (
-                                <div key={ui} className="unpaired-item">
-                                  <span>{u.nombre} {u.apellido}</span>
-                                  <span>{u.edad} años • {u.peso} kg</span>
-                                  <span>{u.doyang}</span>
-                                  <span className="razon">{u.razon}</span>
-                                </div>
-                              ))}
+{f.unpaired.map((u, ui) => (
+                                  <div key={ui} className="unpaired-item">
+                                    <span className="belt-badge" style={{backgroundColor: getBeltColor(u.cinta_block)}} title={u.cinta_block}></span>
+                                    <span>{u.nombre} {u.apellido}</span>
+                                    <span>{u.edad} años • {u.peso} kg</span>
+                                    <span>{u.doyang}</span>
+                                    <span className="razon">{u.razon}</span>
+                                  </div>
+                                ))}
                             </div>
                           )}
                         </div>
