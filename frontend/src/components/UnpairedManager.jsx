@@ -17,13 +17,16 @@ export default function UnpairedManager({ initialData }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          brackets: brackets,
-          unpaired: unpaired
+          brackets,
+          unpaired
         })
       });
+
       const data = await response.json();
       if (data.success) {
-        setRecommendations(data.recommendations.filter(r => r.competidor.id === competitorId));
+        setRecommendations((data.recommendations || []).filter(r => r.competidor.id === competitorId));
+      } else {
+        console.error('Recommendation error:', data.message);
       }
     } catch (e) {
       console.error('Error fetching recommendations:', e);
@@ -44,18 +47,21 @@ export default function UnpairedManager({ initialData }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           recomendacion_id: rec.id,
-          brackets: brackets,
-          unpaired: unpaired,
+          brackets,
+          unpaired,
           usuario: 'colaborador'
         })
       });
+
       const data = await response.json();
       if (data.success) {
-        setBrackets(data.brackets);
-        setUnpaired(data.unpaired);
+        setBrackets(data.brackets || []);
+        setUnpaired(data.unpaired || []);
         setSelectedCompetitor(null);
         setRecommendations([]);
         fetchHistory();
+      } else {
+        console.error('Apply recommendation error:', data.message);
       }
     } catch (e) {
       console.error('Error applying recommendation:', e);
@@ -72,17 +78,20 @@ export default function UnpairedManager({ initialData }) {
         body: JSON.stringify({
           competidor: competitor,
           bracket_id: bracketId,
-          brackets: brackets,
-          unpaired: unpaired,
+          brackets,
+          unpaired,
           usuario: 'colaborador'
         })
       });
+
       const data = await response.json();
       if (data.success) {
-        setBrackets(data.brackets);
-        setUnpaired(data.unpaired);
+        setBrackets(data.brackets || []);
+        setUnpaired(data.unpaired || []);
         setSelectedCompetitor(null);
         fetchHistory();
+      } else {
+        console.error('Manual assign error:', data.message);
       }
     } catch (e) {
       console.error('Error in manual assign:', e);
@@ -95,7 +104,7 @@ export default function UnpairedManager({ initialData }) {
       const response = await fetch('http://localhost:8000/api/history');
       const data = await response.json();
       if (data.success) {
-        setHistory(data.history);
+        setHistory(data.history || []);
       }
     } catch (e) {
       console.error('Error fetching history:', e);
@@ -108,6 +117,8 @@ export default function UnpairedManager({ initialData }) {
       const data = await response.json();
       if (data.success) {
         fetchHistory();
+      } else {
+        console.error('Undo error:', data.message);
       }
     } catch (e) {
       console.error('Error undoing:', e);
@@ -121,19 +132,23 @@ export default function UnpairedManager({ initialData }) {
         ...brackets.flatMap(b => b.competidores),
         ...unpaired.map(u => u.competidor)
       ];
+
       const response = await fetch('http://localhost:8000/api/finalize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          brackets: brackets,
-          unpaired: unpaired,
+          brackets,
+          unpaired,
           competidores: allCompetitors
         })
       });
+
       const data = await response.json();
       if (data.success) {
-        setBrackets(data.brackets);
+        setBrackets(data.brackets || []);
         alert('Emparejamiento finalizado y exportado');
+      } else {
+        console.error('Finalize error:', data.message);
       }
     } catch (e) {
       console.error('Error finalizing:', e);
@@ -147,20 +162,22 @@ export default function UnpairedManager({ initialData }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          brackets: brackets,
-          unpaired: unpaired
+          brackets,
+          unpaired
         })
       });
+
       const data = await response.json();
       if (data.success) {
         alert(`PDF exportado: ${data.pdf_file}`);
+      } else {
+        console.error('PDF export error:', data.message);
       }
     } catch (e) {
       console.error('Error exporting PDF:', e);
     }
   };
 
-  // Drag & Drop handlers
   const handleDragStart = (e, competitor) => {
     setDraggedCompetitor(competitor);
     e.dataTransfer.effectAllowed = 'move';
@@ -256,10 +273,7 @@ export default function UnpairedManager({ initialData }) {
                 <div className="bracket-header">
                   <span className="bracket-id">#{bracket.numero || bracket.id}</span>
                   <span className="bracket-score">{bracket.score}%</span>
-                  <span 
-                    className="bracket-level" 
-                    style={{ backgroundColor: getNivelColor(bracket.nivel_aprobacion === 'rojo_oscuro' ? 6 : 5) }}
-                  >
+                  <span className="bracket-level">
                     {bracket.nivel_aprobacion || 'auto'}
                   </span>
                 </div>
@@ -287,8 +301,8 @@ export default function UnpairedManager({ initialData }) {
                     <div className="rec-header">
                       <span className="rec-type">{rec.tipo}</span>
                       <span className="rec-score">{rec.score_esperado}%</span>
-                      <span 
-                        className="rec-nivel" 
+                      <span
+                        className="rec-nivel"
                         style={{ backgroundColor: getNivelColor(rec.nivel_relajacion) }}
                       >
                         Nivel {rec.nivel_relajacion}
@@ -296,7 +310,10 @@ export default function UnpairedManager({ initialData }) {
                     </div>
                     <div className="rec-justification">{rec.justificacion}</div>
                     <div className="rec-limits">
-                      Peso: {rec.limites_usados.peso}kg | Edad: {rec.limites_usados.edad}a | Est: {rec.limites_usados.estatura}cm
+                      Peso: {rec.limites_usados.peso}kg |
+                      Edad Inf: {rec.limites_usados.edad_inf}a |
+                      Edad Adulto: {rec.limites_usados.edad_adulto}a |
+                      Est: {rec.limites_usados.estatura}cm
                     </div>
                     <button onClick={() => applyRecommendation(rec)}>
                       Aplicar
@@ -464,6 +481,7 @@ export default function UnpairedManager({ initialData }) {
           padding: 2px 6px;
           border-radius: 4px;
           color: white;
+          background: #334155;
         }
         .bracket-competitors {
           font-size: 12px;

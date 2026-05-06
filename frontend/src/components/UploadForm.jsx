@@ -7,16 +7,25 @@ export default function UploadForm({ onResults }) {
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
-    if (selected && selected.name.endsWith('.xlsx')) {
+
+    if (
+      selected &&
+      (
+        selected.name.toLowerCase().endsWith('.xlsx') ||
+        selected.name.toLowerCase().endsWith('.xls')
+      )
+    ) {
       setFile(selected);
       setError(null);
     } else {
-      setError('Por favor selecciona un archivo .xlsx');
+      setFile(null);
+      setError('Por favor selecciona un archivo .xlsx o .xls');
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!file) {
       setError('Selecciona un archivo');
       return;
@@ -35,7 +44,7 @@ export default function UploadForm({ onResults }) {
       });
 
       const data = await response.json();
-      
+
       if (data.success) {
         onResults(data.results);
       } else {
@@ -54,20 +63,20 @@ export default function UploadForm({ onResults }) {
         <div className="file-input">
           <input
             type="file"
-            accept=".xlsx"
+            accept=".xlsx,.xls"
             onChange={handleFileChange}
             id="file-upload"
           />
           <label htmlFor="file-upload" className="file-label">
-            {file ? file.name : 'Seleccionar archivo Excel (.xlsx)'}
+            {file ? file.name : 'Seleccionar archivo Excel (.xlsx o .xls)'}
           </label>
         </div>
-        
+
         <button type="submit" disabled={loading || !file}>
           {loading ? 'Procesando...' : 'Procesar'}
         </button>
       </form>
-      
+
       {error && <div className="error">{error}</div>}
     </div>
   );
