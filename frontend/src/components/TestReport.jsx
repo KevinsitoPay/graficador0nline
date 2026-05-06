@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
+
 const BELT_COLORS = {
   "Negra (Dan)": "#1a1a1a",
   "Negra (Poom)": "#1a1a1a",
@@ -48,7 +50,7 @@ export default function TestReport() {
     setProgressCurrent(0);
 
     try {
-      const res = await fetch('http://localhost:8000/tests');
+      const res = await fetch(`${API_URL}/tests`);
       const data = await res.json();
 
       if (data.success) {
@@ -87,7 +89,7 @@ export default function TestReport() {
     setProgressCurrent(0);
 
     try {
-      const res = await fetch(`http://localhost:8000/tests/random/${count}`);
+      const res = await fetch(`${API_URL}/tests/random/${count}`);
       const data = await res.json();
 
       if (data.success) {
@@ -123,7 +125,7 @@ export default function TestReport() {
     setExpandedRow(null);
 
     try {
-      const res = await fetch(`http://localhost:8000/tests/report/llm/${count}`);
+      const res = await fetch(`${API_URL}/tests/report/llm/${count}`);
       const data = await res.json();
 
       if (data.success) {
@@ -599,3 +601,4 @@ export default function TestReport() {
     </div>
   );
 }
+

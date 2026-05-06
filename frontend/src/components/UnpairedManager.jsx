@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
+
 export default function UnpairedManager({ initialData }) {
   const [brackets, setBrackets] = useState(initialData?.brackets || []);
   const [unpaired, setUnpaired] = useState(initialData?.unpaired || []);
@@ -13,7 +15,7 @@ export default function UnpairedManager({ initialData }) {
   const fetchRecommendations = async (competitorId) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/recommendations/generate', {
+      const response = await fetch(`${API_URL}/api/recommendations/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -42,7 +44,7 @@ export default function UnpairedManager({ initialData }) {
   const applyRecommendation = async (rec) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/recommendations/apply', {
+      const response = await fetch(`${API_URL}/api/recommendations/apply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -72,7 +74,7 @@ export default function UnpairedManager({ initialData }) {
   const manualAssign = async (competitor, bracketId) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/manual_assign', {
+      const response = await fetch(`${API_URL}/api/manual_assign`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -101,7 +103,7 @@ export default function UnpairedManager({ initialData }) {
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/history');
+      const response = await fetch(`${API_URL}/api/history`);
       const data = await response.json();
       if (data.success) {
         setHistory(data.history || []);
@@ -113,7 +115,7 @@ export default function UnpairedManager({ initialData }) {
 
   const undoLast = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/undo', { method: 'POST' });
+      const response = await fetch(`${API_URL}/api/undo`, { method: 'POST' });
       const data = await response.json();
       if (data.success) {
         fetchHistory();
@@ -133,7 +135,7 @@ export default function UnpairedManager({ initialData }) {
         ...unpaired.map(u => u.competidor)
       ];
 
-      const response = await fetch('http://localhost:8000/api/finalize', {
+      const response = await fetch(`${API_URL}/api/finalize`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -158,7 +160,7 @@ export default function UnpairedManager({ initialData }) {
 
   const exportPDF = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/export/pdf', {
+      const response = await fetch(`${API_URL}/api/export/pdf`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
