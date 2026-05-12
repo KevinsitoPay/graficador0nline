@@ -559,7 +559,7 @@ export default function TestReport() {
                                 <div key={ui} className="unpaired-item">
                                   <span className="belt-badge" style={{ backgroundColor: getBeltColor(u.cinta_block) }} title={u.cinta_block}></span>
                                   <span>{u.nombre} {u.apellido}</span>
-                                  <span>{u.edad} años • {u.peso_kg ?? u.peso} kg</span>
+                                  <span>{u.edad} años • {u.peso_kg ?? u.peso} kg • {u.estatura_cm ?? u.estatura} cm</span>
                                   <span>{u.doyang}</span>
                                   <span className="razon">{u.razon}</span>
                                 </div>

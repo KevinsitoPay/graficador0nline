@@ -443,23 +443,23 @@ def run_random_test(edge_case_prob=0.01):
                 "area": b.area,
                 "tipo": b.tipo,
                 "score": b.score,
-                "competidores": [
-                    {
-                        "id": c.id,
-                        "nombre": c.nombre,
-                        "apellido": c.apellido,
-                        "edad": c.edad,
-                        "categoria_edad": c.categoria_edad,
-                        "sexo": c.sexo,
-                        "peso": c.peso_kg,
-                        "estatura": c.estatura_cm,
-                        "modalidad": c.modalidad,
-                        "doyang": c.doyang,
-                        "bloque": c.bloque,
-                        "cinta_block": c.cinta_block,
-                    }
-                    for c in b.competidores
-                ]
+                    "competidores": [
+                        {
+                            "id": c.id,
+                            "nombre": c.nombre,
+                            "apellido": c.apellido,
+                            "edad": c.edad,
+                            "categoria_edad": c.categoria_edad,
+                            "sexo": c.sexo,
+                            "peso_kg": c.peso_kg,
+                            "estatura_cm": c.estatura_cm,
+                            "modalidad": c.modalidad,
+                            "doyang": c.doyang,
+                            "bloque": c.bloque,
+                            "cinta_block": c.cinta_block,
+                        }
+                        for c in b.competidores
+                    ]
             }
 
             if b.score_breakdown:
@@ -488,7 +488,8 @@ def run_random_test(edge_case_prob=0.01):
                 "bloque": u.competidor.bloque,
                 "cinta_block": u.competidor.cinta_block,
                 "edad": u.competidor.edad,
-                "peso": u.competidor.peso_kg,
+                "peso_kg": u.competidor.peso_kg,
+                "estatura_cm": u.competidor.estatura_cm,
                 "doyang": u.competidor.doyang,
                 "razon": u.razon,
             }

@@ -232,6 +232,7 @@ export default function ResultsPanel({ initialResults = null }) {
                   <th>Bloque</th>
                   <th>Edad</th>
                   <th>Peso</th>
+                  <th>Estatura</th>
                   <th>Doyang</th>
                   <th>Razón</th>
                 </tr>
@@ -243,6 +244,7 @@ export default function ResultsPanel({ initialResults = null }) {
                     <td>{item.competidor.bloque}</td>
                     <td>{item.competidor.edad}</td>
                     <td>{item.competidor.peso_kg}</td>
+                    <td>{item.competidor.estatura_cm}</td>
                     <td>{item.competidor.doyang}</td>
                     <td>{item.razon}</td>
                   </tr>

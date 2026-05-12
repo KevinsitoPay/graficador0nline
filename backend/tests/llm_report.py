@@ -233,8 +233,8 @@ def extract_low_quality_brackets(tests: List[dict], threshold: float = 30.0) -> 
                         "nombre": c.get("nombre", ""),
                         "apellido": c.get("apellido", ""),
                         "edad": c.get("edad", 0),
-                        "peso": c.get("peso", 0),
-                        "estatura": c.get("estatura", 0),
+                        "peso_kg": c.get("peso_kg", c.get("peso", 0)),
+                        "estatura_cm": c.get("estatura_cm", c.get("estatura", 0)),
                         "doyang": c.get("doyang", "")
                     })
                 
@@ -281,8 +281,8 @@ def analyze_unpaired(tests: List[dict]) -> dict:
                 "nombre": nombre,
                 "apellido": apellido,
                 "edad": u.get("edad", 0),
-                "peso": u.get("peso", 0),
-                "estatura": u.get("estatura", 0),
+                "peso_kg": u.get("peso_kg", u.get("peso", 0)),
+                "estatura_cm": u.get("estatura_cm", u.get("estatura", 0)),
                 "cinta_block": cinta,
                 "doyang": u.get("doyang", ""),
                 "razon": reason
@@ -306,8 +306,8 @@ def analyze_unpaired(tests: List[dict]) -> dict:
                 "bloque": bloque,
                 "cinta_block": cinta,
                 "edad": u.get("edad", 0),
-                "peso": u.get("peso", 0),
-                "estatura": u.get("estatura", 0),
+                "peso_kg": u.get("peso_kg", u.get("peso", 0)),
+                "estatura_cm": u.get("estatura_cm", u.get("estatura", 0)),
                 "doyang": u.get("doyang", ""),
                 "razon": reason,
                 "razones_detalladas": razon_detallada
@@ -316,7 +316,7 @@ def analyze_unpaired(tests: List[dict]) -> dict:
             profiles.append({
                 "bloque": bloque,
                 "edad": u.get("edad", 0),
-                "peso": u.get("peso", 0),
+                "peso_kg": u.get("peso_kg", u.get("peso", 0)),
                 "razon": reason
             })
 
@@ -341,7 +341,9 @@ def bloques_sin_rival_posibles(unpaired: dict, test: dict) -> list:
             continue
         diffs = []
         for c in comps:
-            peso_diff = abs(c.get("peso", 0) - unpaired.get("peso", 0))
+            peso_u = unpaired.get("peso_kg", unpaired.get("peso", 0))
+            peso_c = c.get("peso_kg", c.get("peso", 0))
+            peso_diff = abs(peso_c - peso_u)
             if peso_diff > 7.5:
                 diffs.append(f"peso: {round(peso_diff, 1)}kg > 7.5kg")
             edad_diff = abs(c.get("edad", 0) - unpaired.get("edad", 0))
@@ -364,8 +366,8 @@ def extract_unpaired_detailed(tests: List[dict]) -> List[dict]:
             bloque = u.get("bloque", "Unknown")
             cinta = u.get("cinta_block", "Unknown")
             edad = u.get("edad", 0)
-            peso = u.get("peso", 0)
-            estatura = u.get("estatura", 0)
+            peso_kg = u.get("peso_kg", u.get("peso", 0))
+            estatura_cm = u.get("estatura_cm", u.get("estatura", 0))
             doyang = u.get("doyang", "")
             reason = u.get("razon", "Unknown")
 
@@ -378,8 +380,9 @@ def extract_unpaired_detailed(tests: List[dict]) -> List[dict]:
                     continue
                 for c in comps:
                     razones = []
-                    if abs(c.get("peso", 0) - peso) > 7.5:
-                        razones.append(f"peso_abs: {round(abs(c.get('peso', 0) - peso), 1)}kg > 7.5kg")
+                    c_peso = c.get("peso_kg", c.get("peso", 0))
+                    if abs(c_peso - peso_kg) > 7.5:
+                        razones.append(f"peso_abs: {round(abs(c_peso - peso_kg), 1)}kg > 7.5kg")
                     if cinta != c.get("cinta_block", ""):
                         razones.append(f"cintas: {cinta} vs {c.get('cinta_block', '')}")
                     if abs(c.get("edad", 0) - edad) > 3:
@@ -411,8 +414,8 @@ def extract_unpaired_detailed(tests: List[dict]) -> List[dict]:
                 "bloque": bloque,
                 "cinta_block": cinta,
                 "edad": edad,
-                "peso": peso,
-                "estatura": estatura,
+                "peso_kg": peso_kg,
+                "estatura_cm": estatura_cm,
                 "doyang": doyang,
                 "razon": reason,
                 "razones_fallo": razones_fallo,
@@ -479,8 +482,12 @@ def extract_zero_score_brackets(tests: List[dict]) -> List[dict]:
                     for j in range(i + 1, len(comps)):
                         c1, c2 = comps[i], comps[j]
                         age_diffs.append(abs(c1.get("edad", 0) - c2.get("edad", 0)))
-                        peso_diffs.append(abs(c1.get("peso", 0) - c2.get("peso", 0)))
-                        est_diffs.append(abs(c1.get("estatura", 0) - c2.get("estatura", 0)))
+                        p1 = c1.get("peso_kg", c1.get("peso", 0))
+                        p2 = c2.get("peso_kg", c2.get("peso", 0))
+                        peso_diffs.append(abs(p1 - p2))
+                        e1 = c1.get("estatura_cm", c1.get("estatura", 0))
+                        e2 = c2.get("estatura_cm", c2.get("estatura", 0))
+                        est_diffs.append(abs(e1 - e2))
                 
                 max_age_diff = max(age_diffs) if age_diffs else 0
                 max_peso_diff = max(peso_diffs) if peso_diffs else 0
@@ -501,8 +508,8 @@ def extract_zero_score_brackets(tests: List[dict]) -> List[dict]:
                         "edad": c.get("edad", 0),
                         "categoria_edad": c.get("categoria_edad", "Unknown"),
                         "sexo": c.get("sexo", "?"),
-                        "peso": c.get("peso", 0),
-                        "estatura": c.get("estatura", 0),
+                        "peso_kg": c.get("peso_kg", c.get("peso", 0)),
+                        "estatura_cm": c.get("estatura_cm", c.get("estatura", 0)),
                         "cinta_block": c.get("cinta_block", "Unknown"),
                         "doyang": c.get("doyang", ""),
                     })
@@ -721,7 +728,7 @@ def generate_llm_markdown(report: dict) -> str:
         lines.append("")
         lines.append("**Competidores:**")
         for c in bq["competidores"]:
-            lines.append(f"- {c['nombre']} {c['apellido']}: {c['edad']} anos, {c['peso']}kg, {c['estatura']}cm, {c['doyang']}")
+            lines.append(f"- {c['nombre']} {c['apellido']}: {c['edad']} anos, {c.get('peso_kg', c.get('peso', 0))}kg, {c.get('estatura_cm', c.get('estatura', 0))}cm, {c['doyang']}")
         lines.append("")
         
         bd = bq.get("breakdown", {})
@@ -786,7 +793,7 @@ def generate_llm_markdown(report: dict) -> str:
         lines.append("")
         for i, u in enumerate(unpaired_detailed[:15], 1):
             lines.append(f"**{i}. {u['nombre']} {u['apellido']}** ({u['bloque']}, {u['cinta_block']})")
-            lines.append(f"- Edad: {u['edad']}, Peso: {u['peso']} kg, Estatura: {u['estatura']} cm")
+            lines.append(f"- Edad: {u['edad']}, Peso: {u.get('peso_kg', u.get('peso', 0))} kg, Estatura: {u.get('estatura_cm', u.get('estatura', 0))} cm")
             lines.append(f"- **Razón:** {u['razon']}")
             if u["razones_fallo"]:
                 lines.append(f"- **Razones de fallo:** {', '.join(u['razones_fallo'])}")
